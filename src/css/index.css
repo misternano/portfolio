@@ -41,7 +41,7 @@ header {
 }
 
 .rainbow {
-    background: url("src/assets/EecPYwAAAABJRU5ErkJggg.png") center;
+    background: url("../assets/EecPYwAAAABJRU5ErkJggg.png") center;
     background-size: cover;
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
