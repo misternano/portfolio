@@ -59,10 +59,10 @@ const SpotifyListener = () => {
 						</div>
 						<div>
 							<div className="flex justify-between">
-								<span>
+								<span id="timestamp">
 									{formatTime(progress)}
 								</span>
-								<span>
+								<span id="timestamp">
 									{formatTime(length)}
 								</span>
 							</div>
