@@ -1,5 +1,5 @@
 import React, { useMemo, useState, useRef, useEffect } from "react";
-import { ChevronDownIcon, EnvelopeIcon, MapPinIcon } from "@heroicons/react/24/solid/index.js";
+import { ChevronDownIcon, EnvelopeIcon } from "@heroicons/react/24/solid/index.js";
 import Avatar from "./components/Avatar.jsx";
 import projects from "./data/projects.js";
 import Project from "./components/Project.jsx";
@@ -83,7 +83,7 @@ const App = () => {
 				<h3 className="rainbow p-6 flex justify-center text-3xl font-bold">
 					My Projects
 				</h3>
-				<div className="w-[90%] mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+				<div className="w-[90%] mx-auto grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-6">
 					{projects.map(p => (
 						<Project key={p.id}
 							src={p.src}
@@ -100,7 +100,7 @@ const App = () => {
 						</h3>
 					</div>
 					<div className="w-[90%] mx-auto grid md:grid-cols-2 gap-6">
-						<div className="bg-neutral-800/50 rounded-md">
+						<div className="bg-neutral-800/50 rounded-md drop-shadow">
 							<div className="h-full p-2 flex flex-col gap-4 items-center">
 								<p className="w-full pb-2 text-center text-neutral-400 font-semibold border-b border-indigo-600">
 									Need to get in touch?
@@ -109,17 +109,19 @@ const App = () => {
 									<div className="flex flex-row gap-2 items-center">
 										<EnvelopeIcon className="w-5 h-5" />
 										<a href="mailto:hello@nanos.club">
-											<p className="underline underline-offset-2">
+											<p className="underline underline-offset-2 hover:text-indigo-200 transition-colors">
 												hello@nanos.club
 											</p>
 										</a>
 									</div>
+									{/*
 									<div className="flex flex-row gap-2 items-center">
 										<MapPinIcon className="w-5 h-5" />
 										<p>
 											USA
 										</p>
 									</div>
+									*/}
 								</div>
 							</div>
 						</div>
@@ -127,7 +129,7 @@ const App = () => {
 					</div>
 				</div>
 			</main>
-			<footer className="m-6 p-2 px-6 bg-neutral-800 flex md:flex-row flex-col gap-3 md:justify-between justify-center items-center rounded-md">
+			<footer className="m-6 p-2 px-6 bg-neutral-800 flex md:flex-row flex-col gap-3 md:justify-between justify-center items-center rounded-md drop-shadow">
 				<p>
 					&copy; 2022 nanos.club
 				</p>

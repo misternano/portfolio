@@ -11,7 +11,7 @@ const Contact = () => {
 				<input type="hidden" name="_gotcha" className="!hidden" />
 			</div>
 			<textarea id="message" name="message" placeholder="Message *" className="h-32 bg-neutral-800/50 border-b p-2 border-indigo-600 focus:rounded resize-none" required />
-			<input id="submit" type="submit" value="Submit" className="p-4 md:p-2 bg-indigo-800 rounded-md hover:bg-indigo-600 transition-colors cursor-pointer" />
+			<input id="submit" type="submit" value="Submit" className="p-4 md:p-2 bg-indigo-800 rounded-md hover:bg-indigo-600 transition-colors cursor-pointer drop-shadow" />
 		</form>
 	);
 };
