@@ -3,7 +3,7 @@ export default [
 		id: 1,
 		src: "YFKgX",
 		name: "Portfolio",
-		desc: "You are here!",
+		desc: "You are here! Built using React, Vite and Tailwind.",
 		connect: ["nanos.club"]
 	},
 	{
