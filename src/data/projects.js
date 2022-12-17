@@ -1,13 +1,14 @@
 export default [
 	{
 		id: 1,
-		src: "xkOGj", // Image needs update
+		src: "YFKgX",
 		name: "Portfolio",
-		desc: "You are here!"
+		desc: "You are here!",
+		connect: ["nanos.club"]
 	},
 	{
 		id: 2,
-		src: "wxl6r", // Image needs update
+		src: "poKE6",
 		name: "Reverence House",
 		desc: "Redesign for Reverence House built in React."
 	},
@@ -31,19 +32,20 @@ export default [
 	},
 	{
 		id: 6,
-		src: "jbMaz", // Image needs update, *remove blur filter*
+		src: "PwZ7Y",
 		name: "Crypto Tracker",
 		desc: "Add cryptocurrencies to your watchlist and invest straight from the app."
 	},
 	{
 		id: 7,
-		src: "", // Image needs update
+		src: "wZHUg",
 		name: "Fortnite Item Shop",
-		desc: "Updated everyday at 00:00 UTC"
+		desc: "Updated everyday at 00:00 UTC",
+		connect: ["fn.nanos.club"]
 	},
 	{
 		id: 8,
-		src: "", // Image needs updating
+		src: "umIfy",
 		name: "Laundry's Art",
 		desc: "Art portfolio.",
 		connect: ["laundrys.art"]
@@ -57,7 +59,7 @@ export default [
 	},
 	{
 		id: 10,
-		src: "XFwQi", // Image needs updating, *remove blur filter*
+		src: "lKLSp",
 		name: "Dedicated Minecraft Server",
 		desc: "A private survival multiplayer server.",
 		connect: ["mc.nanos.club", "map.nanos.club"]

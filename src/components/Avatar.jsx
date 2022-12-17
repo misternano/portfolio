@@ -33,7 +33,7 @@ const Avatar = () => {
 
 
 	return (
-		<img className={`${borderColor} w-42 md:w-52 h-auto rounded-full border`} src={avatarURL} alt="Avatar" />
+		<img className={`${borderColor} w-42 md:w-52 h-auto rounded-full border-2`} src={avatarURL} alt="Avatar" />
 	);
 };
 
