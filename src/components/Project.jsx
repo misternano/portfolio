@@ -12,7 +12,7 @@ const Project = ({ src, name, desc, connect }) => {
 				<p className="p-4 pb-2 text-center">
 					{desc}
 				</p>
-				<p className="text-indigo-600">
+				<p className="text-indigo-600 select-text">
 					{connect?.join(" • ")}
 				</p>
 			</div>

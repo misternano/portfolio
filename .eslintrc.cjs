@@ -83,7 +83,7 @@ module.exports = {
 		// Best Practices
 		//
 		// These are rules designed to prevent you from making mistakes.
-		// They either prescribe a better way of doing something or help you avoid footguns.
+		// They either prescribe a better way of doing something or help you avoid foot guns.
 		//
 		"block-scoped-var": 0,
 		// treat var statements as if they were block scoped (off by default). 0: deep destructuring is not compatible https://github.com/eslint/eslint/issues/1863
@@ -155,7 +155,7 @@ module.exports = {
 		"no-proto": 2,
 		// disallow usage of __proto__ property
 		"no-redeclare": 2,
-		// disallow declaring the same variable more then once
+		// disallow declaring the same variable more than once
 		"no-return-assign": 2,
 		// disallow use of assignment in return statement
 		"no-script-url": 2,
@@ -180,7 +180,7 @@ module.exports = {
 				location: "start"
 			}
 		],
-		// disallow usage of configurable warning terms in comments": 2,
+		// disallow usage of configurable warning terms in comments: 2,
 		"no-with": 2,
 		// disallow use of the with statement
 		radix: 2,
