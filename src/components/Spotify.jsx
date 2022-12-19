@@ -15,7 +15,7 @@ const SpotifyListener = () => {
 	useEffect(() => {
 		const interval = setInterval((async () => {
 			try {
-				const response = await fetch("https://nanos.club/api/spotify");
+				const response = await fetch("https://old.nanos.club/api/spotify");
 				const json = await response.json();
 
 				setData(json);
