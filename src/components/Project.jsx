@@ -1,7 +1,7 @@
 import React from "react";
 import placeholder from "../assets/placeholder.png"
 
-const Project = ({ src, name, desc, connect }) => {
+const Project = ({ src, name, desc, url }) => {
 	return (
 		<div className="flex flex-col bg-neutral-800/50 border border-neutral-700 rounded-md drop-shadow">
 			<img className="rounded w-full h-auto" src={src ? `docs/${src}.png` : placeholder} alt="Project Image" loading="lazy" />
@@ -12,9 +12,9 @@ const Project = ({ src, name, desc, connect }) => {
 				<p className="p-4 pb-2 text-center">
 					{desc}
 				</p>
-				<p className="text-indigo-600 select-text">
-					{connect?.join(" • ")}
-				</p>
+				<a href={`https://${url}`} target="norel noopen" className={`${url ? "inline" : "hidden"} text-indigo-600 hover:text-indigo-500 transition-colors`}>
+					{url}
+				</a>
 			</div>
 		</div>
 	);

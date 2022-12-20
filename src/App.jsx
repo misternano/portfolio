@@ -89,7 +89,7 @@ const App = () => {
 							src={p.src}
 							name={p.name}
 							desc={p.desc}
-						    connect={p.connect}
+						    url={p.url}
 						/>
 					))}
 				</div>
@@ -108,10 +108,8 @@ const App = () => {
 								<div className="h-full flex flex-col justify-center">
 									<div className="flex flex-row gap-2 items-center">
 										<EnvelopeIcon className="w-5 h-5" />
-										<a href="mailto:hello@nanos.club">
-											<p className="underline underline-offset-2 hover:text-indigo-200 transition-colors">
-												hello@nanos.club
-											</p>
+										<a href="mailto:hello@nanos.club" className="hover:text-indigo-200 transition-colors">
+											hello@nanos.club
 										</a>
 									</div>
 									{/*

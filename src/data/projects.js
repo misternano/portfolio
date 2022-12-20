@@ -4,7 +4,7 @@ export default [
 		src: "YFKgX",
 		name: "Portfolio",
 		desc: "You are here! Built using React, Vite and Tailwind.",
-		connect: ["nanos.club"]
+		url: "nanos.club"
 	},
 	{
 		id: 2,
@@ -41,28 +41,27 @@ export default [
 		src: "wZHUg",
 		name: "Fortnite Item Shop",
 		desc: "Updated everyday at 00:00 UTC",
-		connect: ["fn.nanos.club"]
+		url: "fn.nanos.club"
 	},
 	{
 		id: 8,
 		src: "umIfy",
 		name: "Laundry's Art",
 		desc: "Art portfolio.",
-		connect: ["laundrys.art"]
+		url: "laundrys.art"
 	},
 	{
 		id: 9,
 		src: "z8ktl",
 		name: "Dedicated FiveM Server",
 		desc: "An online FiveM menu based role play server.",
-		connect: ["fivem.nanos.club"]
 	},
 	{
 		id: 10,
 		src: "lKLSp",
 		name: "Dedicated Minecraft Server",
 		desc: "A private survival multiplayer server.",
-		connect: ["mc.nanos.club", "map.nanos.club"]
+		url: "map.nanos.club"
 	},
 
 ]
