@@ -1,9 +1,7 @@
 import React from "react";
 import placeholder from "../assets/placeholder.png"
-import { useLocation } from "react-router-dom";
 
 const Project = ({ src, name, desc, url }) => {
-	const location = useLocation();
 	return (
 		<div className="flex flex-col bg-neutral-800/50 border border-neutral-700 rounded-md drop-shadow">
 			<img className="rounded w-full h-auto" src={src ? `docs/${src}.png` : placeholder} alt="Project Image" loading="lazy" />
@@ -14,7 +12,7 @@ const Project = ({ src, name, desc, url }) => {
 				<p className="p-4 pb-2 text-center">
 					{desc}
 				</p>
-				<a href={location.pathname === url ? null : `https://${url}`} target="norel noopen" className={`${location.pathname === url ? "cursor-pointer" : ""} ${url ? "inline" : "hidden"} text-indigo-600 hover:text-indigo-500 transition-colors`}>
+				<a href={`https://${url}`} target="norel noopen" className={`${url ? "inline" : "hidden"} text-indigo-600 hover:text-indigo-500 transition-colors`}>
 					{url}
 				</a>
 			</div>
