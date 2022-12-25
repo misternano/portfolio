@@ -14,7 +14,7 @@ const Project = ({ src, name, desc, url }) => {
 				<p className="p-4 pb-2 text-center">
 					{desc}
 				</p>
-				<a href={location.pathname === url ? null : `https://${url}`} target="norel noopen" className={`${url ? "inline" : "hidden"} text-indigo-600 hover:text-indigo-500 transition-colors`}>
+				<a href={location.pathname === url ? null : `https://${url}`} target="norel noopen" className={`${location.pathname === url ? "cursor-pointer" : ""} ${url ? "inline" : "hidden"} text-indigo-600 hover:text-indigo-500 transition-colors`}>
 					{url}
 				</a>
 			</div>
