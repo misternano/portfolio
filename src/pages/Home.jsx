@@ -33,7 +33,7 @@ const Home = () => {
 
 	return (
 		<>
-			<header className="relative lg:h-[90vh] h-screen lg:m-10 m-2 flex md:flex-row flex-col md:gap-40 gap-4 justify-center items-center rounded-[8rem]">
+			<header className="relative h-[80vh] lg:h-[90vh] lg:m-10 m-2 flex md:flex-row flex-col md:gap-40 gap-4 justify-center items-center rounded-[8rem]">
 				<div className="flex flex-col items-center">
 					<h1 className="rainbow flex flex-col items-center text-7xl font-bold">
 						<span>{greeting},</span>
@@ -106,7 +106,7 @@ const Home = () => {
 									Need to get in touch?
 								</p>
 								<div className="h-full flex flex-col justify-center">
-									<div className="flex flex-row gap-2 items-center">
+									<div className="flex flex-row gap-2 items-center pb-2">
 										<EnvelopeIcon className="w-5 h-5" />
 										<a href="mailto:hello@nanos.club" className="hover:text-indigo-200 transition-colors">
 											hello@nanos.club
