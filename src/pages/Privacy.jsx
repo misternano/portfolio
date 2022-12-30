@@ -1,10 +1,16 @@
 import React from "react";
+import { Helmet } from "react-helmet";
 
 const Privacy = () => {
 	return (
-		<div>
-			Privacy Policy
-		</div>
+		<>
+			<Helmet>
+				<title>nanos.club | Privacy Policy</title>
+			</Helmet>
+			<main>
+				Privacy Policy
+			</main>
+		</>
 	);
 };
 

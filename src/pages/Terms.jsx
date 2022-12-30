@@ -1,10 +1,16 @@
 import React from "react";
+import { Helmet } from "react-helmet";
 
 const Terms = () => {
 	return (
-		<div>
-			Terms of Use
-		</div>
+		<>
+			<Helmet>
+				<title>nanos.club | Terms of Use</title>
+			</Helmet>
+			<main>
+				Terms of Use
+			</main>
+		</>
 	);
 };
 
