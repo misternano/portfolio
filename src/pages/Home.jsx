@@ -85,11 +85,12 @@ const Home = () => {
 				</h3>
 				<div className="w-[90%] mx-auto grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-6">
 					{projects.map(p => (
-						<Project key={p.id}
-						         src={p.src}
-						         name={p.name}
-						         desc={p.desc}
-						         url={p.url}
+						<Project
+							key={p.id}
+						    src={p.src}
+						    name={p.name}
+						    desc={p.desc}
+						    url={p.url}
 						/>
 					))}
 				</div>
