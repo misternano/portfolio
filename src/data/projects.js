@@ -54,7 +54,7 @@ export default [
 		id: 9,
 		src: "z8ktl",
 		name: "Dedicated FiveM Server",
-		desc: "An online FiveM menu based role play server.",
+		desc: "Dedicated FiveM server using QBCore Framework.",
 		url: "highliferp.org"
 	},
 	{

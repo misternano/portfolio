@@ -40,7 +40,7 @@ const Home = () => {
 						<span>I&apos;m Nano</span>
 					</h1>
 					<h2 className="text-neutral-400 font-medium">
-						{age} &bull; Web Developer
+						{age} &bull; Developer
 					</h2>
 				</div>
 				<div className="flex flex-col items-center gap-4">
