@@ -1,7 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100;200;300;400;500;600;700;800;900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400&display=swap');
-@import "./reset.css";
+@import "./assets/fonts.css";
 
 * {
     font-family: "Inter", sans-serif;
@@ -47,7 +44,7 @@ a {
 }
 
 .rainbow {
-    background: url("../assets/EecPYwAAAABJRU5ErkJggg.png") center;
+    background: url("./assets/EecPYwAAAABJRU5ErkJggg.png") center;
     background-size: cover;
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;

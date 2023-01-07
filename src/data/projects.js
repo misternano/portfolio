@@ -54,14 +54,14 @@ export default [
 		id: 9,
 		src: "z8ktl",
 		name: "Dedicated FiveM Server",
-		desc: "Dedicated FiveM server using QBCore Framework.",
+		desc: "FiveM economy based server running QBCore Framework.",
 		url: "highliferp.org"
 	},
 	{
 		id: 10,
 		src: "lKLSp",
 		name: "Dedicated Minecraft Server",
-		desc: "A private survival multiplayer server.",
+		desc: "A private survival multiplayer server running Paper.",
 		url: "map.nanos.club"
 	},
 
