@@ -83,7 +83,7 @@ const Home = () => {
 				<h3 className="rainbow p-6 flex justify-center text-3xl font-bold">
 					My Projects
 				</h3>
-				<div className="w-[90%] mx-auto grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-6">
+				<div className="w-[90%] mx-auto grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-y-6 gap-x-4">
 					{projects.map(p => (
 						<Project
 							key={p.id}
