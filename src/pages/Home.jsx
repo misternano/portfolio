@@ -103,13 +103,13 @@ const Home = () => {
 					<div className="w-[90%] mx-auto grid md:grid-cols-2 gap-6">
 						<div className="bg-neutral-800/50 rounded-md drop-shadow">
 							<div className="h-full p-2 flex flex-col gap-4 items-center">
-								<p className="w-full pb-2 text-center text-neutral-400 font-semibold border-b border-indigo-600">
+								<p className="w-full pb-2 text-center text-neutral-400 font-semibold border-b border-brand">
 									Need to get in touch?
 								</p>
 								<div className="h-full flex flex-col justify-center">
 									<div className="flex flex-row gap-2 items-center pb-2">
 										<EnvelopeIcon className="w-5 h-5" />
-										<a href="mailto:hello@nanos.club" className="hover:text-indigo-200 transition-colors">
+										<a href="mailto:hello@nanos.club" className="hover:text-brand transition-colors">
 											hello@nanos.club
 										</a>
 									</div>
