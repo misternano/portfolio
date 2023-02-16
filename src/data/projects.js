@@ -46,8 +46,8 @@ export default [
 	{
 		id: 8,
 		src: "umIfy",
-		name: "Laundry's Art",
-		desc: "Art portfolio.",
+		name: "Laundry's Art Portfolio",
+		desc: "laundry#7777",
 		url: "laundrys.art"
 	},
 	{

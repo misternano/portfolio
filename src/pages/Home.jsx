@@ -1,5 +1,5 @@
 import React, { useMemo, useState, useRef, useEffect } from "react";
-import { ChevronDownIcon, EnvelopeIcon } from "@heroicons/react/24/solid/index.js";
+import { ChevronDownIcon } from "@heroicons/react/24/solid/index.js";
 import Avatar from "../components/Avatar.jsx";
 import projects from "../data/projects.js";
 import Project from "../components/Project.jsx";
@@ -80,7 +80,7 @@ const Home = () => {
 				</a>
 			</header>
 			<main className="mt-[20vh] md:mt-[40vh] m-2" ref={scrollRef}>
-				<h3 className="rainbow p-6 flex justify-center text-3xl font-bold">
+				<h3 className="rainbow w-fit mx-auto p-6 text-center text-3xl font-bold">
 					My Projects
 				</h3>
 				<div className="w-[90%] mx-auto grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-y-6 gap-x-4">
@@ -95,43 +95,44 @@ const Home = () => {
 					))}
 				</div>
 				<div className="my-24">
-					<div className="mb-6 flex flex-col justify-center items-center">
+					<div className="w-fit mx-auto mb-6 text-center">
 						<h3 className="rainbow text-3xl font-bold">
 							Contact
 						</h3>
 					</div>
-					<div className="w-[90%] mx-auto grid md:grid-cols-2 gap-6">
-						<div className="bg-neutral-800/50 rounded-md drop-shadow">
-							<div className="h-full p-2 flex flex-col gap-4 items-center">
-								<p className="w-full pb-2 text-center text-neutral-400 font-semibold border-b border-brand">
-									Need to get in touch?
-								</p>
-								<div className="h-full flex flex-col justify-center">
-									<div className="flex flex-row gap-2 items-center pb-2">
-										<EnvelopeIcon className="w-5 h-5" />
-										<a href="mailto:hello@nanos.club" className="hover:text-brand transition-colors">
-											hello@nanos.club
-										</a>
-									</div>
-									{/*
-									<div className="flex flex-row gap-2 items-center">
-										<MapPinIcon className="w-5 h-5" />
-										<p>
-											USA
-										</p>
-									</div>
-									*/}
-								</div>
-							</div>
-						</div>
+					{/* w-[90%] mx-auto grid md:grid-cols-2 gap-6 */}
+					<div className="w-[50vw] mx-auto">
+						{/*<div className="bg-neutral-800/50 rounded-md drop-shadow">*/}
+						{/*	<div className="h-full p-2 flex flex-col gap-4 items-center">*/}
+						{/*		<p className="w-full pb-2 text-center text-neutral-400 font-semibold border-b border-brand">*/}
+						{/*			Need to get in touch?*/}
+						{/*		</p>*/}
+						{/*		<div className="h-full flex flex-col justify-center">*/}
+						{/*			<div className="flex flex-row gap-2 items-center pb-2">*/}
+						{/*				<EnvelopeIcon className="w-5 h-5" />*/}
+						{/*				<a href="mailto:hello@nanos.club" className="hover:text-brand transition-colors">*/}
+						{/*					hello@nanos.club*/}
+						{/*				</a>*/}
+						{/*			</div>*/}
+						{/*			/!**/}
+						{/*			<div className="flex flex-row gap-2 items-center">*/}
+						{/*				<MapPinIcon className="w-5 h-5" />*/}
+						{/*				<p>*/}
+						{/*					USA*/}
+						{/*				</p>*/}
+						{/*			</div>*/}
+						{/*			*!/*/}
+						{/*		</div>*/}
+						{/*	</div>*/}
+						{/*</div>*/}
 						<Contact />
 					</div>
 				</div>
 			</main>
 			<footer className="m-6 p-2 px-6 bg-neutral-800 flex md:flex-row flex-col gap-3 md:justify-between justify-center items-center rounded-md drop-shadow">
-				<p>
-					&copy; 2022 nanos.club
-				</p>
+				<a href="mailto:hello@nanos.club" className="hover:text-brand transition-colors">
+					hello@nanos.club
+				</a>
 				<div className="flex flex-row gap-3">
 					<a href="https://www.discord.com/users/272535850200596480/" target="norel noopen">
 						<svg viewBox="0 0 512 512" className="h-9 md:h-7 w-auto cursor-pointer fill-white hover:scale-110 transition-all">
