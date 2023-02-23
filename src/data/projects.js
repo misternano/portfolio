@@ -16,7 +16,7 @@ export default [
 		id: 3,
 		src: "LRFG1",
 		name: "Dashboard",
-		desc: "Concept dashboard featuring a team system, interactive calender and messaging system. Additionally, it has member, task and project management panels."
+		desc: "Concept dashboard featuring a team system, interactive calender and messaging system. Additionally, it has member, task, and project management panels."
 	},
 	{
 		id: 4,
@@ -47,7 +47,7 @@ export default [
 		id: 8,
 		src: "umIfy",
 		name: "Laundry's Art Portfolio",
-		desc: "laundry#7777",
+		desc: "1078144323830423563",
 		url: "laundrys.art"
 	},
 	{
