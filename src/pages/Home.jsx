@@ -35,9 +35,9 @@ const Home = () => {
 		<>
 			<header className="relative h-[80vh] lg:h-[90vh] lg:m-10 m-2 flex md:flex-row flex-col md:gap-40 gap-4 justify-center items-center rounded-[8rem]">
 				<div className="flex flex-col items-center">
-					<h1 className="rainbow flex flex-col items-center text-7xl font-bold">
-						<span>{greeting},</span>
-						<span>I&apos;m Nano</span>
+					<h1 className="rainbow text-center text-7xl font-bold">
+						{greeting}, <br />
+						I&apos;m Nano
 					</h1>
 					<h2 className="text-neutral-400 font-medium">
 						{age} &bull; Developer
