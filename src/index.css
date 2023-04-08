@@ -17,7 +17,7 @@ header {
 }
 
 section {
-    @apply my-24;
+    margin-block: 100svh;
 }
 
 .glow:hover {
