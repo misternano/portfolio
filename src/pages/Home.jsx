@@ -84,7 +84,7 @@ const Home = () => {
 
 	return (
 		<>
-			<header className="relative h-[90dvh] flex md:flex-row flex-col md:gap-40 gap-4 justify-center items-center">
+			<header className="relative h-[90svh] flex md:flex-row flex-col md:gap-40 gap-4 justify-center items-center">
 				<div className="flex flex-col items-center">
 					<h1 className="text-rainbow text-center text-7xl font-bold">
 						{greeting}, <br />
