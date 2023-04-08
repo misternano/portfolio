@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 
 const submitForm = "https://getform.io/f/adff09e7-4050-40d8-9665-9ae955e8fb66";
 
-const Contact = () => {
+const ContactCard = () => {
 	return (
 		<form action={submitForm} method="POST" target="norel noopen" className="flex flex-col gap-3">
 			<div className="grid grid-cols-2 gap-3">
@@ -16,4 +16,4 @@ const Contact = () => {
 	);
 };
 
-export default Contact;
+export default ContactCard;

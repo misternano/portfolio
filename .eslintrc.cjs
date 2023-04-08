@@ -10,7 +10,7 @@ module.exports = {
 		es2020: true
 	},
 	parserOptions: {
-		ecmaVersion: 9,
+		ecmaVersion: 2020,
 		sourceType: "module"
 	},
 	plugins: [
@@ -425,11 +425,7 @@ module.exports = {
 			5
 		],
 		// specify the maximum depth that blocks can be nested (off by default)
-		"max-len": [
-			2,
-			200,
-			2
-		],
+		"max-len": "off",
 		// specify the maximum length of a line in your program (off by default)
 		"max-statements": 0,
 		// specify the maximum number of statement allowed in a function (off by default)
