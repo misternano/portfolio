@@ -17,7 +17,7 @@ header {
 }
 
 section {
-    margin-top: 6rem;
+    @apply my-24;
 }
 
 .glow:hover {
