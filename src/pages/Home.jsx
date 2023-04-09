@@ -15,7 +15,8 @@ const greetings = ["Hi", "Hey", "Hello"];
 const Home = () => {
 	const [opacity, setOpacity] = useState(1);
 	const scrollRef = useRef(null);
-	const controls = useAnimation();
+	const controlsX = useAnimation();
+	const controlsY = useAnimation();
 	const [ref, inView] = useInView();
 
 	const age = Math.floor((new Date() - new Date("2002-02-11")) / 31536000000);
@@ -60,27 +61,18 @@ const Home = () => {
 
 	useEffect(() => {
 		if (inView) {
-			controls.start({
+			controlsX.start({
 				opacity: 1,
 				x: 0,
 				transition: { delay: 0.1, duration: 0.5, ease: "easeOut" }
 			});
+			controlsY.start({
+				opacity: 1,
+				y: 0,
+				transition: { delay: 0.1, duration: 0.5, ease: "easeIn" }
+			})
 		}
-	}, [controls, inView]);
-
-	// TODO: Fix this to only start when content comes into view.
-	const container = {
-		show: {
-			transition: {
-				staggerChildren: 0.1
-			}
-		}
-	};
-
-	const item = {
-		hidden: { opacity: 0, y: 15 },
-		show: { opacity: 1, y: 0 }
-	};
+	}, [controlsX, controlsY, inView]);
 
 	return (
 		<>
@@ -138,19 +130,18 @@ const Home = () => {
 					<h3 className="text-rainbow w-fit mx-auto p-6 text-center text-3xl font-bold">
 						What I Do
 					</h3>
-					<div className="w-[90%] md:w-[75%] mx-auto grid grid-cols-1 2xl:grid-cols-2 items-center gap-4">
-						<motion.div ref={ref} variants={container} initial="hidden" animate="show" className="order-2 2xl:order-1 grid grid-cols-2 xl:grid-cols-3 gap-4">
+					<motion.div ref={ref} initial={{ x: 15, opacity: 0 }} animate={controlsX} className="w-[90%] md:w-[75%] mx-auto grid grid-cols-1 2xl:grid-cols-2 items-center gap-4">
+						<div className="order-2 2xl:order-1 grid grid-cols-2 xl:grid-cols-3 gap-4">
 							{stocks.map((s, index) => (
-								<motion.div key={index} variants={item}>
-									<StockCard
-										src={s.src}
-										name={s.name}
-										ticker={s.ticker}
-									/>
-								</motion.div>
+								<StockCard
+									key={index}
+									src={s.src}
+									name={s.name}
+									ticker={s.ticker}
+								/>
 							))}
-						</motion.div>
-						<motion.div ref={ref} initial={{ x: 15, opacity: 0 }} animate={controls} className="order-1 2xl:order-2 h-full p-4 bg-neutral-800/50 border border-[2px] border-neutral-700 rounded-md flex items-center">
+						</div>
+						<div className="order-1 2xl:order-2 h-full p-4 bg-neutral-800/50 border border-[2px] border-neutral-700 rounded-md flex items-center">
 							<p className="text-neutral-300 text-center">
 								I&apos;m a developer with expertise in programming and software development. My unique blend of skills makes me a versatile and effective team player.
 								In addition, I have a wealth of experience in investing and a talent for spotting lucrative opportunities and performing comprehensive market analyses.
@@ -159,23 +150,22 @@ const Home = () => {
 								<span className="inline 2xl:hidden text-neutral-300">below</span>
 								.
 							</p>
-						</motion.div>
-					</div>
+						</div>
+					</motion.div>
 				</section>
 				<section id="projects">
 					<h3 className="text-rainbow w-fit mx-auto p-6 text-center text-3xl font-bold">
 						Projects
 					</h3>
-					<motion.div variants={container} initial="hidden" animate="show" className="w-[90%] mx-auto grid grid-cols-1 md:grid-cols-3 2xl:grid-cols-4 gap-4">
+					<motion.div ref={ref} initial={{ y: 15, opacity: 0 }} animate={controlsY} className="w-[90%] mx-auto grid grid-cols-1 md:grid-cols-3 2xl:grid-cols-4 gap-4">
 						{projects.map((p, index) => (
-							<motion.div key={index} variants={item} className="grid">
-								<ProjectCard
-									src={p.src}
-									name={p.name}
-									desc={p.desc}
-									url={p.url}
-								/>
-							</motion.div>
+							<ProjectCard
+								key={index}
+								src={p.src}
+								name={p.name}
+								desc={p.desc}
+								url={p.url}
+							/>
 						))}
 					</motion.div>
 				</section>
