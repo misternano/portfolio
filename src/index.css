@@ -51,9 +51,10 @@ section {
     @apply underline underline-offset-2;
 }
 
-.text-rainbow {
-    background: url("./assets/EecPYwAAAABJRU5ErkJggg.png") center;
-    background-size: cover;
+.title-gradient {
+    width: fit-content;
+    background-color: #fbb034;
+    background-image: linear-gradient(300deg, #fbb034 0%, #ffdd00 100%);
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
 }
