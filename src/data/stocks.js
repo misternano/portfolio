@@ -5,14 +5,19 @@ export default [
 		ticker: "MSFT"
 	},
 	{
-		src: "att",
-		name: "AT&T",
-		ticker: "T"
+		src: "meta",
+		name: "META",
+		ticker: "META"
 	},
 	{
 		src: "lilly",
 		name: "Eli Lilly",
 		ticker: "LLY"
+	},
+	{
+		src: "nvidia",
+		name: "Nvidia",
+		ticker: "NVDA"
 	},
 	{
 		src: "vanguard",
@@ -21,12 +26,17 @@ export default [
 	},
 	{
 		src: "vanguard",
-		name: "Real Estate",
+		name: "REIT",
 		ticker: "VNQ"
 	},
 	{
 		src: "schwab",
-		name: "Broad Market",
+		name: "Broad",
 		ticker: "SCHB"
+	},
+	{
+		src: "blackrock",
+		name: "Energy",
+		ticker: "ICLN"
 	}
 ];

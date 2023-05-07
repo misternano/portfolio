@@ -86,8 +86,6 @@ const Home = () => {
 						{age} &bull; Developer
 					</h2>
 				</div>
-				<div>
-				</div>
 				<div className="flex flex-col items-center gap-4">
 					<div className="md:block hidden">
 						<Avatar />
@@ -125,13 +123,12 @@ const Home = () => {
 				</button>
 			</a>
 			<main className="mt-[20vh] md:mt-[40vh] m-2" ref={scrollRef}>
-				{/* TODO: Use section tags to separate different areas */}
 				<section id="about">
 					<h3 className="text-rainbow w-fit mx-auto p-6 text-center text-3xl font-bold">
 						What I Do
 					</h3>
-					<motion.div ref={ref} initial={{ x: 15, opacity: 0 }} animate={controlsX} className="w-[90%] md:w-[75%] mx-auto grid grid-cols-1 2xl:grid-cols-2 items-center gap-4">
-						<div className="order-2 2xl:order-1 grid grid-cols-2 xl:grid-cols-3 gap-4">
+					<motion.div ref={ref} initial={{ x: 15, opacity: 0 }} animate={controlsX} className="w-[90%] md:w-[75%] mx-auto grid grid-cols-1 2xl:grid-cols-3 items-center gap-4">
+						<div className="order-2 2xl:order-1 grid grid-cols-2 xl:grid-cols-4 gap-4 2xl:col-span-2">
 							{stocks.map((s, index) => (
 								<StockCard
 									key={index}
@@ -143,9 +140,9 @@ const Home = () => {
 						</div>
 						<div className="order-1 2xl:order-2 h-full p-4 bg-neutral-800/50 border border-[2px] border-neutral-700 rounded-md flex items-center">
 							<p className="text-neutral-300 text-center">
-								I&apos;m a developer with expertise in programming and software development. My unique blend of skills makes me a versatile and effective team player.
-								In addition, I have a wealth of experience in investing and a talent for spotting lucrative opportunities and performing comprehensive market analyses.
-								You can find some investments {" "}
+								I&apos;m a developer with several years of experience. My unique blend of skills makes me a versatile and effective team player.
+								In addition, I have experience in investing and a talent for spotting lucrative opportunities.
+								<br /> You can find some investments {" "}
 								<span className="2xl:inline hidden text-neutral-300">on the left</span>
 								<span className="inline 2xl:hidden text-neutral-300">below</span>
 								.
@@ -179,7 +176,7 @@ const Home = () => {
 				</section>
 			</main>
 			<footer className="m-6 p-2 px-6 bg-neutral-800 flex md:flex-row flex-col gap-3 md:justify-between justify-center items-center rounded-md drop-shadow">
-				<a href="mailto:hello@nanos.club" className="hover:text-brand transition-colors">
+				<a href="mailto:hello@nanos.club" className="external-link hover:text-brand transition-colors">
 					hello@nanos.club
 				</a>
 				<div className="flex flex-row gap-3">
