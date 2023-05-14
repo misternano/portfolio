@@ -2,8 +2,7 @@ export default [
 	{
 		src: "YFKgX",
 		name: "Portfolio",
-		desc: "You are here! Built using React, Vite and Tailwind.",
-		url: "nanos.club"
+		desc: "You are here! Built using React, Vite and Tailwind."
 	},
 	{
 		src: "poKE6",
