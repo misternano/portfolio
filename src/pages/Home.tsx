@@ -1,26 +1,24 @@
 import React, { useMemo, useState, useRef, useEffect } from "react";
-import "tippy.js/dist/tippy.css";
-import { ChevronDownIcon } from "@heroicons/react/24/solid/index.js";
-import tippy from "tippy.js";
+import { Avatar, ProjectCard, ContactCard, StockCard } from "../components";
+import { Project, Stock } from "../types.ts";
+import { projects, stocks } from "../data";
+import moment from "moment";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { Parallax } from "react-scroll-parallax";
-import Avatar from "../components/Avatar.jsx";
-import projects from "../data/projects.js";
-import stocks from "../data/stocks.js";
-import ProjectCard from "../components/ProjectCard.jsx";
-import ContactCard from "../components/ContactCard.jsx";
-import StockCard from "../components/StockCard.jsx";
+import "tippy.js/dist/tippy.css";
+import tippy from "tippy.js";
+import { ChevronDownIcon } from "@heroicons/react/24/solid/index.js";
 const greetings = ["Hi", "Hey", "Hello"];
 
 const Home = () => {
-	const [opacity, setOpacity] = useState(1);
-	const scrollRef = useRef(null);
+	const [opacity, setOpacity] = useState<number>(1);
+	const scrollRef = useRef<HTMLElement>(null);
 	const controlsX = useAnimation();
 	const controlsY = useAnimation();
 	const [ref, inView] = useInView();
 
-	const age = Math.floor((new Date() - new Date("2002-02-11")) / 31536000000);
+	const age: number = Math.floor((moment().valueOf() - moment("2002-02-11", "YYYY-MM-DD").valueOf()) / 31536000000);
 
 	const greeting = useMemo(() => {
 		return greetings[Math.floor(Math.random() * greetings.length)];
@@ -28,8 +26,8 @@ const Home = () => {
 
 	useEffect(() => {
 		window.onscroll = () => {
-			let current = window.pageYOffset;
-			let offset = window.innerHeight / 2.75;
+			const current = window.pageYOffset;
+			const offset = window.innerHeight / 2.75;
 
 			if (current > offset)
 				setOpacity(0);
@@ -57,7 +55,7 @@ const Home = () => {
 		content: "misternano",
 		placement: "bottom"
 	});
-	
+
 	useEffect(() => {
 		if (inView) {
 			controlsX.start({
@@ -69,10 +67,10 @@ const Home = () => {
 				opacity: 1,
 				y: 0,
 				transition: { delay: 0.1, duration: 0.5, ease: "easeInOut" }
-			})
+			});
 		}
 	}, [controlsX, controlsY, inView]);
-	
+
 	return (
 		<>
 			<Parallax speed={-10}>
@@ -116,7 +114,7 @@ const Home = () => {
 					</Parallax>
 				</header>
 			</Parallax>
-			<a onClick={() => scrollRef.current.scrollIntoView()} className="group absolute left-1/2 bottom-5 transition-all duration-300" style={{ opacity: opacity }}>
+			<a onClick={() => scrollRef.current?.scrollIntoView()} className="group absolute left-1/2 bottom-5 transition-all duration-300" style={{ opacity: opacity }}>
 				<button className="cursor-pointer animate-bounce focus:outline-0" id="projectsBtn">
 					<p className="font-lexend -translate-x-1/2 uppercase text-xs font-semibold text-neutral-300 group-hover:text-white transition-colors">
 						learn more
@@ -131,10 +129,9 @@ const Home = () => {
 					</h3>
 					<motion.div ref={ref} initial={{ x: 15, opacity: 0 }} animate={controlsX} className="w-[90%] md:w-[75%] mx-auto grid grid-cols-1 2xl:grid-cols-3 items-center gap-4">
 						<div className="order-2 2xl:order-1 grid grid-cols-2 xl:grid-cols-4 gap-4 2xl:col-span-2">
-							{stocks.map((s, index) => (
-								<motion.div ref={ref} intitial={{ x: 15, opacity: 0 }} animate={controlsX}>
+							{stocks.map((s: Stock, index: number) => (
+								<motion.div key={index} ref={ref} initial={{ x: 15, opacity: 0 }} animate={controlsX}>
 									<StockCard
-										key={index}
 										src={s.src}
 										name={s.name}
 										ticker={s.ticker}
@@ -159,7 +156,7 @@ const Home = () => {
 						Projects
 					</h3>
 					<motion.div ref={ref} initial={{ y: 15, opacity: 0 }} animate={controlsY} className="w-[90%] mx-auto grid grid-cols-1 md:grid-cols-3 2xl:grid-cols-4 gap-4">
-						{projects.map((p, index) => (
+						{projects.map((p: Project, index: number) => (
 							<ProjectCard
 								key={index}
 								src={p.src}

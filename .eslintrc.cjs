@@ -1,6 +1,8 @@
 module.exports = {
+	parser: "@typescript-eslint/parser",
 	extends: [
 		"eslint:recommended",
+		"plugin:@typescript-eslint/recommended",
 		"plugin:react/recommended"
 	],
 	env: {
@@ -10,10 +12,11 @@ module.exports = {
 		es2020: true
 	},
 	parserOptions: {
-		ecmaVersion: 2020,
+		ecmaVersion: "latest",
 		sourceType: "module"
 	},
 	plugins: [
+		"@typescript-eslint",
 		"eslint-plugin-react"
 	],
 	rules: {

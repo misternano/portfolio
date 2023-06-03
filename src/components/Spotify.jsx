@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 import React, { useEffect, useState } from "react";
 import placeholder from "../assets/album.png";
 
@@ -10,14 +9,13 @@ const formatTime = (ms) => {
 };
 
 const SpotifyListener = () => {
-	const [data, setData] = useState(null);
+	const [data, setData] = useState([]);
 
 	useEffect(() => {
 		const interval = setInterval((async () => {
 			try {
 				const response = await fetch("https://nanos.club/api/spotify");
 				const json = await response.json();
-
 				setData(json);
 			} catch (err) {
 				console.error(err);

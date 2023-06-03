@@ -1,4 +1,6 @@
-export default [
+import { Project } from "../types.ts";
+
+const projects: Project[] = [
 	{
 		src: "YFKgX",
 		name: "Portfolio",
@@ -52,10 +54,6 @@ export default [
 		desc: "FiveM economy based server running QBCore Framework.",
 		url: "highliferp.org"
 	}
-	// {
-	// 	src: "lKLSp",
-	// 	name: "Dedicated Minecraft Server",
-	// 	desc: "A private survival multiplayer server running Paper.",
-	// 	url: "map.nanos.club"
-	// }
 ];
+
+export default projects;

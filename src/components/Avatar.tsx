@@ -3,7 +3,7 @@ import avatar from "../assets/avatar.png";
 import { useLanyard } from "use-lanyard";
 
 const Avatar = () => {
-	const [borderColor, setBorderColor] = useState("border-offline");
+	const [borderColor, setBorderColor] = useState<string>("border-offline");
 	const { data } = useLanyard("272535850200596480");
 
 	const avatarURL = data ? `https://cdn.discordapp.com/avatars/272535850200596480/${data.discord_user.avatar}.png` : avatar;

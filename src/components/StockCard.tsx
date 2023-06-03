@@ -1,8 +1,9 @@
 import React from "react";
 import placeholder from "../assets/placeholder.png";
 import { motion } from "framer-motion";
+import { Stock } from "../types.ts";
 
-const StockCard = ({ src, name, ticker }) => {
+const StockCard: React.FC<Stock> = ({ src, name, ticker }) => {
 	return (
 		<a href={`https://finance.yahoo.com/quote/${ticker}`} target="norel noopen">
 			<motion.div whileHover={{ y: -5 }} className="p-4 bg-topography border border-[2px] border-neutral-700 rounded-md glow hover:border-neutral-500 transition-all duration-200">

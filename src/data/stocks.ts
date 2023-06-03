@@ -1,4 +1,6 @@
-export default [
+import { Stock } from "../types.ts";
+
+const stocks: Stock[] = [
 	{
 		src: "microsoft",
 		name: "Microsoft",
@@ -40,3 +42,5 @@ export default [
 		ticker: "ICLN"
 	}
 ];
+
+export default stocks;

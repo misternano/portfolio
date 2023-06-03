@@ -1,11 +1,12 @@
 import React from "react";
 import placeholder from "../assets/placeholder.png";
 import { motion } from "framer-motion";
+import { Project } from "../types.ts";
 
-const ProjectCard = ({ src, name, desc, url }) => {
+const ProjectCard: React.FC<Project> = ({ src, name, desc, url }) => {
 	return (
 		// TODO: add a modal to see project details
-		<motion.div whileHover={{ y: -5 }} className="flex flex-col bg-neutral-800/50 border border-[2px] border-neutral-700 rounded-md glow hover:border-neutral-500 transition-all duration-200">
+		<motion.div whileHover={{ y: -5 }} className="flex flex-col bg-neutral-800/50 border-[2px] border-neutral-700 rounded-md glow hover:border-neutral-500 transition-all duration-200">
 			<img className="rounded-md w-full h-auto" src={src ? `docs/${src}.png` : placeholder} alt={`Image of project "${name}"`} loading="lazy" />
 			<div className="p-2 flex flex-col items-center">
 				<h3 className="w-full text-center text-xl font-medium border-b-2 border-neutral-700 pb-2">
