@@ -13,7 +13,7 @@ const greetings = ["Hi", "Hey", "Hello"];
 
 const Home = () => {
 	const [opacity, setOpacity] = useState<number>(1);
-	const scrollRef = useRef<HTMLElement>(null);
+	const scrollRef = useRef<HTMLElement>(document.createElement("span"));
 	const controlsX = useAnimation();
 	const controlsY = useAnimation();
 	const [ref, inView] = useInView();
@@ -128,17 +128,14 @@ const Home = () => {
 						What I Do
 					</h3>
 					<motion.div ref={ref} initial={{ x: 15, opacity: 0 }} animate={controlsX} className="w-[90%] md:w-[75%] mx-auto grid grid-cols-1 2xl:grid-cols-3 items-center gap-4">
-						<div className="order-2 2xl:order-1 grid grid-cols-2 xl:grid-cols-4 gap-4 2xl:col-span-2">
+						<motion.div ref={ref} initial={{ x: 15, opacity: 0 }} animate={controlsX} className="order-2 2xl:order-1 grid grid-cols-2 xl:grid-cols-4 gap-4 2xl:col-span-2">
 							{stocks.map((s: Stock, index: number) => (
-								<motion.div key={index} ref={ref} initial={{ x: 15, opacity: 0 }} animate={controlsX}>
-									<StockCard
-										src={s.src}
-										name={s.name}
-										ticker={s.ticker}
-									/>
-								</motion.div>
+								<StockCard
+									key={index}
+									data={s}
+								/>
 							))}
-						</div>
+						</motion.div>
 						<div className="order-1 2xl:order-2 h-full p-4 bg-neutral-800/50 border border-[2px] border-neutral-700 rounded-md flex items-center">
 							<p className="text-neutral-300 text-center">
 								I&apos;m a developer with several years of experience. My unique blend of skills makes me a versatile and effective team player.
@@ -159,21 +156,16 @@ const Home = () => {
 						{projects.map((p: Project, index: number) => (
 							<ProjectCard
 								key={index}
-								src={p.src}
-								name={p.name}
-								desc={p.desc}
-								url={p.url}
+								data={p}
 							/>
 						))}
+						<div className="grid items-center p-2 bg-neutral-800/50 border-[2px] border-neutral-700 rounded-md">
+							<h3 className="title-gradient mx-auto p-6 text-center text-3xl font-bold">
+								Contact
+							</h3>
+							<ContactCard />
+						</div>
 					</motion.div>
-				</section>
-				<section id="contact">
-					<h3 className="title-gradient mx-auto p-6 text-center text-3xl font-bold">
-						Contact
-					</h3>
-					<div className="w-[90%] md:w-[50%] mx-auto">
-						<ContactCard />
-					</div>
 				</section>
 			</main>
 			<footer className="m-6 p-2 px-6 bg-neutral-800 flex md:flex-row flex-col gap-3 md:justify-between justify-center items-center rounded-md drop-shadow">
