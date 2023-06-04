@@ -1,8 +1,8 @@
-import Avatar from "./Avatar.js";
-import ContactCard from "./ContactCard.js";
-import ProjectCard from "./ProjectCard.js";
+import Avatar from "./Avatar.tsx";
+import ContactCard from "./ContactCard.tsx";
+import ProjectCard from "./ProjectCard.tsx";
 import Spotify from "./Spotify.jsx";
-import StockCard from "./StockCard.js";
+import StockCard from "./StockCard.tsx";
 
 export {
 	Avatar,
