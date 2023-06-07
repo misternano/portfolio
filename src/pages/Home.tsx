@@ -37,7 +37,7 @@ const Home = () => {
 	}, []);
 
 	tippy("#discord", {
-		content: "nano#0006",
+		content: "nanos.club",
 		placement: "bottom"
 	});
 
