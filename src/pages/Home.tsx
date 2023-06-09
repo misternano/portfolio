@@ -1,5 +1,5 @@
 import React, { useMemo, useState, useRef, useEffect } from "react";
-import { Avatar, ProjectCard, ContactCard, StockCard, Spotify } from "../components";
+import { Avatar, ProjectCard, ContactCard, StockCard } from "../components";
 import { Project, Stock } from "../types.ts";
 import { projects, stocks } from "../data";
 import moment from "moment";
@@ -73,7 +73,6 @@ const Home = () => {
 
 	return (
 		<>
-			<Spotify />
 			<Parallax speed={-10}>
 				<header className="relative h-[90svh] flex justify-center items-center">
 					<Parallax speed={20}>
