@@ -17,6 +17,8 @@ const refresh = async (refreshToken, CLIENT_ID, CLIENT_SECRET, env) => {
 
 	const body = await response.json();
 
+	console.log(body);
+
 	const newSession = {
 		accessToken: body.access_token,
 		refreshToken: body.refresh_token ? body.refresh_token : refreshToken
@@ -49,6 +51,8 @@ const request = async (url, accessToken, refreshToken, CLIENT_ID, CLIENT_SECRET,
 
 	if (response.status === 200)
 		return await response.json();
+
+	console.log(response.json());
 
 	return null;
 };

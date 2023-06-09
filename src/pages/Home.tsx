@@ -1,5 +1,5 @@
 import React, { useMemo, useState, useRef, useEffect } from "react";
-import { Avatar, ProjectCard, ContactCard, StockCard } from "../components";
+import { Avatar, ProjectCard, ContactCard, StockCard, Spotify } from "../components";
 import { Project, Stock } from "../types.ts";
 import { projects, stocks } from "../data";
 import moment from "moment";
@@ -73,6 +73,7 @@ const Home = () => {
 
 	return (
 		<>
+			<Spotify />
 			<Parallax speed={-10}>
 				<header className="relative h-[90svh] flex justify-center items-center">
 					<Parallax speed={20}>
@@ -80,7 +81,7 @@ const Home = () => {
 							<div className="md:block hidden">
 								<Avatar />
 							</div>
-							<h1 className="title-gradient text-center text-5xl font-bold md:leading-loose">
+							<h1 className="text-gradient text-center text-5xl font-bold md:leading-loose">
 								{greeting}, <br className="md:hidden" /> I&apos;m Nano
 							</h1>
 							<h2 className="text-neutral-400 font-medium">
@@ -124,7 +125,7 @@ const Home = () => {
 			</a>
 			<main className="mt-[20vh] md:mt-[40vh] m-2" ref={scrollRef}>
 				<section id="about">
-					<h3 className="title-gradient mx-auto p-6 text-center text-3xl font-bold">
+					<h3 className="text-gradient mx-auto p-6 text-center text-3xl font-bold">
 						What I Do
 					</h3>
 					<motion.div ref={ref} initial={{ x: 15, opacity: 0 }} animate={controlsX} className="w-[90%] md:w-[75%] mx-auto grid grid-cols-1 2xl:grid-cols-3 items-center gap-4">
@@ -136,31 +137,31 @@ const Home = () => {
 								/>
 							))}
 						</motion.div>
-						<div className="order-1 2xl:order-2 h-full p-4 bg-neutral-800/50 border border-[2px] border-neutral-700 rounded-md flex items-center">
+						<div className="order-1 2xl:order-2 h-full p-4 flex flex-col justify-center items-center bg-neutral-800/50 border border-neutral-700 rounded-xl">
+							<h4 className="text-neutral-300 text-center">
+								Developer & Investor
+							</h4>
 							<p className="text-neutral-300 text-center">
-								I&apos;m a developer with several years of experience. My unique blend of skills makes me a versatile and effective team player.
-								I spend my free time investing in stocks, analyzing market trends, and researching new opportunities to maximize my returns.
-								You can find some investments {" "}
+								Find some stocks I invest in {" "}
 								<span className="2xl:inline hidden text-neutral-300">on the left</span>
 								<span className="inline 2xl:hidden text-neutral-300">below</span>
-								.
 							</p>
 						</div>
 					</motion.div>
 				</section>
 				<section id="projects">
-					<h3 className="title-gradient mx-auto p-6 text-center text-3xl font-bold">
+					<h3 className="text-gradient mx-auto p-6 text-center text-3xl font-bold">
 						Projects
 					</h3>
-					<motion.div ref={ref} initial={{ y: 15, opacity: 0 }} animate={controlsY} className="w-[90%] mx-auto grid grid-cols-1 md:grid-cols-3 2xl:grid-cols-4 gap-4">
+					<motion.div ref={ref} initial={{ y: 15, opacity: 0 }} animate={controlsY} className="w-[90%] mx-auto grid grid-cols-1 lg:grid-cols-3 2xl:grid-cols-4 gap-4">
 						{projects.map((p: Project, index: number) => (
 							<ProjectCard
 								key={index}
 								data={p}
 							/>
 						))}
-						<div className="grid items-center p-2 bg-neutral-800/50 border-[2px] border-neutral-700 rounded-md">
-							<h3 className="title-gradient mx-auto p-6 text-center text-3xl font-bold">
+						<div className="grid items-center p-2 bg-neutral-800/50 border border-neutral-700 rounded-xl">
+							<h3 className="text-gradient mx-auto p-6 text-center text-3xl font-bold">
 								Contact
 							</h3>
 							<ContactCard />

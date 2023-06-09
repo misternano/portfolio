@@ -3,7 +3,7 @@ import React from "react";
 const ContactCard = () => {
 	return (
 		<form action="https://getform.io/f/adff09e7-4050-40d8-9665-9ae955e8fb66" method="POST" target="norel noopen" className="flex flex-col gap-3">
-			<div className="grid grid-cols-2 gap-3">
+			<div className="flex flex-col lg:grid grid-cols-2 gap-3">
 				<input id="email" name="email" type="email" placeholder="Email *" className="bg-neutral-700/50 rounded-t border-b p-2 border-brand focus:rounded" required />
 				<input id="subject" name="subject" type="text" placeholder="Subject" className="bg-neutral-700/50 rounded-t border-b p-2 border-brand focus:rounded" />
 				<input type="hidden" name="_gotcha" className="!hidden" />

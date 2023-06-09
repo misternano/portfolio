@@ -8,7 +8,7 @@ const formatTime = (ms) => {
 	return minutes + ":" + seconds.toString().padStart(2, "0");
 };
 
-const SpotifyListener = () => {
+const Spotify = () => {
 	const [data, setData] = useState([]);
 
 	useEffect(() => {
@@ -24,6 +24,8 @@ const SpotifyListener = () => {
 
 		return () => clearInterval(interval);
 	}, []);
+
+	console.log(data);
 
 	if (!data || !data.is_playing)
 		return null;
@@ -76,4 +78,4 @@ const SpotifyListener = () => {
 	);
 };
 
-export default SpotifyListener;
+export default Spotify;
