@@ -3,6 +3,8 @@ export interface Project {
 	name: string;
 	desc: string;
 	url?: string;
+	source?: string;
+	stack?: string[];
 }
 
 export interface Stock {

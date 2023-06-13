@@ -6,33 +6,29 @@ const Avatar = () => {
 	const [borderColor, setBorderColor] = useState<string>("border-offline");
 	const { data } = useLanyard("272535850200596480");
 
-	const avatarURL = data ? `https://cdn.discordapp.com/avatars/272535850200596480/${data.discord_user.avatar}.png` : avatar;
-
 	useEffect(() => {
-		if (data) {
-			if (data.listening_to_spotify)
-				setBorderColor("border-spotify");
-			else {
-				switch (data.discord_status) {
-					case "online":
-						setBorderColor("border-online");
-						break;
-					case "idle":
-						setBorderColor("border-idle");
-						break;
-					case "dnd":
-						setBorderColor("border-dnd");
-						break;
-					default:
-						setBorderColor("border-offline");
-						break;
-				}
+		if (data?.listening_to_spotify)
+			setBorderColor("border-spotify");
+		else {
+			switch (data?.discord_status) {
+				case "online":
+					setBorderColor("border-online");
+					break;
+				case "idle":
+					setBorderColor("border-idle");
+					break;
+				case "dnd":
+					setBorderColor("border-dnd");
+					break;
+				default:
+					setBorderColor("border-offline");
+					break;
 			}
 		}
 	}, [data]);
 
 	return (
-		<img className={`${borderColor} w-42 md:w-52 h-auto rounded-full border-2`} src={avatarURL} alt="Avatar" />
+		<img src={`https://cdn.discordapp.com/avatars/272535850200596480/${data?.discord_user.avatar}.png` ?? avatar} alt="Avatar" className={`${borderColor} w-52 h-auto rounded-full border-2`} />
 	);
 };
 

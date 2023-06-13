@@ -76,18 +76,18 @@ const Home = () => {
 			<Parallax speed={-10}>
 				<header className="relative h-[90svh] flex justify-center items-center">
 					<Parallax speed={20}>
-						<div className="flex flex-col items-center">
+						<div className="flex flex-col items-center gap-4">
 							<div className="md:block hidden">
 								<Avatar />
 							</div>
-							<h1 className="text-gradient text-center text-5xl font-bold md:leading-loose">
+							<h1 className="text-gradient text-center text-5xl font-bold">
 								{greeting}, <br className="md:hidden" /> I&apos;m Nano
 							</h1>
 							<h2 className="text-neutral-400 font-medium">
 								{age} &bull; Developer
 							</h2>
-							<div className="flex flex-col items-center gap-4 mt-4">
-								<div className="flex flex-row gap-5 w-full md:w-fit justify-center border-t border-neutral-700 pt-4 px-4">
+							<div className="flex flex-col items-center gap-4">
+								<div className="flex flex-row gap-5 w-full md:w-fit pt-4 px-4 justify-center border-t border-neutral-700">
 									<a href="https://www.discord.com/users/272535850200596480/" target="norel noopen">
 										<svg viewBox="0 0 512 512" className="h-12 md:h-10 w-auto cursor-pointer hover:scale-110 fill-neutral-200 transition duration-300 hover:fill-discord" id="discord">
 											<path d="M433.4,93.2c-32.6-15-67.6-26-104.2-32.3c-0.7-0.1-1.3,0.2-1.7,0.8c-4.5,8-9.5,18.4-13,26.7c-39.4-5.9-78.5-5.9-117.1,0 c-3.5-8.4-8.7-18.7-13.2-26.7c-0.3-0.6-1-0.9-1.7-0.8c-36.6,6.3-71.6,17.3-104.2,32.3c-0.3,0.1-0.5,0.3-0.7,0.6 C11.4,193-6.8,289.7,2.1,385.2c0,0.5,0.3,0.9,0.7,1.2c43.8,32.2,86.2,51.7,127.8,64.6c0.7,0.2,1.4,0,1.8-0.6 c9.8-13.4,18.6-27.6,26.2-42.5c0.4-0.9,0-1.9-0.9-2.3c-13.9-5.3-27.2-11.7-39.9-19c-1-0.6-1.1-2-0.2-2.7c2.7-2,5.4-4.1,7.9-6.2 c0.5-0.4,1.1-0.5,1.7-0.2c83.8,38.3,174.5,38.3,257.3,0c0.5-0.3,1.2-0.2,1.7,0.2c2.6,2.1,5.2,4.2,8,6.2c0.9,0.7,0.9,2.1-0.1,2.7 c-12.8,7.5-26,13.8-40,19c-0.9,0.3-1.3,1.4-0.9,2.3c7.7,14.9,16.5,29.1,26.1,42.5c0.4,0.6,1.1,0.8,1.8,0.6 c41.8-12.9,84.3-32.5,128-64.6c0.4-0.3,0.6-0.7,0.7-1.2c10.7-110.4-17.9-206.4-75.7-291.4C434,93.5,433.7,93.3,433.4,93.2z M171.1,327.1c-25.2,0-46-23.2-46-51.6c0-28.4,20.4-51.6,46-51.6c25.8,0,46.4,23.4,46,51.6C217.1,303.9,196.7,327.1,171.1,327.1z M341.2,327.1c-25.2,0-46-23.2-46-51.6c0-28.4,20.4-51.6,46-51.6c25.8,0,46.4,23.4,46,51.6C387.2,303.9,367.1,327.1,341.2,327.1z"/>
@@ -152,7 +152,7 @@ const Home = () => {
 					<h3 className="text-gradient mx-auto p-6 text-center text-3xl font-bold">
 						Projects
 					</h3>
-					<motion.div ref={ref} initial={{ y: 15, opacity: 0 }} animate={controlsY} className="w-[90%] mx-auto grid grid-cols-1 lg:grid-cols-3 2xl:grid-cols-4 gap-4">
+					<motion.div ref={ref} initial={{ y: 15, opacity: 0 }} animate={controlsY} className="w-[90%] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4">
 						{projects.map((p: Project, index: number) => (
 							<ProjectCard
 								key={index}
@@ -160,7 +160,7 @@ const Home = () => {
 							/>
 						))}
 						<div className="grid items-center p-2 bg-neutral-800/50 border border-neutral-700 rounded-xl">
-							<h3 className="text-gradient mx-auto p-6 text-center text-3xl font-bold">
+							<h3 className="text-gradient mx-auto p-4 text-center text-3xl font-bold">
 								Contact
 							</h3>
 							<ContactCard />

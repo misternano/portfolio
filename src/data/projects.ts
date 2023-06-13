@@ -4,32 +4,20 @@ const projects: Project[] = [
 	{
 		src: "YFKgX",
 		name: "Portfolio",
-		desc: "You are here! Built using React, Vite and Tailwind."
+		desc: "You are here! Built using React, Vite and Tailwind.",
+		url: "nanos.club"
+	},
+	{
+		src: "wZHUg",
+		name: "Fortnite Item Shop",
+		desc: "Shows the current Fortnite item shop, updated daily at 00:00 UTC.",
+		url: "fn.nanos.club",
+		source: "github.com/misternano/fortnite-itemshop"
 	},
 	{
 		src: "poKE6",
 		name: "Reverence House",
-		desc: "Redesign for Reverence House built in React."
-	},
-	{
-		src: "LRFG1",
-		name: "Dashboard",
-		desc: "Concept dashboard featuring a team system, interactive calender and messaging system."
-	},
-	{
-		src: "rJaOh",
-		name: "Team Members List",
-		desc: "A crude concept of a member/team list for forum based websites featuring online status and assignable tags."
-	},
-	{
-		src: "4chsM",
-		name: "WSIT",
-		desc: "Concept app to find songs from a given video."
-	},
-	{
-		src: "PwZ7Y",
-		name: "Crypto Tracker",
-		desc: "Add cryptocurrencies to your watchlist and invest straight from the app."
+		desc: "Redesign for Reverence House, built using React."
 	},
 	{
 		src: "f6Xq5",
@@ -37,23 +25,28 @@ const projects: Project[] = [
 		desc: "An administrative control panel for Reverence House used to manage data."
 	},
 	{
-		src: "wZHUg",
-		name: "Fortnite Item Shop",
-		desc: "Updated everyday at 00:00 UTC",
-		url: "fn.nanos.club"
+		src: "LRFG1",
+		name: "Dashboard",
+		desc: "Concept dashboard featuring a team system, interactive calendar and messaging system."
 	},
 	{
 		src: "umIfy",
-		name: "Laundry's Art Portfolio",
-		desc: "1078144323830423563",
-		url: "laundrys.art"
+		name: "Art Portfolio",
+		desc: "Art portfolio made for Laundry.",
+		url: "laundrys.art",
+		source: "github.com/misternano/laundrys.art"
 	},
 	{
 		src: "z8ktl",
 		name: "Dedicated FiveM Server",
-		desc: "FiveM economy based server running QBCore Framework.",
+		desc: "FiveM economy based server running QBCore.",
 		url: "highliferp.org"
 	}
+	// {
+	// 	src: "4chsM",
+	// 	name: "WSIT",
+	// 	desc: "Concept app to find songs from a given video."
+	// }
 ];
 
 export default projects;
