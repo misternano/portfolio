@@ -129,10 +129,10 @@ const Home = () => {
 					</h3>
 					<motion.div ref={ref} initial={{ x: 15, opacity: 0 }} animate={controlsX} className="w-[90%] md:w-[75%] mx-auto grid grid-cols-1 2xl:grid-cols-3 items-center gap-4">
 						<motion.div ref={ref} initial={{ x: 15, opacity: 0 }} animate={controlsX} className="order-2 2xl:order-1 grid grid-cols-2 xl:grid-cols-4 gap-4 2xl:col-span-2">
-							{stocks.map((s: Stock, index: number) => (
+							{stocks.map((data: Stock, index: number) => (
 								<StockCard
 									key={index}
-									data={s}
+									stock={data}
 								/>
 							))}
 						</motion.div>
@@ -141,7 +141,7 @@ const Home = () => {
 								Developer & Investor
 							</h4>
 							<p className="text-neutral-300 text-center">
-								Find some stocks I invest in {" "}
+								Find some stocks I have invested in {" "}
 								<span className="2xl:inline hidden text-neutral-300">on the left</span>
 								<span className="inline 2xl:hidden text-neutral-300">below</span>
 							</p>
@@ -153,10 +153,10 @@ const Home = () => {
 						Projects
 					</h3>
 					<motion.div ref={ref} initial={{ y: 15, opacity: 0 }} animate={controlsY} className="w-[90%] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4">
-						{projects.map((p: Project, index: number) => (
+						{projects.map((data: Project, index: number) => (
 							<ProjectCard
 								key={index}
-								data={p}
+								project={data}
 							/>
 						))}
 						<div className="grid items-center p-2 bg-neutral-800/50 border border-neutral-700 rounded-xl">
