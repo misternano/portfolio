@@ -25,8 +25,8 @@ const Terms = () => {
 					<h2 className="font-bold text-center">
 						TABLE OF CONTENTS
 					</h2>
-					<ol className="text-sm m-6 list-decimal grid grid-cols-2 gap-2">
-						<div className="flex flex-col gap-1">
+					<ol className="text-sm m-6 list-decimal grid grid-cols-2 gap-20">
+						<div className="flex flex-col gap-2">
 							<li><a className="text-brand" href="/terms#agreement">Agreement to terms</a></li>
 							<li><a className="text-brand" href="/terms#property-rights">Intellectual property rights</a></li>
 							<li><a className="text-brand" href="/terms#representation">User representations</a></li>
@@ -38,7 +38,7 @@ const Terms = () => {
 							<li><a className="text-brand" href="/terms#termination">Term and termination</a></li>
 							<li><a className="text-brand" href="/terms#modification">Modifications and interruptions</a></li>
 						</div>
-						<div className="flex flex-col gap-1">
+						<div className="flex flex-col gap-2">
 							<li><a className="text-brand" href="/terms#governing-law">Governing law</a></li>
 							<li><a className="text-brand" href="/terms#dispute">Dispute resolution</a></li>
 							<li><a className="text-brand" href="/terms#corrections">Corrections</a></li>
@@ -46,7 +46,7 @@ const Terms = () => {
 							<li><a className="text-brand" href="/terms#liability">Limitations of liability</a></li>
 							<li><a className="text-brand" href="/terms#indemnification">Indemnification</a></li>
 							<li><a className="text-brand" href="/terms#data">User Data</a></li>
-							<li><a className="text-brand" href="/terms#electronic-cts">Electronic communications, transactions, and signatures</a></li>
+							<li><a className="text-brand" href="/terms#electronic-cts">Electronic communications, <br /> transactions, and signatures</a></li>
 							<li><a className="text-brand" href="/terms#misc">Miscellaneous</a></li>
 							<li><a className="text-brand" href="/terms#contact">Contact us</a></li>
 						</div>
