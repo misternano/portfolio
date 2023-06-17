@@ -6,6 +6,10 @@ const Terms = () => {
 		<>
 			<Helmet>
 				<title>nanos.club | Terms of Use</title>
+				<meta property="og:site_name" content="nanos.club" />
+				<meta property="og:title" content="Terms of Use" />
+				<meta property="og:url" content="https://nanos.club/terms" />
+				<meta property="og:image" content="" />
 			</Helmet>
 			<main className="w-full px-4 md:w-3/4 mx-auto py-4 flex flex-col justify-center items-center gap-4">
 				<section className="p-4 bg-neutral-800 border border-neutral-700 rounded-lg">
@@ -23,58 +27,56 @@ const Terms = () => {
 					</h2>
 					<ol className="text-sm m-6 list-decimal grid grid-cols-2 gap-2">
 						<div className="flex flex-col gap-1">
-							<li><a className="text-brand" href="/Terms.tsx">Agreement to terms</a></li>
-							<li><a className="text-brand" href="/Terms.tsx">Intellectual property rights</a></li>
-							<li><a className="text-brand" href="/Terms.tsx">User representations</a></li>
-							<li><a className="text-brand" href="/Terms.tsx">Prohibited activities</a></li>
-							<li><a className="text-brand" href="/Terms.tsx">User generated contributions</a></li>
-							<li><a className="text-brand" href="/Terms.tsx">Contribution license</a></li>
-							<li><a className="text-brand" href="/Terms.tsx">Submissions</a></li>
-							<li><a className="text-brand" href="/Terms.tsx">Site management</a></li>
-							<li><a className="text-brand" href="/Terms.tsx">Term and termination</a></li>
-							<li><a className="text-brand" href="/Terms.tsx">Modifications and interruptions</a></li>
+							<li><a className="text-brand" href="/terms#agreement">Agreement to terms</a></li>
+							<li><a className="text-brand" href="/terms#property-rights">Intellectual property rights</a></li>
+							<li><a className="text-brand" href="/terms#representation">User representations</a></li>
+							<li><a className="text-brand" href="/terms#prohibited">Prohibited activities</a></li>
+							<li><a className="text-brand" href="/terms#user-contributions">User generated contributions</a></li>
+							<li><a className="text-brand" href="/terms#license">Contribution license</a></li>
+							<li><a className="text-brand" href="/terms#submissions">Submissions</a></li>
+							<li><a className="text-brand" href="/terms#management">Site management</a></li>
+							<li><a className="text-brand" href="/terms#termination">Term and termination</a></li>
+							<li><a className="text-brand" href="/terms#modification">Modifications and interruptions</a></li>
 						</div>
 						<div className="flex flex-col gap-1">
-							<li><a className="text-brand" href="/Terms.tsx">Governing law</a></li>
-							<li><a className="text-brand" href="/Terms.tsx">Dispute resolution</a></li>
-							<li><a className="text-brand" href="/Terms.tsx">Corrections</a></li>
-							<li><a className="text-brand" href="/Terms.tsx">Disclaimer</a></li>
-							<li><a className="text-brand" href="/Terms.tsx">Limitations of liability</a></li>
-							<li><a className="text-brand" href="/Terms.tsx">Indemnification</a></li>
-							<li><a className="text-brand" href="/Terms.tsx">Electronic communications, transactions, and signatures</a></li>
-							<li><a className="text-brand" href="/Terms.tsx">Miscellaneous</a></li>
-							<li><a className="text-brand" href="/Terms.tsx">Contact us</a></li>
+							<li><a className="text-brand" href="/terms#governing-law">Governing law</a></li>
+							<li><a className="text-brand" href="/terms#dispute">Dispute resolution</a></li>
+							<li><a className="text-brand" href="/terms#corrections">Corrections</a></li>
+							<li><a className="text-brand" href="/terms#disclaimer">Disclaimer</a></li>
+							<li><a className="text-brand" href="/terms#liability">Limitations of liability</a></li>
+							<li><a className="text-brand" href="/terms#indemnification">Indemnification</a></li>
+							<li><a className="text-brand" href="/terms#data">User Data</a></li>
+							<li><a className="text-brand" href="/terms#electronic-cts">Electronic communications, transactions, and signatures</a></li>
+							<li><a className="text-brand" href="/terms#misc">Miscellaneous</a></li>
+							<li><a className="text-brand" href="/terms#contact">Contact us</a></li>
 						</div>
 					</ol>
 				</section>
-
 				<div className="p-4 bg-neutral-800 border border-neutral-700 rounded-lg" id="agreement">
 					<h3 className="pb-2 font-bold text-center text-lg text-brand">1. AGREEMENT TO TERMS</h3>
 					<p className="text-sm text-neutral-300">
-						These Terms of Use constitute a legally binding agreement made between you, whether personally or on behalf of an entity (&quote;you&quote;) and __________ Company,&quote; &quote;we,&quote; &quote;us,&quote; or &quote;our&quote;), concerning your access to and use of the __________ website as well as any
-						other media form, media channel, mobile website or mobile application related, linked, or otherwise connected thereto (collectively, the &quote;Site&quote;). You agree that by accessing the Site, you have read, understood, and agreed to be bound by
+						These Terms of Use constitute a legally binding agreement made between you, whether personally or on behalf of an entity (&quot;you&quot;) and __________ Company,&quot; &quot;we,&quot; &quot;us,&quot; or &quot;our&quot;), concerning your access to and use of the __________ website as well as any
+						other media form, media channel, mobile website or mobile application related, linked, or otherwise connected thereto (collectively, the &quot;Site&quot;). You agree that by accessing the Site, you have read, understood, and agreed to be bound by
 						all of these Terms of Use. IF YOU DO NOT AGREE WITH ALL OF THESE TERMS OF USE, THEN YOU ARE EXPRESSLY PROHIBITED FROM USING THE SITE AND YOU MUST DISCONTINUE USE IMMEDIATELY. Supplemental terms and conditions or documents that may be posted
 						on the Site from time to time are hereby expressly incorporated herein by reference. We reserve the right, in our sole discretion, to make changes or modifications to these Terms of Use at any time and for any reason. We will alert you
-						about any changes by updating the &quote;Last updated&quote; date of these Terms of Use, and you waive any right to receive specific notice of each such change. Please ensure that you check the applicable Terms every time you use our Site so that
+						about any changes by updating the &quot;Last updated&quot; date of these Terms of Use, and you waive any right to receive specific notice of each such change. Please ensure that you check the applicable Terms every time you use our Site so that
 						you understand which Terms apply. You will be subject to, and will be deemed to have been made aware of and to have accepted, the changes in any revised Terms of Use by your continued use of the Site after the date such revised Terms of
 						Use are posted. The information provided on the Site is not intended for distribution to or use by any person or entity in any jurisdiction or country where such distribution or use would be contrary to law or regulation or which would
 						subject us to any registration requirement within such jurisdiction or country. Accordingly, those persons who choose to access the Site from other locations do so on their own initiative and are solely responsible for compliance with
 						local laws, if and to the extent local laws are applicable.
 					</p>
 				</div>
-
 				<div className="p-4 bg-neutral-800 border border-neutral-700 rounded-lg" id="property-rights">
 					<h3 className="pb-2 font-bold text-center text-lg text-brand">2. INTELLECTUAL PROPERTY RIGHTS</h3>
 					<p className="text-sm text-neutral-300">
-						Unless otherwise indicated, the Site is our proprietary property and all source code, databases, functionality, software, website designs, audio, video, text, photographs, and graphics on the Site (collectively, the &quote;Content&quote;) and the trademarks, service
-						marks, and logos contained therein (the &quote;Marks&quote;) are owned or controlled by us or licensed to us, and are protected by copyright and trademark laws and various other intellectual property rights and unfair competition laws of the United
-						States, international copyright laws, and international conventions. The Content and the Marks are provided on the Site &quote;AS IS&quote; for your information and personal use only. Except as expressly provided in these Terms of Use, no part of
+						Unless otherwise indicated, the Site is our proprietary property and all source code, databases, functionality, software, website designs, audio, video, text, photographs, and graphics on the Site (collectively, the &quot;Content&quot;) and the trademarks, service
+						marks, and logos contained therein (the &quot;Marks&quot;) are owned or controlled by us or licensed to us, and are protected by copyright and trademark laws and various other intellectual property rights and unfair competition laws of the United
+						States, international copyright laws, and international conventions. The Content and the Marks are provided on the Site &quot;AS IS&quot; for your information and personal use only. Except as expressly provided in these Terms of Use, no part of
 						the Site and no Content or Marks may be copied, reproduced, aggregated, republished, uploaded, posted, publicly displayed, encoded, translated, transmitted, distributed, sold, licensed, or otherwise exploited for any commercial purpose
 						whatsoever, without our express prior written permission. Provided that you are eligible to use the Site, you are granted a limited license to access and use the Site and to download or print a copy of any portion of the Content to which
 						you have properly gained access solely for your personal, non-commercial use. We reserve all rights not expressly granted to you in and to the Site, the Content and the Marks.
 					</p>
 				</div>
-
 				<div className="p-4 bg-neutral-800 border border-neutral-700 rounded-lg" id="representation">
 					<h3 className="pb-2 font-bold text-center text-lg text-brand">3. USER REPRESENTATIONS</h3>
 					<p className="text-sm text-neutral-300">
@@ -83,7 +85,6 @@ const Terms = () => {
 						that is untrue, inaccurate, not current, or incomplete, we have the right to suspend or terminate your account and refuse any and all current or future use of the Site (or any portion thereof).
 					</p>
 				</div>
-
 				<div className="p-4 bg-neutral-800 border border-neutral-700 rounded-lg" id="prohibited">
 					<h3 className="pb-2 font-bold text-center text-lg text-brand">4. PROHIBITED ACTIVITIES</h3>
 					<p className="text-sm text-neutral-300">
@@ -106,8 +107,8 @@ const Terms = () => {
 							<li>Engage in any automated use of the system, such as using scripts to send comments or messages, or using any data mining, robots, or similar data gathering and extraction tools.</li>
 							<li>Delete the copyright or other proprietary rights notice from any Content.</li>
 							<li>Attempt to impersonate another user or person or use the username of another user.</li>
-							<li>Upload or transmit (or attempt to upload or to transmit) any material that acts as a passive or active information collection or transmission mechanism, including without limitation, clear graphics interchange formats (&quote;gifs&quote;), 1×1
-								pixels, web bugs, cookies, or other similar devices (sometimes referred to as &quote;spyware&quote; or &quote;passive collection mechanisms&quote; or &quote;pcms&quote;).</li>
+							<li>Upload or transmit (or attempt to upload or to transmit) any material that acts as a passive or active information collection or transmission mechanism, including without limitation, clear graphics interchange formats (&quot;gifs&quot;), 1×1
+								pixels, web bugs, cookies, or other similar devices (sometimes referred to as &quot;spyware&quot; or &quot;passive collection mechanisms&quot; or &quot;pcms&quot;).</li>
 							<li>Interfere with, disrupt, or create an undue burden on the Site or the networks or services connected to the Site.</li>
 							<li>Harass, annoy, intimidate, or threaten any of our employees or agents engaged in providing any portion of the Site to you.</li>
 							<li>Attempt to bypass any measures of the Site designed to prevent or restrict access to the Site, or any portion of the Site.</li>
@@ -123,12 +124,11 @@ const Terms = () => {
 						</ul>
 					</p>
 				</div>
-
 				<div className="p-4 bg-neutral-800 border border-neutral-700 rounded-lg" id="user-contributions">
 					<h3 className="pb-2 font-bold text-center text-lg text-brand">5. USER GENERATED CONTRIBUTIONS</h3>
 					<p className="text-sm text-neutral-300">
 						The Site does not offer users to submit or post content. We may provide you with the opportunity to create, submit, post, display, transmit, perform, publish, distribute, or broadcast content and materials to us or on the Site, including but not limited
-						to text, writings, video, audio, photographs, graphics, comments, suggestions, or personal information or other material (collectively, &quote;Contributions&quote;). Contributions may be viewable by other users of the Site and through third-party
+						to text, writings, video, audio, photographs, graphics, comments, suggestions, or personal information or other material (collectively, &quot;Contributions&quot;). Contributions may be viewable by other users of the Site and through third-party
 						websites. As such, any Contributions you transmit may be treated in accordance with the Site Privacy Policy.
 
 						<ul className="m-6 list-disc">
@@ -153,7 +153,6 @@ const Terms = () => {
 						</ul>
 					</p>
 				</div>
-
 				<div className="p-4 bg-neutral-800 border border-neutral-700 rounded-lg" id="license">
 					<h3 className="pb-2 font-bold text-center text-lg text-brand">6. CONTRIBUTION LICENSE</h3>
 					<p className="text-sm text-neutral-300">
@@ -163,17 +162,15 @@ const Terms = () => {
 						the Site and you expressly agree to exonerate us from any and all responsibility and to refrain from any legal action against us regarding your Contributions.
 					</p>
 				</div>
-
 				<div className="p-4 bg-neutral-800 border border-neutral-700 rounded-lg" id="submissions">
 					<h3 className="pb-2 font-bold text-center text-lg text-brand">7. SUBMISSIONS</h3>
 					<p className="text-sm text-neutral-300">
-						You acknowledge and agree that any questions, comments, suggestions, ideas, feedback, or other information regarding the Site (&quote;Submissions&quote;) provided by you to us are non-confidential and shall become our sole property. We shall own exclusive rights,
+						You acknowledge and agree that any questions, comments, suggestions, ideas, feedback, or other information regarding the Site (&quot;Submissions&quot;) provided by you to us are non-confidential and shall become our sole property. We shall own exclusive rights,
 						including all intellectual property rights, and shall be entitled to the unrestricted use and dissemination of these Submissions for any lawful purpose, commercial or otherwise, without acknowledgment or compensation to you. You hereby
 						waive all moral rights to any such Submissions, and you hereby warrant that any such Submissions are original with you or that you have the right to submit such Submissions. You agree there shall be no recourse against us for any alleged
 						or actual infringement or misappropriation of any proprietary right in your Submissions.
 					</p>
 				</div>
-
 				<div className="p-4 bg-neutral-800 border border-neutral-700 rounded-lg" id="management">
 					<h3 className="pb-2 font-bold text-center text-lg text-brand">8. SITE MANAGEMENT</h3>
 					<p className="text-sm text-neutral-300">
@@ -183,7 +180,6 @@ const Terms = () => {
 						and (5) otherwise manage the Site in a manner designed to protect our rights and property and to facilitate the proper functioning of the Site.
 					</p>
 				</div>
-
 				<div className="p-4 bg-neutral-800 border border-neutral-700 rounded-lg" id="termination">
 					<h3 className="pb-2 font-bold text-center text-lg text-brand">9. TERM AND TERMINATION</h3>
 					<p className="text-sm text-neutral-300">
@@ -194,7 +190,6 @@ const Terms = () => {
 						the third party. In addition to terminating or suspending your account, we reserve the right to take appropriate legal action, including without limitation pursuing civil, criminal, and injunctive redress.
 					</p>
 				</div>
-
 				<div className="p-4 bg-neutral-800 border border-neutral-700 rounded-lg" id="modifications">
 					<h3 className="pb-2 font-bold text-center text-lg text-brand">10. MODIFICATIONS AND INTERRUPTIONS</h3>
 					<p className="text-sm text-neutral-300">
@@ -205,21 +200,18 @@ const Terms = () => {
 						connection therewith.
 					</p>
 				</div>
-
 				<div className="p-4 bg-neutral-800 border border-neutral-700 rounded-lg" id="governing-law">
 					<h3 className="pb-2 font-bold text-center text-lg text-brand">11. GOVERNING LAW</h3>
 					<p className="text-sm text-neutral-300">
 						These Terms of Service and any separate agreements whereby we provide your Services shall be governed by, and construed in accordance with the laws of the United States, without regard to principles of conflict of laws and regardless of your location.
 					</p>
 				</div>
-
 				<div className="p-4 bg-neutral-800 border border-neutral-700 rounded-lg" id="dispute">
 					<h3 className="pb-2 font-bold text-center text-lg text-brand">12. DISPUTE RESOLUTION</h3>
 					<p className="text-sm text-neutral-300">
 						You are solely responsible for how you interact with other users of the Service. The Company disclaims any and all liability to you or any third party relating to your use of the Service. The Company reserves the right, but has no obligation, to manage disputes between you and other Service users.
 					</p>
 				</div>
-
 				<div className="p-4 bg-neutral-800 border border-neutral-700 rounded-lg" id="corrections">
 					<h3 className="pb-2 font-bold text-center text-lg text-brand">13. CORRECTIONS</h3>
 					<p className="text-sm text-neutral-300">
@@ -227,7 +219,6 @@ const Terms = () => {
 						to change or update the information on the Site at any time, without prior notice.
 					</p>
 				</div>
-
 				<div className="p-4 bg-neutral-800 border border-neutral-700 rounded-lg" id="disclaimer">
 					<h3 className="pb-2 font-bold text-center text-lg text-brand">14. DISCLAIMER</h3>
 					<p className="text-sm text-neutral-300">
@@ -241,7 +232,6 @@ const Terms = () => {
 						BETWEEN YOU AND ANY THIRD-PARTY PROVIDERS OF PRODUCTS OR SERVICES. AS WITH THE PURCHASE OF A PRODUCT OR SERVICE THROUGH ANY MEDIUM OR IN ANY ENVIRONMENT, YOU SHOULD USE YOUR BEST JUDGMENT AND EXERCISE CAUTION WHERE APPROPRIATE.
 					</p>
 				</div>
-
 				<div className="p-4 bg-neutral-800 border border-neutral-700 rounded-lg" id="liability">
 					<h3 className="pb-2 font-bold text-center text-lg text-brand">15. LIMITATIONS OF LIABILITY</h3>
 					<p className="text-sm text-neutral-300">
@@ -251,7 +241,6 @@ const Terms = () => {
 						CERTAIN DAMAGES. IF THESE LAWS APPLY TO YOU, SOME OR ALL OF THE ABOVE DISCLAIMERS OR LIMITATIONS MAY NOT APPLY TO YOU, AND YOU MAY HAVE ADDITIONAL RIGHTS.
 					</p>
 				</div>
-
 				<div className="p-4 bg-neutral-800 border border-neutral-700 rounded-lg" id="indemnification">
 					<h3 className="pb-2 font-bold text-center text-lg text-brand">16. INDEMNIFICATION</h3>
 					<p className="text-sm text-neutral-300">
@@ -262,7 +251,6 @@ const Terms = () => {
 						you of any such claim, action, or proceeding which is subject to this indemnification upon becoming aware of it.
 					</p>
 				</div>
-
 				<div className="p-4 bg-neutral-800 border border-neutral-700 rounded-lg" id="data">
 					<h3 className="pb-2 font-bold text-center text-lg text-brand">17. USER DATA</h3>
 					<p className="text-sm text-neutral-300">
@@ -271,7 +259,6 @@ const Terms = () => {
 						us arising from any such loss or corruption of such data.
 					</p>
 				</div>
-
 				<div className="p-4 bg-neutral-800 border border-neutral-700 rounded-lg" id="electronic-cts">
 					<h3 className="pb-2 font-bold text-center text-lg text-brand">18. ELECTRONIC COMMUNICATIONS, TRANSACTIONS, AND SIGNATURES</h3>
 					<p className="text-sm text-neutral-300">
@@ -281,7 +268,6 @@ const Terms = () => {
 						signature or delivery or retention of non-electronic records, or to payments or the granting of credits by any means other than electronic means.
 					</p>
 				</div>
-
 				<div className="p-4 bg-neutral-800 border border-neutral-700 rounded-lg" id="misc">
 					<h3 className="pb-2 font-bold text-center text-lg text-brand">19. MISCELLANEOUS</h3>
 					<p className="text-sm text-neutral-300">
@@ -293,10 +279,9 @@ const Terms = () => {
 						form of these Terms of Use and the lack of signing by the parties hereto to execute these Terms of Use.
 					</p>
 				</div>
-
-				<div className="p-4 bg-neutral-800 border border-neutral-700 rounded-lg" id="contact">
+				<div className="w-full p-4 bg-neutral-800 border border-neutral-700 rounded-lg" id="contact">
 					<h3 className="pb-2 font-bold text-center text-lg text-brand">20. CONTACT US</h3>
-					<p className="text-sm text-neutral-300">
+					<p className="text-sm text-neutral-300 text-center">
 						In order to resolve a complaint regarding the Site or to receive further information regarding use of the Site, please contact us at: privacy@nanos.club
 					</p>
 				</div>

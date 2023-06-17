@@ -6,9 +6,13 @@ const Privacy = () => {
 		<>
 			<Helmet>
 				<title>nanos.club | Privacy Policy</title>
+				<meta property="og:site_name" content="nanos.club" />
+				<meta property="og:title" content="Privacy Policy" />
+				<meta property="og:url" content="https://nanos.club/privacy" />
+				<meta property="og:image" content="" />
 			</Helmet>
 			<main>
-				Privacy Policy
+				404
 			</main>
 		</>
 	);
