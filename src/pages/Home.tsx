@@ -1,6 +1,6 @@
 import React, { useMemo, useState, useRef, useEffect } from "react";
 import { Avatar, ProjectCard, ContactCard, StockCard } from "../components";
-import { Project, Stock } from "../types.ts";
+import { Project, Stock } from "../types";
 import { projects, stocks } from "../data";
 import moment from "moment";
 import { motion, useAnimation } from "framer-motion";

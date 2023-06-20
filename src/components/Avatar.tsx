@@ -28,7 +28,7 @@ const Avatar = () => {
 	}, [data]);
 
 	return (
-		<img src={`https://cdn.discordapp.com/avatars/272535850200596480/${data?.discord_user.avatar}.png` ?? avatar} alt="Avatar" className={`${borderColor} w-52 h-auto rounded-full border-2`} />
+		<img src={`https://cdn.discordapp.com/avatars/272535850200596480/${data?.discord_user.avatar}.webp` ?? avatar} alt="Avatar" className={`${borderColor} w-52 h-auto rounded-full border-2`} />
 	);
 };
 

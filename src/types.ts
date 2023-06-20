@@ -10,5 +10,6 @@ export interface Project {
 export interface Stock {
 	src: string;
 	name: string;
+	alt?: string;
 	ticker: string;
 }
