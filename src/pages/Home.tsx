@@ -73,9 +73,9 @@ const Home = () => {
 
 	return (
 		<>
-			<Parallax speed={-10}>
+			<Parallax speed={-20}>
 				<header className="relative h-[90svh] flex justify-center items-center">
-					<Parallax speed={20}>
+					<Parallax speed={30}>
 						<div className="flex flex-col items-center gap-4">
 							<div className="md:block hidden">
 								<Avatar />

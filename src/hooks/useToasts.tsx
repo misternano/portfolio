@@ -2,7 +2,7 @@ import React from "react";
 import { useToast } from "@chakra-ui/toast";
 import { Toast } from "../components";
 
-const UseToasts = () => {
+const useToasts = () => {
 	const toast = useToast();
 
 	return (title: string, description: string, duration: number, theme: string) => {
@@ -21,4 +21,4 @@ const UseToasts = () => {
 	};
 };
 
-export default UseToasts;
+export default useToasts;

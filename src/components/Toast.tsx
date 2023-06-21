@@ -1,21 +1,23 @@
 import React from "react";
-import { InformationCircleIcon } from "@heroicons/react/24/solid";
+import { InformationCircleIcon } from "@heroicons/react/20/solid";
 
 interface ToastProps {
-	title: string;
-	description: string;
-	theme: string;
+	theme: string,
+	title: string,
+	description: string
 }
 
-const Toast = ({ title, description, theme }: ToastProps) => {
+const Toast = ({ theme, title, description }: ToastProps) => {
 	return (
-		<div className={`p-2 px-4 flex flex-row gap-3 items-center ${theme} rounded-xl`}>
-			<InformationCircleIcon className="w-5 h-5" />
+		<div className={`w-full select-none max-w-6xl flex mt-1 flex-row gap-3 
+			items-center ${theme} rounded-lg p-2 px-4 text-white`}
+		>
+			<InformationCircleIcon className="h-6 w-6" />
 			<div>
-				<h3>
+				<h3 className="font-bold">
 					{title}
 				</h3>
-				<p>
+				<p className="text-sm">
 					{description}
 				</p>
 			</div>

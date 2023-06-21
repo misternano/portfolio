@@ -1,5 +1,9 @@
 @import "./assets/fonts.css";
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 * {
     font-family: "Inter", sans-serif;
     scroll-behavior: smooth;
@@ -40,7 +44,7 @@ header {
 }
 
 section {
-    margin-block: 6rem;
+    @apply my-24;
 }
 
 .external-link {
@@ -96,7 +100,3 @@ section {
         transform: rotate(360deg);
     }
 }
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
