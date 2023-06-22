@@ -18,8 +18,14 @@ const ContactCard = () => {
 	const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 
-		if (email.trim() === "" || message.trim() === "") {
-			toast("Error!", "Missing required fields.", 2500, "bg-red-500");
+		if (email.trim() === "" && message.trim() === "") {
+			toast("Error", "Missing email and message fields.", 2500, "bg-rose-500");
+			return;
+		} if (email.trim() === "") {
+			toast("Error", "Missing email field.", 2500, "bg-rose-500");
+			return;
+		} if (message.trim() === "") {
+			toast("Error", "Missing message field.", 2500, "bg-rose-500");
 			return;
 		}
 
@@ -31,11 +37,11 @@ const ContactCard = () => {
 	return (
 		<form ref={formRef} action="https://getform.io/f/adff09e7-4050-40d8-9665-9ae955e8fb66" onSubmit={handleSubmit} method="POST" target="norel noopen" className="flex flex-col gap-3">
 			<div className="flex flex-col lg:grid grid-cols-2 gap-3">
-				<input id="email" name="email" type="email" placeholder="Email *" value={email} onChange={handleEmailChange} className="bg-neutral-700/50 rounded-t border-b p-2 border-brand focus:rounded" />
-				<input id="subject" name="subject" type="text" placeholder="Subject" className="bg-neutral-700/50 rounded-t border-b p-2 border-brand focus:rounded" />
+				<input id="email" name="email" type="email" placeholder="Email *" value={email} onChange={handleEmailChange} className="p-2 bg-neutral-700/50 rounded focus:rounded" />
+				<input id="subject" name="subject" type="text" placeholder="Subject" className="p-2 bg-neutral-700/50 rounded focus:rounded" />
 				<input type="hidden" name="_gotcha" className="!hidden" />
 			</div>
-			<textarea id="message" name="message" placeholder="Message *" value={message} onChange={handleMessageChange} className="h-32 bg-neutral-700/50 rounded-t border-b p-2 border-brand focus:rounded resize-none" />
+			<textarea id="message" name="message" placeholder="Message *" value={message} onChange={handleMessageChange} className="h-32 p-2 bg-neutral-700/50 rounded focus:rounded resize-none" />
 			<input id="submit" type="submit" value="Submit" className="p-4 sm:p-2 text-black bg-brand hover:bg-brand/80 rounded-md transition-colors cursor-pointer" />
 		</form>
 	);

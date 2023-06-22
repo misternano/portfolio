@@ -14,9 +14,9 @@ const Toast = ({ theme, title, description }: ToastProps) => {
 		>
 			<InformationCircleIcon className="h-6 w-6" />
 			<div>
-				<h3 className="font-bold">
+				<p className="font-bold">
 					{title}
-				</h3>
+				</p>
 				<p className="text-sm">
 					{description}
 				</p>

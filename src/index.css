@@ -47,6 +47,10 @@ section {
     @apply my-24;
 }
 
+h3 {
+    @apply text-gradient mx-auto p-6 text-center text-3xl font-bold;
+}
+
 .external-link {
     @apply underline underline-offset-2;
 }

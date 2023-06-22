@@ -1,5 +1,5 @@
 export interface Project {
-	src: string;
+	image?: string;
 	name: string;
 	desc: string;
 	url?: string;
@@ -8,7 +8,7 @@ export interface Project {
 }
 
 export interface Stock {
-	src: string;
+	image: string;
 	name: string;
 	alt?: string;
 	ticker: string;

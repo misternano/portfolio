@@ -2,45 +2,45 @@ import { Stock } from "../types.ts";
 
 const stocks: Stock[] = [
 	{
-		src: "microsoft",
+		image: "microsoft",
 		name: "Microsoft",
 		ticker: "MSFT"
 	},
 	{
-		src: "meta",
+		image: "meta",
 		name: "META",
 		ticker: "META"
 	},
 	{
-		src: "lilly",
+		image: "lilly",
 		name: "Eli Lilly",
 		ticker: "LLY"
 	},
 	{
-		src: "nvidia",
+		image: "nvidia",
 		name: "Nvidia",
 		ticker: "NVDA"
 	},
 	{
-		src: "vanguard",
+		image: "vanguard",
 		name: "Top 500",
 		alt: "Vanguard Top 500 ETC",
 		ticker: "VOO"
 	},
 	{
-		src: "vanguard",
+		image: "vanguard",
 		name: "REIT",
 		alt: "Vanguard Real Estate Investment Trust",
 		ticker: "VNQ"
 	},
 	{
-		src: "schwab",
+		image: "schwab",
 		name: "Broad",
 		alt: "Schwab Broad Market ETF",
 		ticker: "SCHB"
 	},
 	{
-		src: "blackrock",
+		image: "blackrock",
 		name: "Energy",
 		alt: "iShares Clean Energy ETF",
 		ticker: "ICLN"
