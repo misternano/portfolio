@@ -1,5 +1,5 @@
 import React from "react";
-import { InformationCircleIcon } from "@heroicons/react/20/solid";
+import { AlertOctagon } from "lucide-react";
 
 interface ToastProps {
 	theme: string,
@@ -9,10 +9,8 @@ interface ToastProps {
 
 const Toast = ({ theme, title, description }: ToastProps) => {
 	return (
-		<div className={`w-full select-none max-w-6xl flex mt-1 flex-row gap-3 
-			items-center ${theme} rounded-lg p-2 px-4 text-white`}
-		>
-			<InformationCircleIcon className="h-6 w-6" />
+		<div className={`w-full max-w-6xl mt-1 p-2 px-4 flex flex-row gap-4 items-center ${theme} rounded-lg text-white`}>
+			<AlertOctagon className="h-6 w-6" />
 			<div>
 				<p className="font-bold">
 					{title}
