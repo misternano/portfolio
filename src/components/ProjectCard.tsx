@@ -4,8 +4,7 @@ import placeholder from "../assets/placeholder.png";
 
 const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
 	return (
-		// TODO: add a modal to see project details
-		<div className="flex flex-col bg-gradient border border-neutral-700 rounded-xl overflow-hidden">
+		<div className="flex flex-col bg-bigcard border border-neutral-700 rounded-xl overflow-hidden">
 			<img src={project.image ? `images/${project.image}.png` : placeholder} alt={`${project.name} Project`} className="w-full h-auto rounded-b-xl drop-shadow-lg" loading="lazy" />
 			<div className="h-full p-2 flex flex-col items-center justify-between">
 				<div className="w-full">
@@ -18,7 +17,7 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
 				</div>
 				<div className={`${project.url || project.source ? "" : "hidden"} ${project.url && project.source ? "flex flex-row gap-1" : ""}`}>
 					{project.url &&
-						<a href={`https://${project.url}`} target="norel noopen" className="text-brand hover:text-brand/70 transition-colors external-link">
+						<a href={`https://${project.url}`} target="norel noopen" className="text-brand hover:underline-offset-4 transition-all external-link">
 							{project.url}
 						</a>
 					}
@@ -26,7 +25,7 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
 						<span className="text-neutral-700">&bull;</span>
 					}
 					{project.source &&
-						<a href={`https://${project.source}`} target="norel noopen" className="text-brand hover:text-brand/70 transition-colors external-link">
+						<a href={`https://${project.source}`} target="norel noopen" className="text-brand hover:underline-offset-4 transition-all external-link">
 							Source
 						</a>
 					}

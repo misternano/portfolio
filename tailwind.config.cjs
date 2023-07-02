@@ -6,7 +6,7 @@ module.exports = {
 	],
 	theme: {
 		fontFamily: {
-			lexend: ["Lexend"],
+			archia: ["Archia"],
 		},
 		extend: {
 			colors: {

@@ -13,3 +13,10 @@ export interface Stock {
 	alt?: string;
 	ticker: string;
 }
+
+export interface Tech {
+	image: string;
+	name: string;
+	description: string;
+	type: string;
+}

@@ -17,23 +17,21 @@ const ContactCard = () => {
 
 	const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
-
 		if (email.trim() === "" && message.trim() === "") {
 			toast("Error", "Missing email and message fields.", 2500, "bg-rose-500");
 			return;
-		} if (email.trim() === "") {
+		}
+		if (email.trim() === "") {
 			toast("Error", "Missing email field.", 2500, "bg-rose-500");
 			return;
-		} if (message.trim() === "") {
+		}
+		if (message.trim() === "") {
 			toast("Error", "Missing message field.", 2500, "bg-rose-500");
 			return;
 		}
-
-		if (formRef.current)
-			formRef.current.submit();
 	};
 
-	// TODO: make the submit button actually work
+	// TODO: Submission still doesnt work, need to actually look at it
 	return (
 		<form ref={formRef} action="https://getform.io/f/adff09e7-4050-40d8-9665-9ae955e8fb66" onSubmit={handleSubmit} method="POST" target="norel noopen" className="flex flex-col gap-3">
 			<div className="flex flex-col lg:grid grid-cols-2 gap-3">

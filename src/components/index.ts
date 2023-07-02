@@ -6,6 +6,7 @@ import ProjectCard from "./ProjectCard.tsx";
 import SocialLink from "./SocialLink.tsx";
 import Spotify from "./Spotify.jsx";
 import StockCard from "./StockCard.tsx";
+import TechCard from "./TechCard.tsx";
 import Toast from "./Toast.tsx";
 
 export {
@@ -17,5 +18,6 @@ export {
 	SocialLink,
 	Spotify,
 	StockCard,
+	TechCard,
 	Toast
 };

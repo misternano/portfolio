@@ -71,15 +71,6 @@
     font-display: swap;
 }
 
-/* LEXEND */
-@font-face {
-    font-family: "Lexend";
-    src: url(https://fonts.gstatic.com/s/lexend/v17/wlpwgwvFAVdoq2_v-6QU82RHaA.woff2) format("woff2");
-    font-weight: 600;
-    font-style: normal;
-    font-display: swap;
-}
-
 /* WORK SANS*/
 @font-face {
     font-family: "Work Sans";
@@ -87,4 +78,10 @@
     font-weight: 400;
     font-style: normal;
     font-display: swap;
+}
+
+/* ARCHIA */
+@font-face {
+    font-family: "Archia";
+    src: url("./archia.otf") format("woff2");
 }

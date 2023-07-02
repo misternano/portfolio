@@ -5,7 +5,7 @@ import { SocialLink } from "./index";
 const Footer = () => {
 	return (
 		<footer className="m-4 p-2 px-4 bg-neutral-800 flex md:grid md:grid-cols-3 md:flex-row flex-col gap-3 md:gap-0 md:justify-between justify-center items-center rounded-md drop-shadow">
-			<a href="mailto:hello@nanos.club" className="justify-self-start external-link hover:text-brand transition-colors">
+			<a href="mailto:hello@nanos.club" className="justify-self-start external-link hover:underline-offset-4 transition-all">
 				hello@nanos.club
 			</a>
 			<div className="flex flex-row gap-3 justify-center">
