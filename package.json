@@ -1,7 +1,7 @@
 {
   "name": "portfolio",
   "private": true,
-  "version": "5.3.5",
+  "version": "5.3.6",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -22,6 +22,7 @@
     "react-router-dom": "^6.4.3",
     "react-router-hash-link": "^2.4.3",
     "react-scroll-parallax": "^3.4.2",
+    "semver": "^7.5.3",
     "tippy.js": "^6.3.7",
     "use-lanyard": "^1.4.4"
   },
