@@ -51,11 +51,11 @@ h3 {
 }
 
 .tech:first-child {
-    @apply ml-4;
+    @apply ml-2;
 }
 
 .tech:last-child {
-    @apply mr-4;
+    @apply mr-2;
 }
 
 .external-link {

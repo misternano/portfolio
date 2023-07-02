@@ -120,7 +120,7 @@ const Home = () => {
 									))}
 								</motion.div>
 							</motion.div>
-							<motion.div initial={{ y: 15, opacity: 0 }} animate={controlsY} className="pt-4 flex flex-nowrap gap-4 border border-neutral-700 rounded-xl order-3 xl:col-span-4 overflow-x-scroll">
+							<motion.div initial={{ y: 15, opacity: 0 }} animate={controlsY} className="pt-2 flex flex-nowrap gap-2 border border-neutral-700 rounded-xl order-3 xl:col-span-4 overflow-x-scroll">
 								{tech.map((data: Tech, index: number) => (
 									<TechCard
 										key={index}
