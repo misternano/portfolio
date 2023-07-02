@@ -50,6 +50,14 @@ h3 {
     @apply text-gradient mx-auto p-6 text-center text-3xl font-bold;
 }
 
+.tech:first-child {
+    @apply ml-4;
+}
+
+.tech:last-child {
+    @apply mr-4;
+}
+
 .external-link {
     @apply underline underline-offset-2;
 }
