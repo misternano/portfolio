@@ -1,5 +1,5 @@
 import React, { useMemo, useState, useRef, useEffect } from "react";
-import { Avatar, ProjectCard, ContactCard, StockCard, Layout, SocialLink, TechCard } from "../components";
+import { Avatar, ProjectCard, ContactCard, StockCard, Layout, SocialLink, TechCard, Button } from "../components";
 import { Project, Stock, Tech } from "../types";
 import { projects, stocks, tech } from "../data";
 import moment from "moment";
@@ -7,9 +7,11 @@ import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { Parallax } from "react-scroll-parallax";
 import { ChevronDown } from "lucide-react";
+import { useUserData } from "../hooks";
 const greetings = ["Hi", "Hey", "Hello"];
 
 const Home = () => {
+	const { user } = useUserData();
 	const [opacity, setOpacity] = useState<number>(1);
 	const scrollRef = useRef<HTMLElement>(document.createElement("span"));
 	const controlsX = useAnimation();
@@ -48,6 +50,15 @@ const Home = () => {
 			});
 		}
 	}, [controlsX, controlsY, inView]);
+
+	// TODO: Finish these, add modal for managing data.
+	const projectManager = () => {
+		return;
+	};
+
+	const aboutManager = () => {
+		return;
+	};
 
 	return (
 		<Layout>
@@ -95,10 +106,20 @@ const Home = () => {
 			<Parallax>
 				<main className="mt-[20vh] md:mt-[40vh] m-2" ref={scrollRef}>
 					<section id="about" ref={motionRef}>
-						<h3>
-							What I Do
-						</h3>
-						<div className="w-[90%] md:w-[75%] mx-auto flex flex-col gap-4">
+						{!user ?
+							<h3>
+								What I Do
+							</h3>
+							:
+							<div className="grid grid-cols-2 md:grid-cols-3 items-center md:w-[75%] mx-auto">
+								<div className="hidden md:block" />
+								<h3 className="pl-0 md:pl-6">
+									What I Do
+								</h3>
+								<Button name="Manage" onClick={aboutManager} />
+							</div>
+						}
+						<div className="md:w-[75%] mx-auto flex flex-col gap-4">
 							<motion.div initial={{ x: 15, opacity: 0 }} animate={controlsX} className="grid grid-cols-1 xl:grid-cols-3 items-center gap-4">
 								<div className="order-1 xl:order-2 h-full p-4 flex flex-col justify-center items-center bg-smallcard border border-neutral-700 rounded-xl">
 									<h4 className="text-neutral-300 font-medium text-center">
@@ -131,10 +152,20 @@ const Home = () => {
 						</div>
 					</section>
 					<section id="projects" ref={motionRef}>
-						<h3>
-							Projects
-						</h3>
-						<motion.div initial={{ y: -15, opacity: 0 }} animate={controlsY} className="w-[90%] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4">
+						{!user ?
+							<h3>
+								Projects
+							</h3>
+							:
+							<div className="grid grid-cols-2 md:grid-cols-3 items-center">
+								<div className="hidden md:block" />
+								<h3 className="pl-0 md:pl-6">
+									Projects
+								</h3>
+								<Button name="Manage" onClick={projectManager} />
+							</div>
+						}
+						<motion.div initial={{ y: -15, opacity: 0 }} animate={controlsY} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4">
 							{projects.map((data: Project, index: number) => (
 								<ProjectCard
 									key={index}

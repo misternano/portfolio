@@ -1,31 +1,10 @@
-/* eslint-disable camelcase */
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { UserCircle2, AtSign, Power } from "lucide-react";
 import { supabase } from "../lib/helper/supabaseClient";
-
-interface UserData {
-	email: string;
-	id: string;
-	user_metadata: {
-		avatar_url: string;
-		preferred_username: string;
-	};
-}
+import { useUserData } from "../hooks";
 
 const Auth = () => {
-	const [user, setUser] = useState<UserData | null>(null);
-
-	useEffect(() => {
-		const fetchUserData = async () => {
-			try {
-				const { data } = await supabase.auth.getUser();
-				setUser(data.user);
-			} catch (error) {
-				console.error(error);
-			}
-		};
-		fetchUserData();
-	}, []);
+	const { user, setUser } = useUserData();
 
 	const login = async () => {
 		await supabase.auth.signInWithOAuth({
@@ -50,7 +29,7 @@ const Auth = () => {
 				<button onClick={logout} className="group py-0.5 px-2 flex flex-row gap-1 items-center bg-[#171717] rounded-full justify-self-end">
 					<AtSign className="h-4 w-auto stroke-neutral-300 group-hover:hidden" />
 					<Power className="h-4 w-auto stroke-red-400 hidden group-hover:block" />
-					<span className="text-neutral-300 group-hover:text-red-400">{user?.user_metadata.preferred_username ?? "Could not fetch username"}</span>
+					<span className={`${user?.user_metadata.preferred_username ? "text-neutral-300 group-hover:text-red-400" : "text-rose-500" }`}>{user?.user_metadata.preferred_username ?? "Could not fetch username"}</span>
 				</button>
 			}
 		</>

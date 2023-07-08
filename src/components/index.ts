@@ -1,5 +1,6 @@
 import Auth from "./Auth.tsx";
 import Avatar from "./Avatar.tsx";
+import Button from "./Button.tsx";
 import ContactCard from "./ContactCard.tsx";
 import Footer from "./Footer.tsx";
 import Layout from "./Layout.tsx";
@@ -13,6 +14,7 @@ import Toast from "./Toast.tsx";
 export {
 	Auth,
 	Avatar,
+	Button,
 	ContactCard,
 	Footer,
 	Layout,

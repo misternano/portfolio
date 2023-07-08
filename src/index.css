@@ -43,7 +43,7 @@ header {
 }
 
 section {
-    @apply my-24;
+    @apply my-24 w-[90%] mx-auto;
 }
 
 h3 {
