@@ -38,17 +38,15 @@ const Auth = () => {
 		setUser(null);
 	};
 
-	console.log(user);
-
 	return (
 		<>
-			{!user || user.id === "" &&
+			{!user &&
 				<button onClick={login} className="group py-0.5 px-2 flex flex-row gap-1 items-center bg-[#171717] rounded-full justify-self-end">
 					<UserCircle2 className="h-4 w-auto stroke-neutral-300 group-hover:stroke-white transition-colors" />
 					<span className="text-neutral-300 group-hover:text-white transition-colors">Login</span>
 				</button>
 			}
-			{user && user.id !== "" &&
+			{user &&
 				<button onClick={logout} className="group py-0.5 px-2 flex flex-row gap-1 items-center bg-[#171717] rounded-full justify-self-end">
 					<AtSign className="h-4 w-auto stroke-neutral-300 group-hover:hidden" />
 					<Power className="h-4 w-auto stroke-red-400 hidden group-hover:block" />
