@@ -1,3 +1,4 @@
+import Auth from "./Auth.tsx";
 import Avatar from "./Avatar.tsx";
 import ContactCard from "./ContactCard.tsx";
 import Footer from "./Footer.tsx";
@@ -10,6 +11,7 @@ import TechCard from "./TechCard.tsx";
 import Toast from "./Toast.tsx";
 
 export {
+	Auth,
 	Avatar,
 	ContactCard,
 	Footer,

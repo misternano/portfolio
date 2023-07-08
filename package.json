@@ -1,7 +1,7 @@
 {
   "name": "portfolio",
   "private": true,
-  "version": "5.3.7",
+  "version": "5.3.9",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -11,6 +11,7 @@
   "dependencies": {
     "@chakra-ui/system": "^2.5.8",
     "@chakra-ui/toast": "^6.1.4",
+    "@supabase/supabase-js": "^2.26.0",
     "@types/react-helmet": "^6.1.6",
     "framer-motion": "^10.12.16",
     "lucide-react": "^0.252.0",
