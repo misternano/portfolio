@@ -17,7 +17,6 @@ export interface Stock {
 export interface Tech {
 	image: string;
 	name: string;
-	description: string;
 	type: string;
 	url: string;
 }

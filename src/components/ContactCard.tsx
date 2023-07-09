@@ -35,7 +35,7 @@ const ContactCard = () => {
 	return (
 		<form ref={formRef} action="https://getform.io/f/adff09e7-4050-40d8-9665-9ae955e8fb66" onSubmit={handleSubmit} method="POST" target="norel noopen" className="flex flex-col gap-3">
 			<div className="flex flex-col lg:grid grid-cols-2 gap-3">
-				<input id="email" name="email" type="email" placeholder="Email *" value={email} onChange={handleEmailChange} className="p-2 bg-neutral-700/50 rounded-md focus:rounded-md" />
+				<input id="email" name="email" type="text" placeholder="Email *" value={email} onChange={handleEmailChange} className="p-2 bg-neutral-700/50 rounded-md focus:rounded-md" />
 				<input id="subject" name="subject" type="text" placeholder="Subject" className="p-2 bg-neutral-700/50 rounded-md focus:rounded-md" />
 				<input type="hidden" name="_gotcha" className="!hidden" />
 			</div>

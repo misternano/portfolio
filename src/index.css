@@ -29,6 +29,10 @@
     background-clip: padding-box;
 }
 
+::-webkit-scrollbar-track {
+    @apply mx-1;
+}
+
 :focus {
     outline: 1px solid white;
 }
@@ -48,14 +52,6 @@ section {
 
 h3 {
     @apply text-gradient mx-auto p-6 text-center text-3xl font-bold;
-}
-
-.tech:first-child {
-    @apply ml-2;
-}
-
-.tech:last-child {
-    @apply mr-2;
 }
 
 .external-link {

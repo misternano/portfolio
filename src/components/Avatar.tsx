@@ -30,7 +30,7 @@ const Avatar = () => {
 	return (
 		<>
 			<img src={data ? `https://cdn.discordapp.com/avatars/272535850200596480/${data?.discord_user.avatar}.webp` : avatar} alt="Avatar" className={`relative md:block hidden ${borderColor} w-52 h-auto backdrop-blur-xl bg-neutral-800/50 rounded-full border-2 z-20`} />
-			<svg className="absolute z-10 -top-8 hidden md:block" xmlns="http://www.w3.org/2000/svg" width="550" height="272" preserveAspectRatio="xMidYMid" viewBox="0 0 1470 726">
+			<svg className="absolute z-10 -top-10 hidden md:block" xmlns="http://www.w3.org/2000/svg" width="550" height="300" preserveAspectRatio="xMidYMid" viewBox="0 0 1470 726">
 				<g transform="translate(735,363) scale(1,1) translate(-735,-363)">
 					<linearGradient id="lg-0.6589752743141462" x1="0" x2="1" y1="0" y2="0">
 						<stop stopColor="#ff00ff" offset="0" />

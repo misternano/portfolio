@@ -1,7 +1,7 @@
 {
   "name": "portfolio",
   "private": true,
-  "version": "5.3.9",
+  "version": "5.4.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -20,7 +20,6 @@
     "react-dom": "^18.2.0",
     "react-helmet": "^6.1.0",
     "react-intersection-observer": "^9.4.3",
-    "react-modal": "^3.16.1",
     "react-router-dom": "^6.4.3",
     "react-router-hash-link": "^2.4.3",
     "react-scroll-parallax": "^3.4.2",
