@@ -6,7 +6,7 @@ import moment from "moment";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { Parallax } from "react-scroll-parallax";
-import {ChevronDown, UploadCloud, X} from "lucide-react";
+import { ChevronDown, FileEdit, FilePlus, FileMinus, X, GanttChart } from "lucide-react";
 import { useUserData } from "../hooks";
 const greetings = ["Hi", "Hey", "Hello"];
 
@@ -19,7 +19,6 @@ const Home = () => {
 	const [motionRef, inView] = useInView();
 	const [projectModal, setProjectModal] = useState<boolean>(false);
 	const [aboutModal, setAboutModal] = useState<boolean>(false);
-	const [formData, setFormData] = useState({ image: null, imagePreview: null, title: "", description: "", link: "", source: "" });
 
 	const age: number = Math.floor((moment().valueOf() - moment("2002-02-11", "YYYY-MM-DD").valueOf()) / 31536000000);
 
@@ -62,40 +61,6 @@ const Home = () => {
 		return;
 	};
 
-	// TODO: fix type and syntax errors
-	const handleChange = (e) => {
-		const { name, value, files } = e.target;
-
-		if (files) {
-			const file = files[0];
-			const reader = new FileReader();
-
-			reader.onloadend = () => {
-				setFormData((prevFormData) => ({
-					...prevFormData,
-					image: file,
-					imagePreview: reader.result,
-				}));
-			};
-
-			if (file) {
-				reader.readAsDataURL(file);
-			}
-		} else {
-			setFormData((prevFormData) => ({
-				...prevFormData,
-				[name]: value,
-			}));
-		}
-	};
-
-	// TODO: make this actually do something & use supabase
-	const handleSubmit = (e) => {
-		e.preventDefault();
-		console.log(formData);
-		setProjectModal(false);
-	};
-
 	return (
 		<>
 			<Layout>
@@ -134,9 +99,9 @@ const Home = () => {
 				</Parallax>
 				<button onClick={() => scrollRef.current?.scrollIntoView()} className="group absolute left-1/2 bottom-5 animate-bounce transition-all duration-300 focus:outline-0" style={{ opacity: opacity }}>
 					<div className="flex flex-col justify-center items-center -translate-x-1/2">
-					<span className="font-archia uppercase text-xs font-semibold text-neutral-300 group-hover:text-white group-focus:text-white transition-colors group-focus:underline underline-offset-4">
-						learn more
-					</span>
+						<span className="font-archia uppercase text-xs font-semibold text-neutral-300 group-hover:text-white group-focus:text-white transition-colors group-focus:underline underline-offset-4">
+							learn more
+						</span>
 						<ChevronDown className="h-8 w-8 stroke-neutral-300 group-hover:stroke-white group-focus:stroke-white transition-colors" />
 					</div>
 				</button>
@@ -153,7 +118,9 @@ const Home = () => {
 									<h3 className="pl-0 md:pl-6">
 										What I Do
 									</h3>
-									<Button name="Manage" onClick={aboutManager} />
+									<Button name="Manage" onClick={aboutManager} icon={
+										<GanttChart className="w-4 h-auto stroke-neutral-300 group-hover:stroke-white transition-colors" />
+									} />
 								</div>
 							}
 							<div className="md:w-[85%] mx-auto flex flex-col gap-4">
@@ -199,7 +166,9 @@ const Home = () => {
 									<h3 className="pl-0 md:pl-6">
 										Projects
 									</h3>
-									<Button name="Manage" onClick={projectManager} />
+									<Button name="Manage" onClick={projectManager} icon={
+										<GanttChart className="w-4 h-auto stroke-neutral-300 group-hover:stroke-white transition-colors" />
+									} />
 								</div>
 							}
 							<motion.div initial={{ y: -15, opacity: 0 }} animate={controlsY} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4">
@@ -222,63 +191,24 @@ const Home = () => {
 			</Layout>
 			{projectModal &&
 				<div className="fixed inset-0 z-10 flex items-center justify-center backdrop-blur">
-					<div className="min-w-[20rem] p-4 flex flex-col gap-4 bg-neutral-800 border border-neutral-700 rounded-xl">
+					<div className="min-w-[20rem] p-4 flex flex-col gap-4 bg-neutral-900 border border-neutral-700 rounded-xl">
 						<div className="flex flex-row justify-between items-center">
-							<p className="font-medium text-sm">Project Management</p>
+							<p className="font-medium text-sm text-neutral-300">Project Management</p>
 							<button onClick={() => setProjectModal(false)} className="group border border-transparent hover:border-red-500 rounded-md p-0.5">
 								<X className="w-4 h-auto group-hover:stroke-red-500" />
 							</button>
 						</div>
-						<form onSubmit={handleSubmit} className="flex flex-col gap-4">
-							{/*<input type="file" id="image" name="image" onChange={handleChange} />*/}
-							<div className="flex items-center justify-center">
-								<label
-									htmlFor="image"
-									className="flex flex-col items-center justify-center w-full border-dashed rounded-md cursor-pointer bg-neutral-700/50 hover:bg-neutral-800 border-2 border-neutral-600 hover:border-neutral-500"
-								>
-									{formData.imagePreview ? (
-										<img
-											src={formData.imagePreview}
-											alt="Uploaded"
-											className="w-auto h-32"
-										/>
-									) : (
-										<div className="flex flex-col items-center justify-center pt-5 pb-6">
-											<UploadCloud className="w-8 h-auto mb-4" />
-											<p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
-												<span className="font-semibold">Click to upload</span> or
-												drag and drop
-											</p>
-											<p className="text-xs text-gray-500 dark:text-gray-400">
-												SVG, PNG, or JPG
-											</p>
-										</div>
-									)}
-									<input
-										id="image"
-										type="file"
-										className="hidden"
-										onChange={handleChange}
-									/>
-								</label>
-							</div>
-							<input id="title" name="title" type="text" placeholder="Title" value={formData.title} onChange={handleChange} className="p-2 bg-neutral-700/50 rounded-md" />
-							<textarea id="description" name="Description" placeholder="Description" value={formData.description} onChange={handleChange} className="h-24 p-2 bg-neutral-700/50 rounded-md resize-none" />
-							<div className="flex flex-row gap-4">
-								<div>
-									<input id="link" name="link" type="text" placeholder="Link" value={formData.link} onChange={handleChange} className="p-2 bg-neutral-700/50 rounded-md" />
-									<p className="text-xs text-neutral-400"><span className="text-neutral-500">i.e.</span> nanos.club, fn.nanos.club</p>
-								</div>
-								<div>
-									<input id="source" name="source" type="text" placeholder="Source" value={formData.source} onChange={handleChange} className="p-2 bg-neutral-700/50 rounded-md" />
-									<p className="text-xs text-neutral-400"><span className="text-neutral-500">i.e.</span> github.com/misternano/repo</p>
-								</div>
-							</div>
-							<div className="flex flex-row justify-between">
-								<button onClick={() => setProjectModal(false)} className="py-0.5 px-4 bg-red-600 hover:bg-red-500 rounded transition-colors">Cancel</button>
-								<button type="submit" className="py-0.5 px-4 bg-indigo-600 hover:bg-indigo-500 rounded transition-colors">Submit</button>
-							</div>
-						</form>
+						<div className="flex flex-row gap-4 justify-center">
+							<Button name="Create" onClick={() => null} icon={
+								<FilePlus className="w-4 h-auto stroke-neutral-300 group-hover:stroke-white transition-colors" />
+							} />
+							<Button name="Edit" onClick={() => null} icon={
+								<FileEdit className="w-4 h-auto stroke-neutral-300 group-hover:stroke-white transition-colors" />
+							} />
+							<Button name="Delete" onClick={() => null} icon={
+								<FileMinus className="w-4 h-auto stroke-neutral-300 group-hover:stroke-white transition-colors" />
+							} />
+						</div>
 					</div>
 				</div>
 			}

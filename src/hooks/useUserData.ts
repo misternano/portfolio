@@ -9,7 +9,7 @@ const useUserData = () => {
 		const fetchUserData = async () => {
 			try {
 				const { data } = await supabase.auth.getUser();
-				setUser(data.user);
+				setUser(data.user as UserData);
 			} catch (error) {
 				console.error(error);
 			}
