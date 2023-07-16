@@ -20,13 +20,3 @@ export interface Tech {
 	type: string;
 	url: string;
 }
-
-export interface UserData {
-	email: string;
-	id: string;
-	user_metadata: {
-		avatar_url: string;
-		name: string;
-		user_name: string;
-	};
-}

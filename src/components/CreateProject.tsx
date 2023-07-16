@@ -10,6 +10,7 @@ interface FormProps {
 	source?: string;
 }
 
+// TODO: Connect to supabase storage and database
 const CreateProject = () => {
 	const [formData, setFormData] = useState<FormProps>({
 		image: null,

@@ -1,5 +1,5 @@
 import React, { useMemo, useState, useRef, useEffect } from "react";
-import { Avatar, ProjectCard, ContactCard, StockCard, Layout, SocialLink, TechCard, Button } from "../components";
+import { Avatar, Button, ProjectCard, ContactCard, CreateProject, StockCard, Layout, SocialLink, TechCard } from "../components";
 import { Project, Stock, Tech } from "../types";
 import { projects, stocks, tech } from "../data";
 import moment from "moment";
@@ -8,7 +8,6 @@ import { useInView } from "react-intersection-observer";
 import { Parallax } from "react-scroll-parallax";
 import { ChevronDown, X, GanttChart, Plus } from "lucide-react";
 import { useUserData } from "../hooks";
-import CreateProject from "../components/CreateProject.tsx";
 const greetings = ["Hi", "Hey", "Hello"];
 
 const Home = () => {
@@ -120,12 +119,12 @@ const Home = () => {
 										What I Do
 									</h3>
 									<Button name="Manage" onClick={aboutManager} icon={
-										<GanttChart className="w-4 h-auto stroke-neutral-300 group-hover:stroke-white transition-colors" />
+										<GanttChart size="16" className="stroke-neutral-300 group-hover:stroke-white transition-colors" />
 									} />
 								</div>
 							}
 							<div className="md:w-[85%] mx-auto flex flex-col gap-4">
-								<motion.div initial={{ x: 15, opacity: 0 }} animate={controlsX} className="grid grid-cols-1 xl:grid-cols-3 items-center gap-4">
+								<motion.div initial={{ y: 15, opacity: 0 }} animate={controlsY} className="grid grid-cols-1 xl:grid-cols-3 items-center gap-4">
 									<div className="order-1 xl:order-2 h-full p-4 flex flex-col justify-center items-center bg-smallcard border border-neutral-700 rounded-xl">
 										<h4 className="text-neutral-300 font-medium text-center">
 											Developer & Investor
@@ -137,14 +136,14 @@ const Home = () => {
 											Find my tech stack below and investments I&apos;ve made on the left
 										</p>
 									</div>
-									<motion.div initial={{ x: 15, opacity: 0 }} animate={controlsX} className="order-2 xl:order-1 grid grid-cols-2 xl:grid-cols-4 gap-4 xl:col-span-2">
+									<div className="order-2 xl:order-1 grid grid-cols-2 xl:grid-cols-4 gap-4 xl:col-span-2">
 										{stocks.map((data: Stock, index: number) => (
 											<StockCard
 												key={index}
 												stock={data}
 											/>
 										))}
-									</motion.div>
+									</div>
 								</motion.div>
 								<motion.div initial={{ y: 15, opacity: 0 }} animate={controlsY} className="pt-2 flex flex-nowrap gap-2 border border-neutral-700 rounded-xl order-3 xl:col-span-4 overflow-x-scroll">
 									{tech.map((data: Tech, index: number) => (
@@ -168,7 +167,7 @@ const Home = () => {
 										Projects
 									</h3>
 									<Button name="New" onClick={createProject} icon={
-										<Plus className="w-4 h-auto stroke-neutral-300 group-hover:stroke-white transition-colors" />
+										<Plus size="16" className="stroke-neutral-300 group-hover:stroke-white transition-colors" />
 									} />
 								</div>
 							}
@@ -196,7 +195,7 @@ const Home = () => {
 						<div className="flex flex-row justify-between items-center">
 							<p className="font-medium text-sm text-neutral-300">New Project</p>
 							<button onClick={() => setCreateProjectModal(false)} className="group border border-transparent hover:border-red-500 rounded-md p-0.5">
-								<X className="w-4 h-auto group-hover:stroke-red-500" />
+								<X size="16" className="group-hover:stroke-red-500" />
 							</button>
 						</div>
 						<CreateProject />
@@ -204,12 +203,13 @@ const Home = () => {
 				</div>
 			}
 			{aboutModal &&
+				// TODO: Add about manager
 				<div className="fixed inset-0 z-10 flex items-center justify-center backdrop-blur">
 					<div className="min-w-[20rem] p-4 flex flex-col gap-4 bg-neutral-900 border border-neutral-700 rounded-xl">
 						<div className="flex flex-row justify-between items-center">
 							<p className="font-medium text-sm text-neutral-300">About Management</p>
 							<button onClick={() => setAboutModal(false)} className="group border border-transparent hover:border-red-500 rounded-md p-0.5">
-								<X className="w-4 h-auto group-hover:stroke-red-500" />
+								<X size="16" className="group-hover:stroke-red-500" />
 							</button>
 						</div>
 						<div className="flex flex-row gap-4 justify-center">
