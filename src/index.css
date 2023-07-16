@@ -103,6 +103,35 @@ h3 {
     animation: spin-slow 10s linear infinite;
 }
 
+.separator-hr {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #737373;
+}
+
+.separator-hr::before {
+    margin-right: 0.5em;
+    border-radius: 1rem;
+}
+
+.separator-hr::after {
+    margin-left: 0.5em;
+    border-radius: 1rem;
+}
+
+.separator-hr::after, .separator-hr::before {
+    content: "";
+    -webkit-flex: 1 1;
+    -moz-box-flex: 1;
+    flex: 1 1;
+    border-bottom: 1px solid #52525b;
+}
+
+input, textarea {
+    @apply text-sm;
+}
+
 @keyframes spin-slow {
     from {
         transform: rotate(0deg);

@@ -27,5 +27,6 @@ export interface UserData {
 	user_metadata: {
 		avatar_url: string;
 		name: string;
+		user_name: string;
 	};
 }

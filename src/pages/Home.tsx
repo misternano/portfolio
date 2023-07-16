@@ -6,8 +6,9 @@ import moment from "moment";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { Parallax } from "react-scroll-parallax";
-import { ChevronDown, FileEdit, FilePlus, FileMinus, X, GanttChart } from "lucide-react";
+import { ChevronDown, X, GanttChart, Plus } from "lucide-react";
 import { useUserData } from "../hooks";
+import CreateProject from "../components/CreateProject.tsx";
 const greetings = ["Hi", "Hey", "Hello"];
 
 const Home = () => {
@@ -17,7 +18,7 @@ const Home = () => {
 	const controlsX = useAnimation();
 	const controlsY = useAnimation();
 	const [motionRef, inView] = useInView();
-	const [projectModal, setProjectModal] = useState<boolean>(false);
+	const [createProjectModal, setCreateProjectModal] = useState<boolean>(false);
 	const [aboutModal, setAboutModal] = useState<boolean>(false);
 
 	const age: number = Math.floor((moment().valueOf() - moment("2002-02-11", "YYYY-MM-DD").valueOf()) / 31536000000);
@@ -53,12 +54,12 @@ const Home = () => {
 		}
 	}, [controlsX, controlsY, inView]);
 
-	const projectManager = () => {
-		setProjectModal(true);
+	const createProject = () => {
+		setCreateProjectModal(true);
 	};
 
 	const aboutManager = () => {
-		return;
+		setAboutModal(true);
 	};
 
 	return (
@@ -166,8 +167,8 @@ const Home = () => {
 									<h3 className="pl-0 md:pl-6">
 										Projects
 									</h3>
-									<Button name="Manage" onClick={projectManager} icon={
-										<GanttChart className="w-4 h-auto stroke-neutral-300 group-hover:stroke-white transition-colors" />
+									<Button name="New" onClick={createProject} icon={
+										<Plus className="w-4 h-auto stroke-neutral-300 group-hover:stroke-white transition-colors" />
 									} />
 								</div>
 							}
@@ -189,32 +190,32 @@ const Home = () => {
 					</main>
 				</Parallax>
 			</Layout>
-			{projectModal &&
+			{createProjectModal &&
 				<div className="fixed inset-0 z-10 flex items-center justify-center backdrop-blur">
 					<div className="min-w-[20rem] p-4 flex flex-col gap-4 bg-neutral-900 border border-neutral-700 rounded-xl">
 						<div className="flex flex-row justify-between items-center">
-							<p className="font-medium text-sm text-neutral-300">Project Management</p>
-							<button onClick={() => setProjectModal(false)} className="group border border-transparent hover:border-red-500 rounded-md p-0.5">
+							<p className="font-medium text-sm text-neutral-300">New Project</p>
+							<button onClick={() => setCreateProjectModal(false)} className="group border border-transparent hover:border-red-500 rounded-md p-0.5">
 								<X className="w-4 h-auto group-hover:stroke-red-500" />
 							</button>
 						</div>
-						<div className="flex flex-row gap-4 justify-center">
-							<Button name="Create" onClick={() => null} icon={
-								<FilePlus className="w-4 h-auto stroke-neutral-300 group-hover:stroke-white transition-colors" />
-							} />
-							<Button name="Edit" onClick={() => null} icon={
-								<FileEdit className="w-4 h-auto stroke-neutral-300 group-hover:stroke-white transition-colors" />
-							} />
-							<Button name="Delete" onClick={() => null} icon={
-								<FileMinus className="w-4 h-auto stroke-neutral-300 group-hover:stroke-white transition-colors" />
-							} />
-						</div>
+						<CreateProject />
 					</div>
 				</div>
 			}
 			{aboutModal &&
-				<div className="fixed inset-0 grid place-items-center bg-indigo-50/50">
-					this is a modal for about info
+				<div className="fixed inset-0 z-10 flex items-center justify-center backdrop-blur">
+					<div className="min-w-[20rem] p-4 flex flex-col gap-4 bg-neutral-900 border border-neutral-700 rounded-xl">
+						<div className="flex flex-row justify-between items-center">
+							<p className="font-medium text-sm text-neutral-300">About Management</p>
+							<button onClick={() => setAboutModal(false)} className="group border border-transparent hover:border-red-500 rounded-md p-0.5">
+								<X className="w-4 h-auto group-hover:stroke-red-500" />
+							</button>
+						</div>
+						<div className="flex flex-row gap-4 justify-center">
+							some stuff here
+						</div>
+					</div>
 				</div>
 			}
 		</>
