@@ -20,8 +20,8 @@ My portfolio is built using the following technologies:
 - **React**: A JavaScript library for building user interfaces.
 - **TypeScript**: A typed superset of JavaScript that compiles to plain JavaScript.
 - **Tailwind CSS**: A utility-first CSS framework for rapid UI development.
-- **Framer Motion**: A library for creating smooth animations and interactions.
 - **Lanyard**: A service for automatically retrieving Discord user data.
+- **Supabase**: An open-source Firebase alternative that provides backend services and a real-time database.
 
 ## Contributing
 If you would like to contribute to this project, please follow these steps:
