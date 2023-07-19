@@ -5,6 +5,7 @@ import { useLanyard } from "use-lanyard";
 const Avatar = () => {
 	const [borderColor, setBorderColor] = useState<string>("border-offline");
 	const { data } = useLanyard("272535850200596480");
+	const [idle, setIdle] = useState<boolean>(false);
 
 	useEffect(() => {
 		if (data?.listening_to_spotify)
@@ -16,6 +17,7 @@ const Avatar = () => {
 					break;
 				case "idle":
 					setBorderColor("border-idle");
+					setIdle(true);
 					break;
 				case "dnd":
 					setBorderColor("border-dnd");
@@ -27,9 +29,19 @@ const Avatar = () => {
 		}
 	}, [data]);
 
+	console.log(data);
+
 	return (
+		// TODO: Change the coffee cup to use discord status emoji
 		<>
-			<img src={data ? `https://cdn.discordapp.com/avatars/272535850200596480/${data?.discord_user.avatar}.webp` : avatar} alt="Avatar" className={`relative md:block hidden ${borderColor} w-52 h-auto backdrop-blur-xl bg-neutral-800/50 rounded-full border-2 z-20`} />
+			<div className="relative">
+				<img src={data ? `https://cdn.discordapp.com/avatars/272535850200596480/${data?.discord_user.avatar}.webp` : avatar} alt="Avatar" className={`relative md:block hidden ${borderColor} w-52 h-auto backdrop-blur-xl bg-neutral-800/50 rounded-full border-2 z-20`} />
+				{idle && (
+					<div className={`absolute bottom-3 right-3 border ${borderColor} rounded-full aspect-square bg-idle/50 backdrop-blur z-20 flex justify-center items-center w-10 h-10`}>
+						<span className="text-3xl">☕</span>
+					</div>
+				)}
+			</div>
 			<svg className="absolute z-10 -top-10 hidden md:block" xmlns="http://www.w3.org/2000/svg" width="550" height="300" preserveAspectRatio="xMidYMid" viewBox="0 0 1470 726">
 				<g transform="translate(735,363) scale(1,1) translate(-735,-363)">
 					<linearGradient id="lg-0.6589752743141462" x1="0" x2="1" y1="0" y2="0">
