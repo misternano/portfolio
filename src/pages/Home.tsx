@@ -176,9 +176,10 @@ const Home = () => {
 									<ProjectCard
 										key={index}
 										project={data}
+										index={`z-${(projects.length - index) * 10}`}
 									/>
 								))}
-								<div className="grid items-center p-2 bg-neutral-800/50 border border-neutral-700 rounded-xl">
+								<div className="grid items-center p-2 bg-card border border-neutral-700 rounded-xl">
 									<h3 className="p-4">
 										Contact
 									</h3>

@@ -1,7 +1,7 @@
 import React from "react";
 import { Stock } from "../types.ts";
 
-const StockCard: React.FC<{ stock: Stock }> = ({ stock }) => {
+const StockCard = ({ stock }: { stock: Stock }) => {
 	return (
 		<a
 			href={`https://finance.yahoo.com/quote/${stock.ticker}`}

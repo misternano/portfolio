@@ -2,19 +2,43 @@ import React from "react";
 import { Project } from "../types.ts";
 import placeholder from "../assets/placeholder.png";
 import { Pencil, Trash } from "lucide-react";
+import { useSpring, animated } from "react-spring";
+import { useUserData } from "../hooks";
+
+const calc = (x: number, y: number) => [
+	-(y - window.innerHeight / 2) / 200,
+	-(x - window.innerWidth / 2) / 200,
+	1.05,
+];
+
+const trans = (x: number, y: number, s: number): string => `perspective(200px) rotateX(${x}deg) rotateY(${y}deg) scale(${s})`;
 
 // TODO: Add functionality to edit and delete buttons
-const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
+const ProjectCard= ({ project, index }: { project: Project, index: string }) => {
+	const { user } = useUserData();
+	const [props, set] = useSpring(() => ({
+		xys: [0, 0, 1],
+		config: { mass: 2, tension: 350, friction: 40 },
+	}));
+
 	return (
-		<div className="relative group/wrapper">
-			<div className="z-10 absolute -top-2 right-2 hidden group-hover/wrapper:flex flex-row bg-neutral-900 border border-neutral-700 rounded-lg overflow-hidden">
-				<button className="group py-1 px-2 hover:bg-neutral-800 focus:bg-neutral-800">
-					<Pencil size="20" className="stroke-neutral-300 group-hover:stroke-white group-focus:stroke-white" />
-				</button>
-				<button className="group py-1 px-2 hover:bg-neutral-800 focus:bg-neutral-800">
-					<Trash size="20" className="stroke-red-400 group-hover:stroke-rose-500 group-focus:stroke-rose-500" />
-				</button>
-			</div>
+		<animated.div
+			onMouseMove={({ clientX: x, clientY: y }: { clientX: number; clientY: number }) =>
+			set({ xys: calc(x, y) })}
+			onMouseLeave={() => set({ xys: [0, 0, 1] })}
+			//@ts-ignore
+			style={{ transform: props.xys.interpolate(trans) }} className={`relative group/wrapper ${index}`}
+		>
+			{user && (
+				<div className="z-10 absolute -top-2 right-2 hidden group-hover/wrapper:flex flex-row bg-neutral-900 border border-neutral-700 rounded-lg overflow-hidden">
+					<button className="group py-1 px-2 hover:bg-neutral-800 focus:bg-neutral-800">
+						<Pencil size="20" className="stroke-neutral-300 group-hover:stroke-white group-focus:stroke-white" />
+					</button>
+					<button className="group py-1 px-2 hover:bg-neutral-800 focus:bg-neutral-800">
+						<Trash size="20" className="stroke-red-400 group-hover:stroke-rose-500 group-focus:stroke-rose-500" />
+					</button>
+				</div>
+			)}
 			<div className="h-full flex flex-col bg-card border border-neutral-700 rounded-xl overflow-hidden">
 				<img src={project.image ? `images/${project.image}.png` : placeholder} alt={`${project.name} Project`} className="w-full h-auto rounded-b-xl drop-shadow" loading="lazy" />
 				<div className="h-full p-2 flex flex-col items-center justify-between">
@@ -43,7 +67,10 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
 					</div>
 				</div>
 			</div>
-		</div>
+			<div className={`absolute hidden group-hover/wrapper:block`}>
+				<></>
+			</div>
+		</animated.div>
 	);
 };
 

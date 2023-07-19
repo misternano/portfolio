@@ -34,7 +34,7 @@ const Auth = () => {
 						<span className="text-neutral-300 group-hover:text-white transition-colors">Login</span>
 					</button>
 					<button onClick={loginGithub} className="group py-0.5 px-3 flex flex-row gap-2 items-center bg-neutral-900 rounded-full">
-						<Github size="16" className="fill-neutral-300 group-hover:fill-white transition-colors" />
+						<Github size="16" className="fill-neutral-300 stroke-neutral-300 group-hover:stroke-white group-hover:fill-white transition-colors" />
 						<span className="text-neutral-300 group-hover:text-white transition-colors">Login</span>
 					</button>
 				</div>

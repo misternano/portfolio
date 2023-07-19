@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import avatar from "../assets/avatar.png";
+import placeholder from "../assets/avatar.png";
 import { useLanyard } from "use-lanyard";
 
 const Avatar = () => {
-	const [borderColor, setBorderColor] = useState<string>("border-offline");
 	const { data } = useLanyard("272535850200596480");
-	const [idle, setIdle] = useState<boolean>(false);
+	const [borderColor, setBorderColor] = useState<string>("border-offline");
+	const [backgroundColor, setBackgroundColor] = useState<string>("bg-offline");
 
 	useEffect(() => {
 		if (data?.listening_to_spotify)
@@ -14,31 +14,31 @@ const Avatar = () => {
 			switch (data?.discord_status) {
 				case "online":
 					setBorderColor("border-online");
+					setBackgroundColor("bg-online/50");
 					break;
 				case "idle":
 					setBorderColor("border-idle");
-					setIdle(true);
+					setBackgroundColor("bg-idle/50");
 					break;
 				case "dnd":
 					setBorderColor("border-dnd");
+					setBackgroundColor("bg-dnd/50");
 					break;
 				default:
 					setBorderColor("border-offline");
+					setBackgroundColor("bg-offline/50");
 					break;
 			}
 		}
 	}, [data]);
 
-	console.log(data);
-
 	return (
-		// TODO: Change the coffee cup to use discord status emoji
 		<>
 			<div className="relative md:block hidden">
-				<img src={data ? `https://cdn.discordapp.com/avatars/272535850200596480/${data?.discord_user.avatar}.webp` : avatar} alt="Avatar" className={`relative ${borderColor} w-52 h-auto backdrop-blur-xl bg-neutral-800/50 rounded-full border-2 z-20`} />
-				{idle && (
-					<div className={`absolute bottom-3 right-3 border ${borderColor} rounded-full aspect-square bg-idle/50 backdrop-blur z-20 flex justify-center items-center w-10 h-10`}>
-						<span className="text-3xl">☕</span>
+				<img src={data ? `https://cdn.discordapp.com/avatars/272535850200596480/${data?.discord_user.avatar}.webp` : placeholder} alt="Avatar" className={`relative ${borderColor} w-52 h-auto backdrop-blur-xl bg-neutral-800/50 rounded-full border-2 z-20`} />
+				{data?.activities[0].id === "custom" && (
+					<div className={`absolute bottom-3 right-3 z-20 w-10 h-10 flex justify-center items-center ${backgroundColor} backdrop-blur-sm border-2 ${borderColor} rounded-full`}>
+						<img className="w-7 h-7" src={`https://cdn.discordapp.com/emojis/${data?.activities[0].emoji?.id}.webp`} alt={`${data?.activities[0].emoji?.name} emoji`} />
 					</div>
 				)}
 			</div>
