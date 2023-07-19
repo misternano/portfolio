@@ -14,12 +14,14 @@ const calc = (x: number, y: number) => [
 const trans = (x: number, y: number, s: number): string => `perspective(200px) rotateX(${x}deg) rotateY(${y}deg) scale(${s})`;
 
 // TODO: Add functionality to edit and delete buttons
-const ProjectCard= ({ project, index }: { project: Project, index: string }) => {
+const ProjectCard= ({ project, index, length }: { project: Project, index: number, length: number }) => {
 	const { user } = useUserData();
 	const [props, set] = useSpring(() => ({
 		xys: [0, 0, 1],
 		config: { mass: 2, tension: 350, friction: 40 },
 	}));
+
+	const zValue = (length - index) * 10;
 
 	return (
 		<animated.div
@@ -27,7 +29,7 @@ const ProjectCard= ({ project, index }: { project: Project, index: string }) => 
 			set({ xys: calc(x, y) })}
 			onMouseLeave={() => set({ xys: [0, 0, 1] })}
 			//@ts-ignore
-			style={{ transform: props.xys.interpolate(trans) }} className={`relative group/wrapper ${index}`}
+			style={{ transform: props.xys.interpolate(trans), zIndex: zValue }} className={`relative group/wrapper`}
 		>
 			{user && (
 				<div className="z-10 absolute -top-2 right-2 hidden group-hover/wrapper:flex flex-row bg-neutral-900 border border-neutral-700 rounded-lg overflow-hidden">
@@ -66,9 +68,6 @@ const ProjectCard= ({ project, index }: { project: Project, index: string }) => 
 						}
 					</div>
 				</div>
-			</div>
-			<div className={`absolute hidden group-hover/wrapper:block`}>
-				<></>
 			</div>
 		</animated.div>
 	);

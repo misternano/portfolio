@@ -171,12 +171,13 @@ const Home = () => {
 									} />
 								</div>
 							}
-							<motion.div initial={{ y: -15, opacity: 0 }} animate={controlsY} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4">
+							<motion.div initial={{ y: -15, opacity: 0 }} animate={controlsY} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4 isolate">
 								{projects.map((data: Project, index: number) => (
 									<ProjectCard
 										key={index}
 										project={data}
-										index={`z-${(projects.length - index) * 10}`}
+										index={index}
+										length={projects.length}
 									/>
 								))}
 								<div className="grid items-center p-2 bg-card border border-neutral-700 rounded-xl">
