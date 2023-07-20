@@ -125,7 +125,7 @@ const Home = () => {
 							}
 							<div className="md:w-[85%] mx-auto flex flex-col gap-4">
 								<motion.div initial={{ y: 15, opacity: 0 }} animate={controlsY} className="grid grid-cols-1 xl:grid-cols-3 items-center gap-4">
-									<div className="order-1 xl:order-2 h-full p-4 flex flex-col justify-center items-center bg-smallcard border border-neutral-700 rounded-xl">
+									<div className="order-1 xl:order-2 h-full p-4 flex flex-col justify-center items-center bg-card border border-neutral-700 rounded-xl">
 										<h4 className="text-neutral-300 font-medium text-center">
 											Developer & Investor
 										</h4>
@@ -176,8 +176,6 @@ const Home = () => {
 									<ProjectCard
 										key={index}
 										project={data}
-										index={index}
-										length={projects.length}
 									/>
 								))}
 								<div className="grid items-center p-2 bg-card border border-neutral-700 rounded-xl">
