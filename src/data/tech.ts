@@ -20,6 +20,24 @@ const tech: Tech[] = [
 		url: "tailwindcss.com"
 	},
 	{
+		image: "vite",
+		name: "Vite",
+		type: "Web Framework",
+		url: "vitejs.dev"
+	},
+	{
+		image: "supabase",
+		name: "Supabase",
+		type: "Backend",
+		url: "supabase.com"
+	},
+	{
+		image: "postgres",
+		name: "Postgres",
+		type: "Database",
+		url: "postgresql.org"
+	},
+	{
 		image: "go",
 		name: "GoLang",
 		type: "Language",
@@ -30,12 +48,6 @@ const tech: Tech[] = [
 		name: "GoFiber",
 		type: "Web Framework",
 		url: "gofiber.io"
-	},
-	{
-		image: "vite",
-		name: "Vite",
-		type: "Web Framework",
-		url: "vitejs.dev"
 	},
 	{
 		image: "mongo",

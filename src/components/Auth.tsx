@@ -1,26 +1,36 @@
 import React from "react";
-import { AtSign, XCircle, Github } from "lucide-react";
+import { AtSign, Github, LogOut } from "lucide-react";
 import { supabase } from "../lib/helper/supabaseClient";
-import { useUserData } from "../hooks";
+import { useUserData, useToasts } from "../hooks";
 
 const Auth = () => {
 	const { user, setUser } = useUserData();
+	const toast = useToasts();
 
 	const loginGithub = async () => {
-		await supabase.auth.signInWithOAuth({
-			provider: "github"
-		});
+		try {
+			await supabase.auth.signInWithOAuth({
+				provider: "github",
+			});
+		} catch (err) {
+			console.error(err);
+		}
 	};
 
 	const loginSpotify = async () => {
-		await supabase.auth.signInWithOAuth({
-			provider: "spotify"
-		});
+		try {
+			await supabase.auth.signInWithOAuth({
+				provider: "spotify",
+			});
+		} catch (err) {
+			console.error(err);
+		}
 	};
 
 	const logout = async () => {
 		await supabase.auth.signOut();
 		setUser(null);
+		toast("Logged out", "You have been logged out.", 2500, "bg-emerald-500");
 	};
 
 	return (
@@ -42,7 +52,7 @@ const Auth = () => {
 			{user &&
 				<button onClick={logout} className="group py-0.5 px-3 flex flex-row gap-2 items-center bg-neutral-900 rounded-full justify-self-end">
 					<AtSign size="16" className="stroke-neutral-300 group-hover:hidden" />
-					<XCircle size="16" className="stroke-red-400 hidden group-hover:block" />
+					<LogOut size="16" className="stroke-red-400 hidden group-hover:block" />
 					<span className={`${user?.user_metadata.name ?? user?.user_metadata.user_name ?? user?.email ? "text-neutral-300 group-hover:text-red-400" : "text-rose-500" }`}>
 						{user?.user_metadata.name ? user?.user_metadata.name : user?.user_metadata.user_name ? user?.user_metadata.user_name : user?.email ?? "Could not fetch username or email."}
 					</span>

@@ -22,7 +22,7 @@ const ProjectCard= ({ project }: { project: Project }) => {
 	}));
 
 	return (
-		<animated.div onMouseMove={({ clientX: x, clientY: y }: { clientX: number; clientY: number }) => set({ xys: calc(x, y) })} onMouseLeave={() => set({ xys: [0, 0, 1] })} style={{ transform: props.xys.interpolate(trans) }} className="relative group/wrapper z-0 hover:z-10">
+		<animated.div onMouseMove={({ clientX: x, clientY: y }: { clientX: number; clientY: number }) => set({ xys: calc(x, y) })} onMouseLeave={() => set({ xys: [0, 0, 1] })} style={{ transform: props.xys.to(trans) }} className="relative group/wrapper z-0 hover:z-10">
 			{user && (
 				<div className="z-10 absolute -top-2 right-2 hidden group-hover/wrapper:flex flex-row bg-neutral-900 border border-neutral-700 rounded-lg overflow-hidden">
 					<button className="group py-1 px-2 hover:bg-neutral-800 focus:bg-neutral-800">

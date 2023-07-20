@@ -4,7 +4,7 @@ const projects: Project[] = [
 	{
 		image: "YFKgX",
 		name: "Portfolio",
-		desc: "You are here! Built with React, TS, and Tailwind. Vite used for bundling and deployment.",
+		desc: "Open source portfolio built with React and TS.",
 		url: "nanos.club",
 		source: "github.com/misternano/portfolio",
 		stack: ["React", "TS", "Tailwind", "Vite", "Supabase"]
@@ -12,33 +12,33 @@ const projects: Project[] = [
 	{
 		image: "wZHUg",
 		name: "Fortnite Item Shop",
-		desc: "Shows the current Fortnite item shop, updated daily at 00:00 UTC.",
+		desc: "Shows the current Fortnite item shop.",
 		url: "fn.nanos.club",
 		source: "github.com/misternano/fortnite-itemshop",
 		stack: ["React", "TS", "Tailwind", "Vite", "Wrangler"]
 	},
 	{
 		name: "Todo List",
-		desc: "Practice todo list built with React and TS. Backend built with Go and Fiber.",
+		desc: "Practice for Go & Fiber.",
 		source: "github.com/misternano/practice-todo",
 		stack: ["React", "TS", "Tailwind", "Vite", "Go", "Fiber", "Mongo", "Viper", "Air"]
 	},
 	{
 		image: "poKE6",
 		name: "Reverence House",
-		desc: "Redesign for Reverence House, built using React.",
+		desc: "Website redesign for Reverence House.",
 		stack: ["React", "Tailwind", "Vite"]
 	},
 	{
 		image: "f6Xq5",
 		name: "Control Panel",
-		desc: "An administrative control panel for Reverence House used to manage data.",
+		desc: "Management panel for Reverence House.",
 		stack: ["React", "Tailwind", "Vite", "Firebase"]
 	},
 	{
 		image: "LRFG1",
 		name: "Dashboard",
-		desc: "Concept dashboard featuring a team system, interactive calendar and messaging system.",
+		desc: "Concept dashboard, focusing on UI/UX.",
 		stack: ["Miscellaneous"]
 	},
 	{

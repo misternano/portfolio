@@ -8,10 +8,12 @@ const useUserData = () => {
 	useEffect(() => {
 		(async () => {
 			try {
-				const { data }: UserResponse = await supabase.auth.getUser();
-				setUser(data.user);
+				const { data, error }: UserResponse = await supabase.auth.getUser();
+				setUser(data?.user || null);
+				if (error) setUser(null);
 			} catch (error) {
-				console.error((error as Error).message);
+				console.error((error as Error));
+				setUser(null);
 			}
 		})();
 	}, []);
