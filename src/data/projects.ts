@@ -21,7 +21,7 @@ const projects: Project[] = [
 		name: "Todo List",
 		desc: "Practice for Go & Fiber.",
 		source: "github.com/misternano/practice-todo",
-		stack: ["React", "TS", "Tailwind", "Vite", "Go", "Fiber", "Mongo", "Viper", "Air"]
+		stack: ["React", "TS", "Tailwind", "Vite", "Go", "Fiber", "MongoDB", "Viper", "Air"]
 	},
 	{
 		image: "poKE6",

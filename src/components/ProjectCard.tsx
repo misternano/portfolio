@@ -65,11 +65,9 @@ const ProjectCard= ({ project }: { project: Project }) => {
 					</div>
 					<div className="p-2 flex flex-row flex-wrap gap-2">
 						{project.stack?.map((stack, index) => (
-							<div key={index} className="px-2 flex-grow text-center bg-brand rounded-md leading-none">
-								<span className="text-xs text-black font-medium uppercase">
-									{stack}
-								</span>
-							</div>
+							<span key={index} className="p-0.5 px-1.5 flex-grow text-center text-xs uppercase border border-yellow-600 bg-yellow-500/20 text-yellow-500 rounded-md">
+								{stack}
+							</span>
 						))}
 					</div>
 				</div>
