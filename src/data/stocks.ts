@@ -24,24 +24,24 @@ const stocks: Stock[] = [
 	{
 		image: "vanguard",
 		name: "Top 500",
-		alt: "Vanguard Top 500 ETC",
+		alt: "Vanguard Top 500 ETF",
 		ticker: "VOO"
 	},
 	{
 		image: "vanguard",
-		name: "REIT",
+		name: "Real Estate",
 		alt: "Vanguard Real Estate Investment Trust",
 		ticker: "VNQ"
 	},
 	{
 		image: "schwab",
-		name: "Broad",
+		name: "Broad Market",
 		alt: "Schwab Broad Market ETF",
 		ticker: "SCHB"
 	},
 	{
 		image: "blackrock",
-		name: "Energy",
+		name: "Clean Energy",
 		alt: "iShares Clean Energy ETF",
 		ticker: "ICLN"
 	}

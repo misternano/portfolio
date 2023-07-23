@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import placeholder from "../assets/album.png";
+import placeholder from "../assets/images/album.png";
 
 const formatTime = (ms) => {
 	const minutes = Math.floor(ms / 1000 / 60);

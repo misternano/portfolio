@@ -6,7 +6,7 @@ import moment from "moment";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { Parallax } from "react-scroll-parallax";
-import { ChevronDown, X, GanttChart, Plus } from "lucide-react";
+import {ChevronDown, X, GanttChart, Plus, Rocket, LineChart} from "lucide-react";
 import { useUserData } from "../hooks";
 const greetings = ["Hi", "Hey", "Hello"];
 
@@ -110,49 +110,52 @@ const Home = () => {
 						<section id="about" ref={motionRef}>
 							{!user ?
 								<h3>
-									What I Do
+									Stack & Finance
 								</h3>
 								:
-								<div className="grid grid-cols-2 md:grid-cols-3 items-center md:w-[85%] mx-auto">
+								<div className="grid grid-cols-2 md:grid-cols-3 items-center md:w-[75%] mx-auto">
 									<div className="hidden md:block" />
 									<h3 className="pl-0 md:pl-6">
-										What I Do
+										Stack & Finance
 									</h3>
 									<Button name="Manage" onClick={aboutManager} icon={
 										<GanttChart size="16" className="stroke-neutral-300 group-hover:stroke-white transition-colors" />
 									} />
 								</div>
 							}
-							<div className="md:w-[85%] mx-auto flex flex-col gap-4">
-								<motion.div initial={{ y: 15, opacity: 0 }} animate={controlsY} className="grid grid-cols-1 xl:grid-cols-3 items-center gap-4">
-									<div className="order-1 xl:order-2 h-full p-4 flex flex-col justify-center items-center bg-card border border-neutral-700 rounded-xl">
-										<h4 className="text-neutral-300 font-medium text-center">
-											Developer & Investor
+							<div className="md:w-[75%] mx-auto flex flex-col gap-4">
+								<div className="flex flex-row gap-4">
+									<motion.div initial={{ x: -15, opacity: 0 }} animate={controlsX} className="min-w-[150px] p-4 flex flex-col justify-center items-center bg-card border border-neutral-700 rounded-xl">
+										<h4 className="flex flex-row gap-2 items-center">
+											<Rocket size="16" className="stroke-neutral-300" />
+											<span className="text-neutral-300 font-medium text-center">Stack</span>
 										</h4>
-										<p className="xl:hidden block text-neutral-300 text-center">
-											Find my tech stack and investments I&apos;ve made below
-										</p>
-										<p className="xl:block hidden text-neutral-300 text-center">
-											Find my tech stack below and investments I&apos;ve made on the left
-										</p>
-									</div>
-									<div className="order-2 xl:order-1 grid grid-cols-2 xl:grid-cols-4 gap-4 xl:col-span-2">
+									</motion.div>
+									<motion.div initial={{ x: 15, opacity: 0 }} animate={controlsX} className="md:pb-0 py-2 flex flex-nowrap gap-2 border border-neutral-700 rounded-xl overflow-x-scroll">
+										{tech.map((data: Tech, index: number) => (
+											<TechCard
+												key={index}
+												tech={data}
+											/>
+										))}
+									</motion.div>
+								</div>
+								<div className="flex flex-row gap-4">
+									<motion.div initial={{ x: -15, opacity: 0 }} animate={controlsX} className="md:pb-0 py-2 flex flex-nowrap gap-2 border border-neutral-700 rounded-xl overflow-x-scroll">
 										{stocks.map((data: Stock, index: number) => (
 											<StockCard
 												key={index}
 												stock={data}
 											/>
 										))}
-									</div>
-								</motion.div>
-								<motion.div initial={{ y: 15, opacity: 0 }} animate={controlsY} className="md:pb-0 py-2 flex flex-nowrap gap-2 border border-neutral-700 rounded-xl order-3 xl:col-span-4 overflow-x-scroll">
-									{tech.map((data: Tech, index: number) => (
-										<TechCard
-											key={index}
-											tech={data}
-										/>
-									))}
-								</motion.div>
+									</motion.div>
+									<motion.div initial={{ x: 15, opacity: 0 }} animate={controlsX} className="min-w-[150px] p-4 flex flex-col justify-center items-center bg-card border border-neutral-700 rounded-xl">
+										<h4 className="flex flex-row gap-2 items-center">
+											<LineChart size="16" className="stroke-neutral-300" />
+											<span className="text-neutral-300 font-medium text-center">Investments</span>
+										</h4>
+									</motion.div>
+								</div>
 							</div>
 						</section>
 						<section id="projects" ref={motionRef}>
@@ -171,7 +174,7 @@ const Home = () => {
 									} />
 								</div>
 							}
-							<motion.div initial={{ y: -15, opacity: 0 }} animate={controlsY} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4 isolate">
+							<motion.div initial={{ y: 15, opacity: 0 }} animate={controlsY} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4 isolate">
 								{projects.map((data: Project, index: number) => (
 									<ProjectCard
 										key={index}
