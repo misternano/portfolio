@@ -1,4 +1,3 @@
-import React from "react";
 import { AlertCircle, CheckCircle2, HelpCircle, Info, Zap } from "lucide-react";
 
 interface ToastProps {

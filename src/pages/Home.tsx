@@ -1,13 +1,13 @@
-import React, { useMemo, useState, useRef, useEffect } from "react";
-import { Avatar, Button, ProjectCard, ContactCard, CreateProject, StockCard, Layout, SocialLink, TechCard } from "../components";
+import { useMemo, useState, useRef, useEffect } from "react";
+import { useClickOutside, useUserData } from "../hooks";
 import { Project, Stock, Tech } from "../types";
 import { projects, stocks, tech } from "../data";
-import moment from "moment";
-import { motion, useAnimation } from "framer-motion";
+import { Avatar, Button, ProjectCard, ContactCard, CreateProject, StockCard, Layout, SocialLink, TechCard } from "../components";
+import { ChevronDown, X, GanttChart, Plus, Rocket, LineChart } from "lucide-react";
 import { useInView } from "react-intersection-observer";
+import { motion, useAnimation } from "framer-motion";
 import { Parallax } from "react-scroll-parallax";
-import {ChevronDown, X, GanttChart, Plus, Rocket, LineChart} from "lucide-react";
-import { useUserData } from "../hooks";
+import moment from "moment";
 const greetings = ["Hi", "Hey", "Hello"];
 
 const Home = () => {
@@ -19,6 +19,8 @@ const Home = () => {
 	const [motionRef, inView] = useInView();
 	const [createProjectModal, setCreateProjectModal] = useState<boolean>(false);
 	const [aboutModal, setAboutModal] = useState<boolean>(false);
+	const [investModal, setInvestModal] = useState<boolean>(false);
+	const [stackModal, setStackModal] = useState<boolean>(false);
 
 	const age: number = Math.floor((moment().valueOf() - moment("2002-02-11", "YYYY-MM-DD").valueOf()) / 31536000000);
 
@@ -53,13 +55,12 @@ const Home = () => {
 		}
 	}, [controlsX, controlsY, inView]);
 
-	const createProject = () => {
-		setCreateProjectModal(true);
-	};
-
-	const aboutManager = () => {
-		setAboutModal(true);
-	};
+	const modalRef = useClickOutside(() => {
+		setCreateProjectModal(false);
+		setAboutModal(false);
+		setInvestModal(false);
+		setStackModal(false);
+	});
 
 	return (
 		<>
@@ -118,7 +119,7 @@ const Home = () => {
 									<h3 className="pl-0 md:pl-6">
 										Stack & Finance
 									</h3>
-									<Button name="Manage" onClick={aboutManager} icon={
+									<Button name="Manage" onClick={() => setAboutModal(true)} icon={
 										<GanttChart size="16" className="stroke-neutral-300 group-hover:stroke-white transition-colors" />
 									} />
 								</div>
@@ -169,7 +170,7 @@ const Home = () => {
 									<h3 className="pl-0 md:pl-6">
 										Projects
 									</h3>
-									<Button name="New" onClick={createProject} icon={
+									<Button name="New" onClick={() => setCreateProjectModal(true)} icon={
 										<Plus size="16" className="stroke-neutral-300 group-hover:stroke-white transition-colors" />
 									} />
 								</div>
@@ -193,8 +194,8 @@ const Home = () => {
 				</Parallax>
 			</Layout>
 			{createProjectModal &&
-				<div className="fixed inset-0 z-10 flex items-center justify-center backdrop-blur">
-					<div className="min-w-[20rem] p-4 flex flex-col gap-4 bg-neutral-900 border border-neutral-700 rounded-xl">
+				<div className="fixed inset-0 z-10 flex items-center justify-center bg-neutral-800/50">
+					<div ref={modalRef} className="min-w-[20rem] p-4 flex flex-col gap-4 bg-neutral-900 border border-neutral-700 rounded-xl">
 						<div className="flex flex-row justify-between items-center">
 							<p className="font-medium text-sm text-neutral-300">New Project</p>
 							<button onClick={() => setCreateProjectModal(false)} className="group border border-transparent hover:border-red-500 rounded-md p-0.5">
@@ -207,8 +208,8 @@ const Home = () => {
 			}
 			{aboutModal &&
 				// TODO: Add about manager
-				<div className="fixed inset-0 z-10 flex items-center justify-center backdrop-blur">
-					<div className="min-w-[20rem] p-4 flex flex-col gap-4 bg-neutral-900 border border-neutral-700 rounded-xl">
+				<div className="fixed inset-0 z-10 flex items-center justify-center bg-neutral-800/50">
+					<div ref={modalRef} className="min-w-[20rem] p-4 flex flex-col gap-4 bg-neutral-900 border border-neutral-700 rounded-xl">
 						<div className="flex flex-row justify-between items-center">
 							<p className="font-medium text-sm text-neutral-300">About Management</p>
 							<button onClick={() => setAboutModal(false)} className="group border border-transparent hover:border-red-500 rounded-md p-0.5">
@@ -216,7 +217,12 @@ const Home = () => {
 							</button>
 						</div>
 						<div className="flex flex-row gap-4 justify-center">
-							some stuff here
+							<Button name="Stack" onClick={() => setStackModal(true)} icon={
+								<Rocket size="16" className="stroke-neutral-300 group-hover:stroke-white transition-colors" />
+							} />
+							<Button name="Investments" onClick={() => setStackModal(true)} icon={
+								<LineChart size="16" className="stroke-neutral-300 group-hover:stroke-white transition-colors" />
+							} />
 						</div>
 					</div>
 				</div>

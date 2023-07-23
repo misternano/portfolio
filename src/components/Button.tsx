@@ -1,5 +1,4 @@
-import React, { MouseEventHandler, ReactElement } from "react";
-import { GanttChart } from "lucide-react";
+import { MouseEventHandler, ReactElement } from "react";
 
 interface ButtonProps {
 	name: string;

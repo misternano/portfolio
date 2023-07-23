@@ -1,4 +1,3 @@
-import React from "react";
 import { Footer } from "./index";
 import { useUserData } from "../hooks";
 import { Dna } from "lucide-react";

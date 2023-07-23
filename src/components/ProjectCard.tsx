@@ -1,4 +1,3 @@
-import React from "react";
 import { Project } from "../types.ts";
 import placeholder from "../assets/images/placeholder.png";
 import { Pencil, Trash } from "lucide-react";

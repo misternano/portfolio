@@ -1,4 +1,3 @@
-import React from "react";
 import { Tech } from "../types";
 
 const TechCard = ({ tech }: { tech: Tech }) => {

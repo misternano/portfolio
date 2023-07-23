@@ -1,4 +1,3 @@
-import React from "react";
 import { Stock } from "../types.ts";
 
 const StockCard = ({ stock }: { stock: Stock }) => {

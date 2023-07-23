@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import placeholder from "../assets/images/album.png";
 
 const formatTime = (ms) => {
