@@ -1,4 +1,4 @@
-import { Project } from "../types.ts";
+import type { Project } from "../types.ts";
 import placeholder from "../assets/images/placeholder.png";
 import { Pencil, Trash } from "lucide-react";
 import { useSpring, animated } from "react-spring";

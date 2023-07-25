@@ -1,4 +1,4 @@
-import { Stock } from "../types.ts";
+import type { Stock } from "../types.ts";
 
 const StockCard = ({ stock }: { stock: Stock }) => {
 	return (

@@ -7,23 +7,15 @@ const Auth = () => {
 	const toast = useToasts();
 
 	const loginGithub = async () => {
-		try {
-			await supabase.auth.signInWithOAuth({
-				provider: "github",
-			});
-		} catch (err) {
-			console.error(err);
-		}
+		await supabase.auth.signInWithOAuth({
+			provider: "github",
+		});
 	};
 
 	const loginSpotify = async () => {
-		try {
-			await supabase.auth.signInWithOAuth({
-				provider: "spotify",
-			});
-		} catch (err) {
-			console.error(err);
-		}
+		await supabase.auth.signInWithOAuth({
+			provider: "spotify",
+		});
 	};
 
 	const logout = async () => {
@@ -31,6 +23,8 @@ const Auth = () => {
 		setUser(null);
 		toast("Logged out", "You have been logged out.", 2500, "bg-emerald-500");
 	};
+
+	console.log(loginGithub);
 
 	return (
 		<>
