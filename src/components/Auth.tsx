@@ -24,8 +24,6 @@ const Auth = () => {
 		toast("Logged out", "You have been logged out.", 2500, "bg-emerald-500");
 	};
 
-	console.log(loginGithub);
-
 	return (
 		<>
 			{!user &&
