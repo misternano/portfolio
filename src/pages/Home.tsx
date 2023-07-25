@@ -204,7 +204,7 @@ const Home = () => {
 			</Layout>
 			{user && (
 				<>
-					{createProjectModal &&
+					{createProjectModal && (
 						<div className="fixed inset-0 z-10 flex items-center justify-center bg-neutral-800/50">
 							<div ref={modalRef} className="min-w-[20rem] p-4 flex flex-col gap-4 bg-neutral-900 border border-neutral-700 rounded-xl">
 								<div className="flex flex-row justify-between items-center">
@@ -216,9 +216,8 @@ const Home = () => {
 								<CreateProject setCreateProjectModal={setCreateProjectModal} />
 							</div>
 						</div>
-					}
-					{aboutModal &&
-						// TODO: Add about manager
+					)}
+					{aboutModal && (
 						<div className="fixed inset-0 z-10 flex items-center justify-center bg-neutral-800/50">
 							<div ref={modalRef} className="min-w-[20rem] p-4 flex flex-col gap-4 bg-neutral-900 border border-neutral-700 rounded-xl">
 								<div className="flex flex-row justify-between items-center">
@@ -243,7 +242,7 @@ const Home = () => {
 								</div>
 							</div>
 						</div>
-					}
+					)}
 					{investModal && (
 						<div className="fixed inset-0 z-10 flex items-center justify-center bg-neutral-800/50">
 							<div ref={modalRef} className="min-w-[20rem] p-4 flex flex-col gap-4 bg-neutral-900 border border-neutral-700 rounded-xl">
