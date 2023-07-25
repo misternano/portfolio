@@ -1,4 +1,4 @@
-import { useState, useRef, FormEvent, ChangeEvent } from "react";
+import React, { useState, useRef, FormEvent, ChangeEvent } from "react";
 import { useToasts } from "../hooks";
 
 const ContactCard = () => {

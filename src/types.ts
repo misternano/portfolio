@@ -4,7 +4,8 @@ export interface Project {
 	desc: string;
 	url?: string;
 	source?: string;
-	stack?: string[];
+	stack: string[];
+	immune?: boolean;
 }
 
 export interface Stock {

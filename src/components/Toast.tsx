@@ -1,3 +1,4 @@
+import React from "react";
 import { AlertCircle, CheckCircle2, HelpCircle, Info, Zap } from "lucide-react";
 
 interface ToastProps {
@@ -7,8 +8,8 @@ interface ToastProps {
 }
 
 const Toast = ({ theme, title, description }: ToastProps) => {
-	const renderIconBasedOnTheme = (theme: string) => {
-		switch (theme) {
+	const renderIconBasedOnTheme = (iconTheme: string) => {
+		switch (iconTheme) {
 			case "bg-emerald-500":
 				return <CheckCircle2 size="24" />;
 			case "bg-amber-500":

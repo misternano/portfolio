@@ -1,5 +1,6 @@
-import { ChangeEvent, useState } from "react";
+import React, { ChangeEvent, useState, Dispatch, SetStateAction } from "react";
 import { Upload } from "lucide-react";
+import { useToasts } from "../hooks";
 
 interface FormProps {
 	image: File | null;
@@ -10,8 +11,13 @@ interface FormProps {
 	source?: string;
 }
 
+interface CreateProjectProps {
+	setCreateProjectModal: Dispatch<SetStateAction<boolean>>;
+}
+
 // TODO: Connect to supabase storage and database
-const CreateProject = () => {
+const CreateProject = ({ setCreateProjectModal }: CreateProjectProps) => {
+	const toast = useToasts();
 	const [formData, setFormData] = useState<FormProps>({
 		image: null,
 		imagePreview: "",
@@ -56,7 +62,8 @@ const CreateProject = () => {
 			link: "",
 			source: ""
 		});
-		console.log(formData);
+		toast("Success", "Project created successfully.", 2500, "bg-emerald-500");
+		setCreateProjectModal(false);
 	};
 
 	return (
@@ -93,6 +100,7 @@ const CreateProject = () => {
 				</label>
 			</div>
 			<input
+				autoFocus
 				id="title"
 				name="title"
 				type="text"

@@ -1,3 +1,4 @@
+import React from "react";
 import { AtSign, Github, LogOut } from "lucide-react";
 import { supabase } from "../lib/helper/supabaseClient";
 import { useUserData, useToasts } from "../hooks";
@@ -8,13 +9,13 @@ const Auth = () => {
 
 	const loginGithub = async () => {
 		await supabase.auth.signInWithOAuth({
-			provider: "github",
+			provider: "github"
 		});
 	};
 
 	const loginSpotify = async () => {
 		await supabase.auth.signInWithOAuth({
-			provider: "spotify",
+			provider: "spotify"
 		});
 	};
 

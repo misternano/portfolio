@@ -5,8 +5,9 @@ import ContactCard from "./ContactCard.tsx";
 import CreateProject from "./CreateProject.tsx";
 import Footer from "./Footer.tsx";
 import Layout from "./Layout.tsx";
+import Modal from "./Modal.tsx";
 import ProjectCard from "./ProjectCard.tsx";
-import SocialLink from "./SocialLink.tsx";
+import Social from "./Social.tsx";
 import Spotify from "./Spotify.jsx";
 import StockCard from "./StockCard.tsx";
 import TechCard from "./TechCard.tsx";
@@ -20,8 +21,9 @@ export {
 	CreateProject,
 	Footer,
 	Layout,
+	Modal,
 	ProjectCard,
-	SocialLink,
+	Social,
 	Spotify,
 	StockCard,
 	TechCard,

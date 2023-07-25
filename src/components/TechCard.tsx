@@ -1,3 +1,4 @@
+import React from "react";
 import type { Tech } from "../types";
 
 const TechCard = ({ tech }: { tech: Tech }) => {
@@ -7,7 +8,7 @@ const TechCard = ({ tech }: { tech: Tech }) => {
 				<img src={`../assets/svg/${tech.image}.svg`} alt={`${tech.name} Logo`} className="w-6 h-auto aspect-square rounded" />
 				<p className="text-xl font-semibold">{tech.name}</p>
 			</div>
-			<span className="p-0.5 px-1.5 text-xs uppercase border border-yellow-600 bg-yellow-500/20 text-yellow-500 rounded-md">
+			<span className="p-0.5 px-1.5 text-xs uppercase border border-yellow-600 bg-brand/20 text-brand rounded-md">
 				{tech.type}
 			</span>
 		</a>

@@ -7,7 +7,8 @@ const projects: Project[] = [
 		desc: "Open source portfolio built with React and TS.",
 		url: "nanos.club",
 		source: "github.com/misternano/portfolio",
-		stack: ["React", "TS", "Tailwind", "Vite", "Supabase"]
+		stack: ["React", "TS", "Tailwind", "Vite", "Supabase"],
+		immune: true
 	},
 	{
 		image: "wZHUg",

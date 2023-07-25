@@ -6,16 +6,20 @@ const useUserData = () => {
 	const [user, setUser] = useState<User | null>(null);
 
 	useEffect(() => {
-		const fetchData = async () => {
+		(async () => {
 			try {
-				const { data } = await supabase.auth.getUser();
-				setUser(data.user);
-			} catch (error) {
-				console.error((error as Error));
+				const { data, error } = await supabase.auth.getUser();
+				if (error) {
+					console.error((error as Error).message);
+					setUser(null);
+				}
+				if (data)
+					setUser(data.user);
+			} catch (_) {
+				console.error("Unexpected error occurred.");
 				setUser(null);
 			}
-		}
-		fetchData().then(null);
+		})();
 	}, []);
 
 	return { user, setUser };

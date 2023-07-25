@@ -10,7 +10,7 @@ interface SocialProps {
 	color?: string;
 }
 
-const SocialLink = ({ link, platform, children, size, color }: SocialProps) => {
+const Social = ({ link, platform, children, size, color }: SocialProps) => {
 	tippy("#discord", {
 		content: "nanos.club",
 		placement: "bottom"
@@ -41,4 +41,4 @@ const SocialLink = ({ link, platform, children, size, color }: SocialProps) => {
 	);
 };
 
-export default SocialLink;
+export default Social;

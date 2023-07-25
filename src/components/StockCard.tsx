@@ -1,3 +1,4 @@
+import React from "react";
 import type { Stock } from "../types.ts";
 
 const StockCard = ({ stock }: { stock: Stock }) => {
@@ -11,7 +12,7 @@ const StockCard = ({ stock }: { stock: Stock }) => {
 				<p className="text-brand font-medium">
 					{stock.name}
 				</p>
-				<p className="text-sm text-neutral-400">
+				<p className="text-sm text-neutral-300">
 					${stock.ticker}
 				</p>
 			</div>

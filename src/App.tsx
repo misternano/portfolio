@@ -1,3 +1,4 @@
+import React from "react";
 import { Route, Routes } from "react-router-dom";
 import { ParallaxProvider } from "react-scroll-parallax";
 import { Home, Terms, Privacy } from "./pages";
