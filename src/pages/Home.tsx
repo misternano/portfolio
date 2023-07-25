@@ -132,8 +132,8 @@ const Home = () => {
 									} />
 								</div>
 							}
-							<div className="md:w-[75%] mx-auto flex flex-col gap-4">
-								<div className="flex flex-row gap-4">
+							<div className="md:w-[75%] mx-auto flex flex-col gap-2 md:gap-4">
+								<div className="flex flex-row gap-2 md:gap-4">
 									<motion.div initial={{ x: -15, opacity: 0 }} animate={controlsX} className="md:min-w-[150px] md:p-4 flex flex-col justify-center items-center bg-card border border-neutral-700 rounded-xl">
 										<h4 className="flex flex-row gap-2 items-center -rotate-90 md:rotate-0">
 											<Rocket size="16" className="stroke-neutral-300" />
@@ -149,7 +149,7 @@ const Home = () => {
 										))}
 									</motion.div>
 								</div>
-								<div className="flex flex-row gap-4">
+								<div className="flex flex-row gap-2 md:gap-4">
 									<motion.div initial={{ x: -15, opacity: 0 }} animate={controlsX} className="md:pb-0 py-2 flex flex-nowrap gap-2 border border-neutral-700 rounded-xl overflow-x-scroll">
 										{stocks.map((data: Stock, index: number) => (
 											<StockCard
