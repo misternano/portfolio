@@ -21,7 +21,7 @@ const ProjectCard= ({ project }: { project: Project }) => {
 	const [confirmDeleteModal, setConfirmDeleteModal] = useState<boolean>(false);
 	const [props, set] = useSpring(() => ({
 		xys: [0, 0, 1],
-		config: { mass: 2, tension: 350, friction: 40 }
+		config: { mass: 2, tension: 350, friction: 25 }
 	}));
 
 	const modalRef = useClickOutside(() => {
