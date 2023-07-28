@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useState, Dispatch, SetStateAction } from "react";
+import { ChangeEvent, useState, Dispatch, SetStateAction } from "react";
 import { Upload } from "lucide-react";
 import { useToasts } from "../hooks";
 

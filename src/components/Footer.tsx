@@ -1,4 +1,3 @@
-import React from "react";
 import { Auth, Social } from "./index";
 
 const Footer = () => {

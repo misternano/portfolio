@@ -1,4 +1,4 @@
-import React, { useMemo, useState, useRef, useEffect } from "react";
+import { useMemo, useState, useRef, useEffect } from "react";
 import { useClickOutside, useUserData } from "../hooks";
 import { Project, Stock, Tech } from "../types";
 import { projects, stocks, tech } from "../data";
@@ -45,18 +45,20 @@ const Home = () => {
 			const animationPromises = [];
 			if (inView) {
 				animationPromises.push(
-					controlsX.start({
+					controlsX.start(animationValues => ({
 						opacity: 1,
 						x: 0,
-						transition: { delay: 0.1, duration: 0.5, ease: "easeInOut" }
-					})
+						transition: { delay: 0.1, duration: 0.5, ease: "easeInOut" },
+						...animationValues
+					}))
 				);
 				animationPromises.push(
-					controlsY.start({
+					controlsY.start(animationValues => ({
 						opacity: 1,
 						y: 0,
-						transition: { delay: 0.1, duration: 0.5, ease: "easeInOut" }
-					})
+						transition: { delay: 0.1, duration: 0.5, ease: "easeInOut" },
+						...animationValues
+					}))
 				);
 				await Promise.all(animationPromises);
 			}

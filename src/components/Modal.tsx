@@ -1,4 +1,4 @@
-import React, { ReactNode, RefObject } from "react";
+import { ReactNode, RefObject } from "react";
 import { X } from "lucide-react";
 
 interface ModalProps {

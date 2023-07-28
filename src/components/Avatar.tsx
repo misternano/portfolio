@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import placeholder from "../assets/images/avatar.png";
 import { useLanyard } from "use-lanyard";
 

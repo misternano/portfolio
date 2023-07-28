@@ -1,9 +1,9 @@
-import React from "react";
+import { ReactNode } from "react";
 import tippy from "tippy.js";
 import "tippy.js/dist/tippy.css";
 
 interface SocialProps {
-	children: React.ReactNode;
+	children: ReactNode;
 	link: string;
 	platform?: string;
 	size: string;

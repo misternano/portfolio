@@ -1,4 +1,3 @@
-import React from "react";
 import { AtSign, Github, LogOut } from "lucide-react";
 import { supabase } from "../lib/helper/supabaseClient";
 import { useUserData, useToasts } from "../hooks";

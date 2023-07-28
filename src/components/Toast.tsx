@@ -1,4 +1,3 @@
-import React from "react";
 import { AlertCircle, CheckCircle2, HelpCircle, Info, Zap } from "lucide-react";
 
 interface ToastProps {
@@ -26,15 +25,17 @@ const Toast = ({ theme, title, description }: ToastProps) => {
 	};
 
 	return (
-		<div className={`w-full max-w-6xl mt-1 p-2 px-4 flex flex-row gap-4 items-center ${theme} rounded-lg text-white`}>
+		<div className={`${description ? "w-full" : "w-fit mx-auto"} max-w-6xl mt-1 p-2 px-4 flex flex-row gap-4 items-center ${theme} rounded-lg text-white`}>
 			{renderIconBasedOnTheme(theme)}
 			<div>
 				<p className="font-bold">
 					{title}
 				</p>
-				<p className="text-sm">
-					{description}
-				</p>
+				{description && (
+					<p className="text-sm">
+						{description}
+					</p>
+				)}
 			</div>
 		</div>
 	);

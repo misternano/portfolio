@@ -1,10 +1,10 @@
-import React from "react";
+import { ReactNode } from "react";
 import { Footer } from "./index";
 import { useUserData } from "../hooks";
 import { Dna } from "lucide-react";
 
 interface LayoutProps {
-	children: React.ReactNode;
+	children: ReactNode;
 }
 
 const Layout = ({ children }: LayoutProps) => {

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import type { Project } from "../types.ts";
 import placeholder from "../assets/images/placeholder.png";
 import { Pencil, Trash, X } from "lucide-react";
@@ -29,8 +29,7 @@ const ProjectCard= ({ project }: { project: Project }) => {
 	});
 
 	const checkImmunityBeforeDelete = () => {
-		if (project.immune)
-			toast("Error", "This project has immunity from deletion.", 2500, "bg-rose-500");
+		if (project.immune) toast("Error", "This project has immunity from deletion.", 2500, "bg-rose-500");
 		else {
 			setConfirmDeleteModal(false);
 			toast("Success", "Project deleted successfully.", 2500, "bg-emerald-500");
