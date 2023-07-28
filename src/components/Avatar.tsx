@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import placeholder from "../assets/images/avatar.png";
 import { useLanyard } from "use-lanyard";
+import placeholder from "../assets/images/avatar.png";
 
 const Avatar = () => {
 	const { data } = useLanyard("272535850200596480");
@@ -8,8 +8,7 @@ const Avatar = () => {
 	const [backgroundColor, setBackgroundColor] = useState<string>("bg-offline");
 
 	useEffect(() => {
-		if (data?.listening_to_spotify)
-			setBorderColor("border-spotify");
+		if (data?.listening_to_spotify) setBorderColor("border-spotify");
 		else {
 			switch (data?.discord_status) {
 				case "online":

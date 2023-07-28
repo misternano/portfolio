@@ -28,8 +28,6 @@ const ContactCard = () => {
 		}
 	};
 
-	if (errors.email || errors.message) toast("Error", "Please fill in all required fields.", 2500, "bg-rose-500");
-
 	return (
 		<form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-3">
 			<div className="flex flex-col lg:grid grid-cols-2 gap-3">
