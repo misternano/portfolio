@@ -1,8 +1,38 @@
 import placeholder from "../assets/images/album.png";
-import { useLanyard } from "use-lanyard";
+import { useEffect, useState } from "react";
+
+interface Spotify {
+	listening_to_spotify: boolean;
+	spotify: {
+		track_id: string;
+		album_art_url: string;
+		artist: string;
+		song: string;
+		album: string;
+	}
+}
 
 const Spotify = () => {
-	const { data } = useLanyard("272535850200596480");
+	const [data, setData] = useState<Spotify | null>(null);
+
+	const fetchData = async () => {
+		const response = await fetch("https://api.lanyard.rest/v1/users/272535850200596480");
+		const data = await response.json();
+		setData(data.data);
+	};
+
+	useEffect(() => {
+		fetchData();
+		const interval = setInterval((async () => {
+			try {
+				fetchData()
+				console.log("ping");
+			} catch (err) {
+				console.error(err);
+			}
+		}), 60000);
+		return () => clearInterval(interval);
+	}, []);
 
 	if (!data || !data?.listening_to_spotify)
 		return null;
