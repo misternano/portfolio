@@ -19,8 +19,9 @@ const Auth = () => {
 	};
 
 	const logout = async () => {
-		await supabase.auth.signOut();
-		setUser(null);
+		await supabase.auth.signOut().then(() => {
+			setUser(null);
+		});
 		toast("Logged out", "You have been logged out.", 2500, "bg-emerald-500");
 	};
 

@@ -8,7 +8,7 @@ import Layout from "./Layout.tsx";
 import Modal from "./Modal.tsx";
 import ProjectCard from "./ProjectCard.tsx";
 import Social from "./Social.tsx";
-import Spotify from "./Spotify.jsx";
+import Spotify from "./Spotify.js";
 import StockCard from "./StockCard.tsx";
 import TechCard from "./TechCard.tsx";
 import Toast from "./Toast.tsx";

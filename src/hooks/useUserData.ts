@@ -9,11 +9,8 @@ const useUserData = () => {
 		(async () => {
 			try {
 				const { data, error } = await supabase.auth.getUser();
-				if (error) {
-					console.error((error as Error).message);
-				}
-				if (data)
-					setUser(data.user);
+				if (error) console.error((error as Error).message);
+				if (data) setUser(data.user);
 			} catch (_) {
 				console.error("Unexpected error occurred.");
 			}
