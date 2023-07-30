@@ -29,30 +29,30 @@ const ProjectCard= ({ project }: { project: Project }) => {
 	});
 
 	const checkImmunityBeforeDelete = () => {
-		if (project.immune) toast("Error", "This project has immunity from deletion.", 2500, "bg-rose-500");
+		if (project.immune) toast("Error", `${project.name} cannot be deleted.`, 2500, "bg-rose-500");
 		else {
 			setConfirmDeleteModal(false);
-			toast("Success", "Project deleted successfully.", 2500, "bg-emerald-500");
-			// handle deletion
+			toast("Success", `Deleted "${project.name}"`, 2500, "bg-emerald-500");
+			// TODO: handle deletion
 		}
 	};
 
 	return (
 		<>
-			<animated.div onMouseMove={({ clientX: x, clientY: y }: { clientX: number; clientY: number }) => set({ xys: calc(x, y) })} onMouseLeave={() => set({ xys: [0, 0, 1] })} style={{ transform: props.xys.to(trans) }} className="relative group/wrapper z-0 hover:z-10">
+			<animated.div onMouseMove={({ clientX: x, clientY: y }: { clientX: number; clientY: number }) => set({ xys: calc(x, y) })} onMouseLeave={() => set({ xys: [0, 0, 1] })} style={{ transform: props.xys.to(trans) }} className="relative group z-0 hover:z-10">
 				{user && (
-					<div className="z-10 absolute -top-2 right-2 hidden group-hover/wrapper:flex flex-row bg-neutral-900 border border-neutral-700 rounded-lg overflow-hidden">
-						<button className="group py-1 px-2 hover:bg-neutral-800 focus:bg-neutral-800">
-							<Pencil size="20" className="stroke-neutral-300 group-hover:stroke-white group-focus:stroke-white" />
+					<div className="z-10 absolute -top-2 right-2 hidden group-hover:flex flex-row bg-neutral-900 border border-neutral-700 rounded-lg overflow-hidden">
+						<button className="group/edit py-1 px-2 hover:bg-neutral-800 focus:bg-neutral-800">
+							<Pencil size="20" className="stroke-neutral-300 group-hover/edit:stroke-white group-focus/edit:stroke-white" />
 						</button>
 						{!project.immune && (
-							<button onClick={() => setConfirmDeleteModal(true)} className="group py-1 px-2 hover:bg-neutral-800 focus:bg-neutral-800">
-								<Trash size="20" className="stroke-red-400 group-hover:stroke-rose-500 group-focus:stroke-rose-500" />
+							<button onClick={() => setConfirmDeleteModal(true)} className="group/delete py-1 px-2 hover:bg-neutral-800 focus:bg-neutral-800">
+								<Trash size="20" className="stroke-red-400 group-hover/delete:stroke-rose-500 group-focus/delete:stroke-rose-500" />
 							</button>
 						)}
 					</div>
 				)}
-				<div className="h-full flex flex-col bg-card border border-neutral-700 rounded-xl overflow-hidden group-hover/wrapper:border-b-0 group-hover/wrapper:rounded-b-none">
+				<div className="h-full flex flex-col bg-card border border-neutral-700 rounded-xl overflow-hidden group-hover:border-b-0 group-hover:rounded-b-none">
 					<img src={project.image ? `assets/images/${project.image}.png` : placeholder} alt={`${project.name} Project`} className="w-full h-auto rounded-b-xl drop-shadow" loading="lazy" />
 					<div className="h-full p-2 flex flex-col items-center justify-between">
 						<div className="w-full">
@@ -65,7 +65,7 @@ const ProjectCard= ({ project }: { project: Project }) => {
 						</div>
 					</div>
 				</div>
-				<div className="absolute left-0 right-0 hidden group-hover/wrapper:block">
+				<div className="absolute left-0 right-0 hidden group-hover:block overflow-visible">
 					<div className="rounded-xl bg-card border border-neutral-700 border-t-0 rounded-t-none">
 						<div className="flex flex-row justify-center gap-1">
 							{project.url &&
@@ -96,7 +96,7 @@ const ProjectCard= ({ project }: { project: Project }) => {
 				<div className="fixed inset-0 z-10 flex items-center justify-center bg-neutral-800/50">
 					<div ref={modalRef} className="min-w-[20rem] p-4 flex flex-col gap-4 bg-neutral-900 border border-neutral-700 rounded-xl">
 						<div className="flex flex-row justify-between items-center">
-							<p className="font-medium text-sm text-neutral-300">Delete {project.name}</p>
+							<p className="font-medium text-sm text-neutral-300">Delete Project</p>
 							<button onClick={() => setConfirmDeleteModal(false)} className="group border border-transparent hover:border-red-500 rounded-md p-0.5">
 								<X size="16" className="group-hover:stroke-red-500" />
 							</button>
