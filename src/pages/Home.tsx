@@ -266,9 +266,9 @@ const Home = () => {
 											setInvestModal(false);
 											setAboutModal(true);
 										}}
-										className="group border border-transparent hover:border-brand rounded-md p-0.5"
+										className="group border border-transparent hover:border-neutral-300 rounded-md p-0.5"
 									>
-										<ArrowLeft size="16" className="group-hover:stroke-brand" />
+										<ArrowLeft size="16" className="group-hover:stroke-neutral-300" />
 									</button>
 									<p className="font-medium text-sm text-neutral-300">Investments Management</p>
 									<button
@@ -291,9 +291,9 @@ const Home = () => {
 											setStackModal(false);
 											setAboutModal(true);
 										}}
-										className="group border border-transparent hover:border-brand rounded-md p-0.5"
+										className="group border border-transparent hover:border-neutral-300 rounded-md p-0.5"
 									>
-										<ArrowLeft size="16" className="group-hover:stroke-brand" />
+										<ArrowLeft size="16" className="group-hover:stroke-neutral-300" />
 									</button>
 									<p className="font-medium text-sm text-neutral-300">Stack Management</p>
 									<button
