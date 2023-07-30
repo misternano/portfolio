@@ -8,6 +8,12 @@ const tech: Tech[] = [
 		url: "react.dev"
 	},
 	{
+		image: "nextjs",
+		name: "Next.js",
+		type: "Web Framework",
+		url: "nextjs.org"
+	},
+	{
 		image: "typescript",
 		name: "TypeScript",
 		type: "Language",

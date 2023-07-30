@@ -16,7 +16,7 @@ const projects: Project[] = [
 		desc: "Shows the current Fortnite item shop.",
 		url: "fn.nanos.club",
 		source: "github.com/misternano/fortnite-itemshop",
-		stack: ["React", "TS", "Tailwind", "Vite", "Wrangler"]
+		stack: ["Next.js", "TS", "Tailwind", "Wrangler"]
 	},
 	{
 		name: "Todo List",

@@ -65,7 +65,7 @@ const ProjectCard= ({ project }: { project: Project }) => {
 						</div>
 					</div>
 				</div>
-				<div className="absolute left-0 right-0 hidden group-hover:block overflow-visible">
+				<div className="absolute left-0 right-0 hidden group-hover:block">
 					<div className="rounded-xl bg-card border border-neutral-700 border-t-0 rounded-t-none">
 						<div className="flex flex-row justify-center gap-1">
 							{project.url &&
