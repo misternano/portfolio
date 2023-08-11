@@ -2,18 +2,7 @@ import { useMemo, useState, useRef, useEffect } from "react";
 import { useClickOutside, useUserData } from "../hooks";
 import { Project, Stock, Tech } from "../types";
 import { projects, stocks, tech } from "../data";
-import {
-	Avatar,
-	Button,
-	ProjectCard,
-	ContactCard,
-	CreateProject,
-	StockCard,
-	Layout,
-	Social,
-	TechCard,
-	Spotify
-} from "../components";
+import { Avatar, Button, ProjectCard, ContactCard, CreateProject, StockCard, Layout, Social, TechCard, Spotify } from "../components";
 import { ChevronDown, GanttChart, Plus, Rocket, LineChart, X, ArrowLeft } from "lucide-react";
 import { useInView } from "react-intersection-observer";
 import { motion, useAnimation } from "framer-motion";

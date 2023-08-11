@@ -1,7 +1,7 @@
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useToasts } from "../hooks";
 
-interface Inputs {
+interface InputProps {
 	email: string;
 	subject: string;
 	message: string;
@@ -9,14 +9,15 @@ interface Inputs {
 
 const ContactCard = () => {
 	const toast = useToasts();
-	const { register, handleSubmit, formState: { errors } } = useForm<Inputs>();
-	const onSubmit: SubmitHandler<Inputs> = async (data) => {
+	const { register, handleSubmit, formState: { errors } } = useForm<InputProps>();
+
+	const onSubmit: SubmitHandler<InputProps> = async (data) => {
 		try {
 			const response = await fetch("https://getform.io/f/adff09e7-4050-40d8-9665-9ae955e8fb66", {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
-					"Accept": "application/json"
+					Accept: "application/json"
 				},
 				body: JSON.stringify(data)
 			});

@@ -2,7 +2,7 @@ import placeholder from "../assets/images/album.png";
 import { useEffect, useState } from "react";
 import { Circle } from "lucide-react";
 
-interface Spotify {
+interface SpotifyProps {
 	listening_to_spotify: boolean;
 	spotify: {
 		track_id: string;
@@ -14,19 +14,19 @@ interface Spotify {
 }
 
 const Spotify = () => {
-	const [data, setData] = useState<Spotify | null>(null);
+	const [data, setData] = useState<SpotifyProps | null>(null);
 
 	const fetchData = async () => {
 		const response = await fetch("https://api.lanyard.rest/v1/users/272535850200596480");
-		const data = await response.json();
-		setData(data.data);
+		const body = await response.json();
+		setData(body.data);
 	};
 
 	useEffect(() => {
 		fetchData();
 		const interval = setInterval((async () => {
 			try {
-				fetchData()
+				fetchData();
 				console.log("ping");
 			} catch (err) {
 				console.error(err);
