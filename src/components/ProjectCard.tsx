@@ -84,7 +84,7 @@ const ProjectCard= ({ project }: { project: Project }) => {
 						</div>
 						<div className="p-2 flex flex-row flex-wrap gap-2">
 							{project.stack?.map((stack, index) => (
-								<span key={index} className="p-0.5 px-1.5 flex-grow text-center text-xs uppercase border border-yellow-600 bg-brand/20 text-brand rounded-md">
+								<span key={index} className="p-0.5 px-1.5 flex-grow text-center text-xs font-archia uppercase border border-yellow-600 bg-brand/20 text-brand rounded-md">
 									{stack}
 								</span>
 							))}
