@@ -50,7 +50,7 @@ section {
     @apply my-24 w-[90%] mx-auto;
 }
 
-h3 {
+h2 {
     @apply text-gradient mx-auto p-6 text-center text-3xl font-bold;
 }
 
@@ -84,10 +84,6 @@ h3 {
     font-family: "Work Sans", sans-serif;
 }
 
-.animate-spin-slow {
-    animation: spin-slow 10s linear infinite;
-}
-
 .separator-hr {
     display: flex;
     align-items: center;
@@ -115,13 +111,4 @@ h3 {
 
 input, textarea {
     @apply text-sm;
-}
-
-@keyframes spin-slow {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
 }

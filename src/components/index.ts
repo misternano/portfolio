@@ -1,17 +1,16 @@
-import Auth from "./Auth.tsx";
-import Avatar from "./Avatar.tsx";
-import Button from "./Button.tsx";
-import ContactCard from "./ContactCard.tsx";
-import CreateProject from "./CreateProject.tsx";
-import Footer from "./Footer.tsx";
-import Layout from "./Layout.tsx";
-import Modal from "./Modal.tsx";
-import ProjectCard from "./ProjectCard.tsx";
-import Social from "./Social.tsx";
+import Auth from "./Auth";
+import Avatar from "./Avatar";
+import Button from "./Button";
+import ContactCard from "./ContactCard";
+import CreateProject from "./CreateProject";
+import Footer from "./Footer";
+import Layout from "./Layout";
+import ProjectCard from "./ProjectCard";
+import Social from "./Social";
 import Spotify from "./Spotify.js";
-import StockCard from "./StockCard.tsx";
-import TechCard from "./TechCard.tsx";
-import Toast from "./Toast.tsx";
+import StockCard from "./StockCard";
+import TechCard from "./TechCard";
+import Toast from "./Toast";
 
 export {
 	Auth,
@@ -21,7 +20,6 @@ export {
 	CreateProject,
 	Footer,
 	Layout,
-	Modal,
 	ProjectCard,
 	Social,
 	Spotify,

@@ -1,4 +1,4 @@
-import { ChangeEvent, useState, Dispatch, SetStateAction } from "react";
+import { ChangeEvent, useState, Dispatch, SetStateAction, FormEvent } from "react";
 import { Upload } from "lucide-react";
 import { useToasts } from "../hooks";
 
@@ -52,7 +52,7 @@ const CreateProject = ({ setCreateProjectModal }: CreateProjectProps) => {
 		}
 	};
 
-	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+	const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		setFormData({
 			image: null,

@@ -1,4 +1,4 @@
-import { AlertCircle, CheckCircle2, HelpCircle, Info, Zap } from "lucide-react";
+import { AlertCircle, CheckCircle2, Ghost, HelpCircle, Info, Zap } from "lucide-react";
 
 interface ToastProps {
 	theme: string,
@@ -19,13 +19,15 @@ const Toast = ({ theme, title, description }: ToastProps) => {
 				return <AlertCircle size="24" />;
 			case "bg-brand":
 				return <Zap size="24" />;
+			case "bg-neutral-900":
+				return <Ghost size="24" />;
 			default:
 				return <HelpCircle size="24" />;
 		}
 	};
 
 	return (
-		<div className={`${description ? "w-full" : "w-fit mx-auto"} max-w-6xl mt-1 p-2 px-4 flex flex-row gap-4 items-center ${theme} rounded-lg text-white`}>
+		<div className={`${description ? "w-full" : "w-fit mx-auto"} max-w-6xl mt-1 p-2 px-4 flex flex-row gap-4 items-center ${theme} rounded-xl text-white`}>
 			{renderIconBasedOnTheme(theme)}
 			<div>
 				<p className="font-bold">

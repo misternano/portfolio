@@ -85,9 +85,9 @@ const Home = () => {
 									<h1 className="text-gradient text-center text-5xl font-bold leading-tight">
 										{greeting}, <br className="md:hidden" /> I&apos;m Nano
 									</h1>
-									<h2 className="text-neutral-300 font-medium mb-2">
+									<p className="text-neutral-300 font-medium mb-2">
 										{age} &bull; Developer
-									</h2>
+									</p>
 									<div className="flex flex-col items-center gap-4 z-20">
 										<div className="flex flex-row gap-5 w-full md:w-fit pt-4 px-4 justify-center border-t border-neutral-700">
 											<Social size="h-12 md:h-10" link="https://www.discord.com/users/272535850200596480/" platform="discord">
@@ -117,93 +117,91 @@ const Home = () => {
 						<ChevronDown className="h-8 w-8 stroke-neutral-300 group-hover:stroke-white group-focus:stroke-white transition-colors" />
 					</div>
 				</button>
-				<Parallax>
-					<main className="mt-[20vh] md:mt-[40vh] m-2" ref={scrollRef}>
-						<section id="about" ref={motionRef}>
-							{!user ?
-								<h3>
+				<main className="mt-[20vh] md:mt-[40vh] m-2" ref={scrollRef}>
+					<section id="about" ref={motionRef}>
+						{!user ?
+							<h2>
+								Stack & Finance
+							</h2>
+							:
+							<div className="grid grid-cols-2 md:grid-cols-3 items-center md:w-[75%] mx-auto">
+								<div className="hidden md:block" />
+								<h2 className="pl-0 md:pl-6">
 									Stack & Finance
-								</h3>
-								:
-								<div className="grid grid-cols-2 md:grid-cols-3 items-center md:w-[75%] mx-auto">
-									<div className="hidden md:block" />
-									<h3 className="pl-0 md:pl-6">
-										Stack & Finance
-									</h3>
-									<Button name="Manage" onClick={() => setAboutModal(true)} icon={
-										<GanttChart size="16" className="stroke-neutral-300 group-hover:stroke-white transition-colors" />
-									} />
-								</div>
-							}
-							<div className="md:w-[75%] mx-auto flex flex-col gap-2 md:gap-4">
-								<div className="flex flex-row gap-2 md:gap-4">
-									<motion.div initial={{ x: -15, opacity: 0 }} animate={controlsX} className="md:min-w-[150px] md:p-4 flex flex-col justify-center items-center bg-card border border-neutral-700 rounded-xl">
-										<h4 className="flex flex-row gap-2 items-center -rotate-90 md:rotate-0">
-											<Rocket size="16" className="stroke-neutral-300" />
-											<span className="text-neutral-300 font-medium text-center">Stack</span>
-										</h4>
-									</motion.div>
-									<motion.div initial={{ x: 15, opacity: 0 }} animate={controlsX} className="md:pb-0 py-2 flex flex-nowrap gap-2 border border-neutral-700 rounded-xl overflow-x-scroll">
-										{tech.map((data: Tech, index: number) => (
-											<TechCard
-												key={index}
-												tech={data}
-											/>
-										))}
-									</motion.div>
-								</div>
-								<div className="flex flex-row gap-2 md:gap-4">
-									<motion.div initial={{ x: -15, opacity: 0 }} animate={controlsX} className="md:pb-0 py-2 flex flex-nowrap gap-2 border border-neutral-700 rounded-xl overflow-x-scroll">
-										{stocks.map((data: Stock, index: number) => (
-											<StockCard
-												key={index}
-												stock={data}
-											/>
-										))}
-									</motion.div>
-									<motion.div initial={{ x: 15, opacity: 0 }} animate={controlsX} className="md:min-w-[150px] md:p-4 flex flex-col justify-center items-center bg-card border border-neutral-700 rounded-xl">
-										<h4 className="flex flex-row gap-2 items-center rotate-90 md:rotate-0">
-											<LineChart size="16" className="stroke-neutral-300" />
-											<span className="text-neutral-300 font-medium text-center md:hidden">Invest</span>
-											<span className="text-neutral-300 font-medium text-center hidden md:block">Investments</span>
-										</h4>
-									</motion.div>
-								</div>
+								</h2>
+								<Button name="Manage" onClick={() => setAboutModal(true)} icon={
+									<GanttChart size="16" className="stroke-neutral-300 group-hover:stroke-white transition-colors" />
+								} />
 							</div>
-						</section>
-						<section id="projects" ref={motionRef}>
-							{!user ?
-								<h3>
+						}
+						<div className="md:w-[75%] mx-auto flex flex-col gap-2 md:gap-4">
+							<div className="flex flex-row gap-2 md:gap-4">
+								<motion.div initial={{ x: -15, opacity: 0 }} animate={controlsX} className="md:min-w-[150px] md:p-4 flex flex-col justify-center items-center bg-card border border-neutral-700 rounded-xl">
+									<h3 className="flex flex-row gap-2 items-center -rotate-90 md:rotate-0">
+										<Rocket size="16" className="stroke-neutral-300" />
+										<span className="text-neutral-300 font-medium text-center">Stack</span>
+									</h3>
+								</motion.div>
+								<motion.div initial={{ x: 15, opacity: 0 }} animate={controlsX} className="md:pb-0 py-2 flex flex-nowrap gap-2 border border-neutral-700 rounded-xl overflow-x-scroll">
+									{tech.map((data: Tech, index: number) => (
+										<TechCard
+											key={index}
+											tech={data}
+										/>
+									))}
+								</motion.div>
+							</div>
+							<div className="flex flex-row gap-2 md:gap-4">
+								<motion.div initial={{ x: -15, opacity: 0 }} animate={controlsX} className="md:pb-0 py-2 flex flex-nowrap gap-2 border border-neutral-700 rounded-xl overflow-x-scroll">
+									{stocks.map((data: Stock, index: number) => (
+										<StockCard
+											key={index}
+											stock={data}
+										/>
+									))}
+								</motion.div>
+								<motion.div initial={{ x: 15, opacity: 0 }} animate={controlsX} className="md:min-w-[150px] md:p-4 flex flex-col justify-center items-center bg-card border border-neutral-700 rounded-xl">
+									<h3 className="flex flex-row gap-2 items-center rotate-90 md:rotate-0">
+										<LineChart size="16" className="stroke-neutral-300" />
+										<span className="text-neutral-300 font-medium text-center md:hidden">Invest</span>
+										<span className="text-neutral-300 font-medium text-center hidden md:block">Investments</span>
+									</h3>
+								</motion.div>
+							</div>
+						</div>
+					</section>
+					<section id="projects" ref={motionRef}>
+						{!user ?
+							<h2>
+								Projects
+							</h2>
+							:
+							<div className="grid grid-cols-2 md:grid-cols-3 items-center">
+								<div className="hidden md:block" />
+								<h2 className="pl-0 md:pl-6">
 									Projects
+								</h2>
+								<Button name="New" onClick={() => setCreateProjectModal(true)} icon={
+									<Plus size="16" className="stroke-neutral-300 group-hover:stroke-white transition-colors" />
+								} />
+							</div>
+						}
+						<motion.div initial={{ y: 15, opacity: 0 }} animate={controlsY} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4 isolate">
+							{projects.map((data: Project, index: number) => (
+								<ProjectCard
+									key={index}
+									project={data}
+								/>
+							))}
+							<div className="flex flex-col justify-between p-2 bg-card border border-neutral-700 rounded-xl">
+								<h3 className="p-1">
+									Contact
 								</h3>
-								:
-								<div className="grid grid-cols-2 md:grid-cols-3 items-center">
-									<div className="hidden md:block" />
-									<h3 className="pl-0 md:pl-6">
-										Projects
-									</h3>
-									<Button name="New" onClick={() => setCreateProjectModal(true)} icon={
-										<Plus size="16" className="stroke-neutral-300 group-hover:stroke-white transition-colors" />
-									} />
-								</div>
-							}
-							<motion.div initial={{ y: 15, opacity: 0 }} animate={controlsY} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4 isolate">
-								{projects.map((data: Project, index: number) => (
-									<ProjectCard
-										key={index}
-										project={data}
-									/>
-								))}
-								<div className="flex flex-col justify-between p-2 bg-card border border-neutral-700 rounded-xl">
-									<h3 className="p-1">
-										Contact
-									</h3>
-									<ContactCard />
-								</div>
-							</motion.div>
-						</section>
-					</main>
-				</Parallax>
+								<ContactCard />
+							</div>
+						</motion.div>
+					</section>
+				</main>
 			</Layout>
 			{user && (
 				<>

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import type { Project } from "../types.ts";
+import type { Project } from "../types";
 import placeholder from "../assets/images/placeholder.png";
 import { Pencil, Trash, X } from "lucide-react";
 import { useSpring, animated } from "react-spring";
@@ -56,9 +56,9 @@ const ProjectCard= ({ project }: { project: Project }) => {
 					<img src={project.image ? `assets/images/${project.image}.png` : placeholder} alt={`${project.name} Project`} className="w-full h-auto rounded-b-xl drop-shadow" loading="lazy" />
 					<div className="h-full p-2 flex flex-col items-center justify-between">
 						<div className="w-full">
-							<h4 className="text-center text-xl text-brand font-medium border-b border-neutral-700 pb-2">
+							<h3 className="text-center text-xl text-brand font-medium border-b border-neutral-700 pb-2">
 								{project.name}
-							</h4>
+							</h3>
 							<p className="p-2 pb-0 text-center">
 								{project.desc}
 							</p>
