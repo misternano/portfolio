@@ -194,9 +194,9 @@ const Home = () => {
 								/>
 							))}
 							<div className="flex flex-col justify-between p-2 bg-card border border-neutral-700 rounded-xl">
-								<h3 className="p-1">
+								<h2 className="p-1">
 									Contact
-								</h3>
+								</h2>
 								<ContactCard />
 							</div>
 						</motion.div>

@@ -31,9 +31,9 @@ const projects: Project[] = [
 		stack: ["React", "Tailwind", "Vite"]
 	},
 	{
-		image: "f6Xq5",
-		name: "Control Panel",
-		desc: "Management panel for Reverence House.",
+		image: "nxmAm",
+		name: "Manager Dashboard",
+		desc: "Manager dashboard for Reverence House's leadership.",
 		stack: ["React", "Tailwind", "Vite", "Firebase"]
 	},
 	{
