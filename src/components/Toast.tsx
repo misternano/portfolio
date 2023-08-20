@@ -1,12 +1,14 @@
 import { AlertCircle, CheckCircle2, Ghost, HelpCircle, Info, Zap } from "lucide-react";
+import { ReactElement } from "react";
 
 interface ToastProps {
 	theme: string,
 	title: string,
-	description: string
+	description: string,
+	icon?: ReactElement
 }
 
-const Toast = ({ theme, title, description }: ToastProps) => {
+const Toast = ({ theme, title, description, icon }: ToastProps) => {
 	const renderIconBasedOnTheme = (iconTheme: string) => {
 		switch (iconTheme) {
 			case "bg-emerald-500":
@@ -28,7 +30,7 @@ const Toast = ({ theme, title, description }: ToastProps) => {
 
 	return (
 		<div className={`${description ? "w-full" : "w-fit mx-auto"} max-w-6xl mt-1 p-2 px-4 flex flex-row gap-4 items-center ${theme} rounded-xl text-white`}>
-			{renderIconBasedOnTheme(theme)}
+			{icon ? icon : renderIconBasedOnTheme(theme)}
 			<div>
 				<p className="font-bold">
 					{title}

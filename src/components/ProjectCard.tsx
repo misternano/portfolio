@@ -52,7 +52,7 @@ const ProjectCard= ({ project }: { project: Project }) => {
 						)}
 					</div>
 				)}
-				<div className="h-full flex flex-col bg-card border border-neutral-700 rounded-xl overflow-hidden group-hover:border-b-0 group-hover:rounded-b-none">
+				<div className="h-full flex flex-col bg-card border border-neutral-700 rounded-xl overflow-hidden group-hover:border-b-transparent group-hover:rounded-b-none">
 					<img src={project.image ? `assets/images/${project.image}.png` : placeholder} alt={`${project.name} Project`} className="w-full h-auto rounded-b-xl drop-shadow" loading="lazy" />
 					<div className="h-full p-2 flex flex-col items-center justify-between">
 						<div className="w-full">

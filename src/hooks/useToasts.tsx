@@ -1,10 +1,11 @@
 import { useToast } from "@chakra-ui/toast";
 import { Toast } from "../components";
+import { ReactElement } from "react";
 
 const useToasts = () => {
 	const toast = useToast();
 
-	return (title: string, description: string, duration: number, theme: string) => {
+	return (title: string, description: string, duration: number, theme: string, icon?: ReactElement) => {
 		toast({
 			duration: duration,
 			isClosable: true,
@@ -14,6 +15,7 @@ const useToasts = () => {
 					title={title}
 					description={description}
 					theme={theme}
+					icon={icon}
 				/>
 			)
 		});
