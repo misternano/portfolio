@@ -46,7 +46,7 @@ const Auth = () => {
 						</>
 					)}
 					<button onClick={() => setLoginsOpen((prev) => !prev)} className="group py-1.5 px-3 flex flex-row gap-2 items-center bg-neutral-900 rounded-full">
-						{loginsOpen ? <ChevronLeft size="16" /> : <ChevronRight size="16" className="stroke-neutral-300" />}
+						{loginsOpen ? <ChevronRight size="16" /> : <ChevronLeft size="16" className="stroke-neutral-300" />}
 						<KeyRound size="16" className="stroke-neutral-300 group-hover:stroke-white transition-colors" />
 					</button>
 				</div>

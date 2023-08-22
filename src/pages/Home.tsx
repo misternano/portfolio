@@ -193,8 +193,8 @@ const Home = () => {
 									project={data}
 								/>
 							))}
-							<div className="flex flex-col justify-between p-2 bg-card border border-neutral-700 rounded-xl">
-								<h2 className="p-1">
+							<div className="flex flex-col p-2 bg-card border border-neutral-700 rounded-xl">
+								<h2 className="p-1 m-auto">
 									Contact
 								</h2>
 								<ContactCard />

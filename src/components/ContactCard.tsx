@@ -27,7 +27,7 @@ const ContactCard = () => {
 			});
 			setIsLoading(false);
 			if (response.ok) toast("Submitted", "", 2500, "bg-emerald-500");
-			else toast("Error", "Couldn't submit your message, try again in a few moments.", 2500, "bg-rose-500", <ServerCrash size="16" />);
+			else toast("Couldn't submit your message, try again in a few moments.", "", 2500, "bg-rose-500", <ServerCrash size="16" />);
 		} catch (error) {
 			setIsLoading(false);
 			toast("Error", `${error}`, 2500, "bg-rose-500");
@@ -37,7 +37,7 @@ const ContactCard = () => {
 	return (
 		<form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-3">
 			<div className="flex flex-col xl:flex-row gap-3">
-				<div className="flex-1 relative">
+				<div className="relative">
 					<input
 						id="email"
 						{...register("email", { required: true, pattern: /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/ })}
@@ -59,7 +59,7 @@ const ContactCard = () => {
 					{...register("subject")}
 					type="text"
 					placeholder="Subject"
-					className="flex-1 p-2 bg-neutral-700/50 rounded-md focus:rounded-md"
+					className="p-2 bg-neutral-700/50 rounded-md focus:rounded-md"
 				/>
 				<input type="hidden" name="_gotcha" className="!hidden" />
 			</div>
@@ -76,7 +76,7 @@ const ContactCard = () => {
 				className="hidden"
 				disabled={isLoading}
 			/>
-			<label className={`text-center text-sm p-2 text-black bg-brand rounded-md transition-colors cursor-pointer ${isLoading ? "opacity-50 cursor-not-allowed" : "hover:bg-brand/80"}`} htmlFor="submit">
+			<label className={`font-medium text-center text-sm p-2 text-black bg-brand rounded-md transition-colors cursor-pointer ${isLoading ? "opacity-50 cursor-not-allowed" : "hover:bg-brand/80"}`} htmlFor="submit">
 				{isLoading ? (
 					<span className="flex flex-row gap-1 justify-center items-center">
 						<svg className="w-4 h-4 stroke-neutral-700" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -88,7 +88,7 @@ const ContactCard = () => {
 								<animateTransform attributeName="transform" type="rotate" dur="2s" values="0 12 12;360 12 12" repeatCount="indefinite" />
 							</g>
 						</svg>
-						<span className="text-black">Submitting...</span>
+						<span className="text-black font-medium">Submitting...</span>
 					</span>
 				) : "Submit"}
 			</label>
