@@ -77,7 +77,7 @@ const Home = () => {
 			<Layout>
 				<Spotify />
 				<Parallax speed={-10}>
-					<header className="relative h-[90svh] flex justify-center items-center">
+					<header className="relative h-[90vh] flex justify-center items-center">
 						<Parallax speed={20}>
 							<div className="flex flex-col items-center gap-8">
 								<Avatar />
