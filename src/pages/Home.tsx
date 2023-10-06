@@ -1,11 +1,11 @@
 import { useMemo, useState, useRef, useEffect } from "react";
 import { useClickOutside, useUserData } from "../hooks";
-import { Project, Stock, Tech } from "../types";
-import { projects, stocks, tech } from "../data";
-import { Avatar, Button, ProjectCard, ContactCard, CreateProject, StockCard, Layout, Social, TechCard, Spotify } from "../components";
+import { Project, Tech } from "../types";
+import { projects, tech } from "../data";
+import { Avatar, Button, ProjectCard, ContactCard, CreateProject, Layout, Social, TechCard, Spotify } from "../components";
 import { ChevronDown, GanttChart, Plus, Rocket, LineChart, X, ArrowLeft } from "lucide-react";
 import { useInView } from "react-intersection-observer";
-import { motion, useAnimation } from "framer-motion";
+import { AnimationProps, motion, useAnimation } from "framer-motion";
 import { Parallax } from "react-scroll-parallax";
 import moment from "moment";
 const greetings = ["Hi", "Hey", "Hello"];
@@ -14,9 +14,8 @@ const Home = () => {
 	const { user } = useUserData();
 	const [opacity, setOpacity] = useState<number>(1);
 	const scrollRef = useRef<HTMLElement>(document.createElement("span"));
-	const controlsX = useAnimation();
-	const controlsY = useAnimation();
-	const [motionRef, inView] = useInView();
+	const controls = useAnimation();
+	const [motionRef, inView] = useInView({ triggerOnce: true, threshold: 0.2 });
 	const [createProjectModal, setCreateProjectModal] = useState<boolean>(false);
 	const [aboutModal, setAboutModal] = useState<boolean>(false);
 	const [investModal, setInvestModal] = useState<boolean>(false);
@@ -42,28 +41,19 @@ const Home = () => {
 
 	useEffect(() => {
 		(async () => {
-			const animationPromises = [];
-			if (inView) {
-				animationPromises.push(
-					controlsX.start(animationValues => ({
+			const startAnimation = async (props: "x" | "y") => {
+				if (inView) {
+					await controls.start((animationValues: AnimationProps) => ({
 						opacity: 1,
-						x: 0,
+						[props]: 0,
 						transition: { delay: 0.1, duration: 0.5, ease: "easeInOut" },
 						...animationValues
-					}))
-				);
-				animationPromises.push(
-					controlsY.start(animationValues => ({
-						opacity: 1,
-						y: 0,
-						transition: { delay: 0.1, duration: 0.5, ease: "easeInOut" },
-						...animationValues
-					}))
-				);
-				await Promise.all(animationPromises);
-			}
+					}));
+				}
+			};
+			await Promise.all([startAnimation("x"), startAnimation("y")]);
 		})();
-	}, [controlsX, controlsY, inView]);
+	}, [controls, inView]);
 
 	const modalRef = useClickOutside(() => {
 		setCreateProjectModal(false);
@@ -121,53 +111,28 @@ const Home = () => {
 					<section id="about" ref={motionRef}>
 						{!user ?
 							<h2>
-								Stack & Finance
+								Stack
 							</h2>
 							:
-							<div className="grid grid-cols-2 md:grid-cols-3 items-center md:w-[75%] mx-auto">
+							<header className="grid grid-cols-2 md:grid-cols-3 items-center md:w-[75%] mx-auto">
 								<div className="hidden md:block" />
 								<h2 className="pl-0 md:pl-6">
-									Stack & Finance
+									Stack
 								</h2>
 								<Button name="Manage" onClick={() => setAboutModal(true)} icon={
 									<GanttChart size="16" className="stroke-neutral-300 group-hover:stroke-white transition-colors" />
 								} />
-							</div>
+							</header>
 						}
 						<div className="md:w-[75%] mx-auto flex flex-col gap-2 md:gap-4">
-							<div className="flex flex-row gap-2 md:gap-4">
-								<motion.div initial={{ x: -15, opacity: 0 }} animate={controlsX} className="md:min-w-[150px] md:p-4 flex flex-col justify-center items-center bg-card border border-neutral-700 rounded-xl">
-									<h3 className="flex flex-row gap-2 items-center -rotate-90 md:rotate-0">
-										<Rocket size="16" className="stroke-neutral-300" />
-										<span className="text-neutral-300 font-medium text-center">Stack</span>
-									</h3>
-								</motion.div>
-								<motion.div initial={{ x: 15, opacity: 0 }} animate={controlsX} className="md:pb-0 py-2 flex flex-nowrap gap-2 border border-neutral-700 rounded-xl overflow-x-scroll">
-									{tech.map((data: Tech, index: number) => (
-										<TechCard
-											key={index}
-											tech={data}
-										/>
-									))}
-								</motion.div>
-							</div>
-							<div className="flex flex-row gap-2 md:gap-4">
-								<motion.div initial={{ x: -15, opacity: 0 }} animate={controlsX} className="md:pb-0 py-2 flex flex-nowrap gap-2 border border-neutral-700 rounded-xl overflow-x-scroll">
-									{stocks.map((data: Stock, index: number) => (
-										<StockCard
-											key={index}
-											stock={data}
-										/>
-									))}
-								</motion.div>
-								<motion.div initial={{ x: 15, opacity: 0 }} animate={controlsX} className="md:min-w-[150px] md:p-4 flex flex-col justify-center items-center bg-card border border-neutral-700 rounded-xl">
-									<h3 className="flex flex-row gap-2 items-center rotate-90 md:rotate-0">
-										<LineChart size="16" className="stroke-neutral-300" />
-										<span className="text-neutral-300 font-medium text-center md:hidden">Invest</span>
-										<span className="text-neutral-300 font-medium text-center hidden md:block">Investments</span>
-									</h3>
-								</motion.div>
-							</div>
+							<motion.div initial={{ y: 15, opacity: 0 }} animate={controls} className="md:pb-0 py-2 flex flex-nowrap gap-2 border border-neutral-700 rounded-xl overflow-x-scroll">
+								{tech.map((data: Tech, index: number) => (
+									<TechCard
+										key={index}
+										tech={data}
+									/>
+								))}
+							</motion.div>
 						</div>
 					</section>
 					<section id="projects" ref={motionRef}>
@@ -176,7 +141,7 @@ const Home = () => {
 								Projects
 							</h2>
 							:
-							<div className="grid grid-cols-2 md:grid-cols-3 items-center">
+							<header className="grid grid-cols-2 md:grid-cols-3 items-center">
 								<div className="hidden md:block" />
 								<h2 className="pl-0 md:pl-6">
 									Projects
@@ -184,9 +149,9 @@ const Home = () => {
 								<Button name="New" onClick={() => setCreateProjectModal(true)} icon={
 									<Plus size="16" className="stroke-neutral-300 group-hover:stroke-white transition-colors" />
 								} />
-							</div>
+							</header>
 						}
-						<motion.div initial={{ y: 15, opacity: 0 }} animate={controlsY} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4 isolate">
+						<motion.div initial={{ y: 50, opacity: 0 }} animate={controls} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4 isolate">
 							{projects.map((data: Project, index: number) => (
 								<ProjectCard
 									key={index}
