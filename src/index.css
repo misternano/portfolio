@@ -47,7 +47,11 @@ header {
 }
 
 section {
-    @apply my-24 w-[90%] mx-auto;
+    @apply my-12 w-[90%] mx-auto;
+}
+
+section:last-child {
+    @apply mb-24;
 }
 
 h2 {
