@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import { Footer } from "./index";
-import { useUserData } from "../hooks";
+import { useAuth } from "../hooks";
 import { Dna } from "lucide-react";
 
 interface LayoutProps {
@@ -8,7 +8,7 @@ interface LayoutProps {
 }
 
 const Layout = ({ children }: LayoutProps) => {
-	const { user } = useUserData();
+	const { user } = useAuth();
 	return (
 		<>
 			{user &&

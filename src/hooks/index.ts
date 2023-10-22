@@ -1,9 +1,9 @@
 import useToasts from "./useToasts.tsx";
-import useUserData from "./useUserData.ts";
+import useAuth from "./useAuth.ts";
 import useClickOutside from "./useClickOutside.ts";
 
 export {
 	useToasts,
-	useUserData,
+	useAuth,
 	useClickOutside
 };

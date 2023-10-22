@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { supabase } from "../lib/helper/supabaseClient";
 import type { User } from "@supabase/supabase-js";
 
-const useUserData = () => {
+const useAuth = () => {
 	const [user, setUser] = useState<User | null>(null);
 
 	useEffect(() => {
@@ -20,4 +20,4 @@ const useUserData = () => {
 	return { user, setUser };
 };
 
-export default useUserData;
+export default useAuth;

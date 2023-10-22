@@ -3,7 +3,7 @@ import type { Project } from "../types";
 import placeholder from "../assets/images/placeholder.png";
 import { Pencil, Trash, X } from "lucide-react";
 import { useSpring, animated } from "react-spring";
-import { useClickOutside, useUserData } from "../hooks";
+import { useClickOutside, useAuth } from "../hooks";
 import { useToasts } from "../hooks";
 
 const calc = (x: number, y: number) => [
@@ -16,7 +16,7 @@ const trans = (x: number, y: number, s: number): string => `perspective(200px) r
 
 // TODO: Add functionality to edit and delete buttons
 const ProjectCard= ({ project }: { project: Project }) => {
-	const { user } = useUserData();
+	const { user } = useAuth();
 	const toast = useToasts();
 	const [confirmDeleteModal, setConfirmDeleteModal] = useState<boolean>(false);
 	const [props, set] = useSpring(() => ({

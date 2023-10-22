@@ -1,5 +1,5 @@
 import { useMemo, useState, useRef, useEffect } from "react";
-import { useClickOutside, useUserData } from "../hooks";
+import { useClickOutside, useAuth } from "../hooks";
 import { Project, Tech } from "../types";
 import { projects, tech } from "../data";
 import { Avatar, Button, ProjectCard, ContactCard, CreateProject, Layout, Social, TechCard, Spotify } from "../components";
@@ -11,7 +11,7 @@ import moment from "moment";
 const greetings = ["Hi", "Hey", "Hello"];
 
 const Home = () => {
-	const { user } = useUserData();
+	const { user } = useAuth();
 	const [opacity, setOpacity] = useState<number>(1);
 	const scrollRef = useRef<HTMLElement>(document.createElement("span"));
 	const controls = useAnimation();

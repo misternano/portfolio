@@ -30,7 +30,7 @@ const Toast = ({ theme, title, description, icon }: ToastProps) => {
 	};
 
 	return (
-		<div className={`${description ? "w-full" : "w-fit mx-auto"} max-w-6xl mt-1 p-2 px-4 flex flex-row gap-4 items-center ${theme} rounded-xl text-white`}>
+		<div className={`${!title || !description ? "w-fit mx-auto" : "w-full"} max-w-6xl mt-1 p-2 px-4 flex flex-row gap-4 items-center ${theme} rounded-xl text-white`}>
 			{icon ? icon : renderIconBasedOnTheme(theme)}
 			<div>
 				<p className="font-bold">

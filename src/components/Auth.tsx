@@ -1,9 +1,9 @@
 import { AtSign, Github, LogOut } from "lucide-react";
 import { supabase } from "../lib/helper/supabaseClient";
-import { useUserData, useToasts } from "../hooks";
+import { useAuth, useToasts } from "../hooks";
 
 const Auth = () => {
-	const { user, setUser } = useUserData();
+	const { user, setUser } = useAuth();
 	const toast = useToasts();
 
 	const loginGithub = async () => {
