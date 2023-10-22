@@ -68,7 +68,7 @@ const ContactCard = () => {
 					/>
 				</div>
 				{errors.email?.type === "pattern" ? (
-					<div className="w-1/2 p-2 flex flex-row gap-2 items-center bg-rose-500/25 backdrop-blur-xl rounded-md ring-1 ring-rose-500/50 pointer-events-none">
+					<div className="flex-grow p-2 flex flex-row gap-2 items-center bg-rose-500/25 backdrop-blur-xl rounded-md ring-1 ring-rose-500/50 pointer-events-none">
 						<ChevronsLeft size="16" className="stroke-red-500" />
 						<p className="text-red-500 text-xs">
 							Requires a valid email.
@@ -91,14 +91,6 @@ const ContactCard = () => {
 				placeholder="Message *"
 				className={`h-32 p-2 bg-neutral-700/50 rounded-md resize-none ${errors.message ? "ring-1 ring-rose-500" : ""}`}
 			/>
-			{errors.message?.type === "min" && (
-				<div className="p-2 flex flex-row gap-2 items-center bg-rose-500/25 backdrop-blur-xl rounded-md ring-1 ring-rose-500/50 pointer-events-none">
-					<ChevronsLeft size="16" className="stroke-red-500" />
-					<p className="text-red-500 text-xs">
-						Requires at least 3 characters.
-					</p>
-				</div>
-			)}
 			<input
 				id="submit"
 				type="submit"
