@@ -1,9 +1,11 @@
-import Home from "./Home.tsx";
-import Terms from "./Terms.tsx";
-import Privacy from "./Privacy.tsx";
+import Home from "./Home";
+import Terms from "./Terms";
+import Privacy from "./Privacy";
+import Specs from "./Specs";
 
 export {
 	Home,
 	Terms,
-	Privacy
+	Privacy,
+	Specs
 };
