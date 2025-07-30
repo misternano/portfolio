@@ -41,13 +41,6 @@ const projects: Project[] = [
 		name: "Dashboard",
 		desc: "Concept dashboard, focusing on UI/UX.",
 		stack: ["Miscellaneous"]
-	},
-	{
-		image: "z8ktl",
-		name: "Dedicated FiveM Server",
-		desc: "FiveM economy based server running QBCore.",
-		url: "highliferp.org",
-		stack: ["FiveM", "Miscellaneous"]
 	}
 ];
 
