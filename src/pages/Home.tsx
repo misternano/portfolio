@@ -162,7 +162,7 @@ const Home = () => {
 								<h2 className="p-1 m-auto">
 									Contact
 								</h2>
-								<ContactCard />
+								{/* this hasnt worked in years <ContactCard /> */}
 							</div>
 						</motion.div>
 					</section>
