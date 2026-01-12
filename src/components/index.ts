@@ -11,6 +11,7 @@ import Spotify from "./Spotify.js";
 import StockCard from "./StockCard";
 import TechCard from "./TechCard";
 import Toast from "./Toast";
+import Progress from "./Progress";
 
 export {
 	Auth,
@@ -25,5 +26,6 @@ export {
 	Spotify,
 	StockCard,
 	TechCard,
-	Toast
+	Toast,
+	Progress
 };
