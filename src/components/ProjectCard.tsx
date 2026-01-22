@@ -2,10 +2,10 @@ import { Fragment, useState } from "react";
 import type { Project } from "../types";
 import placeholder from "../assets/images/placeholder.png";
 import { Pencil, Trash, X } from "lucide-react";
-import { useSpring, animated } from "react-spring";
 import { useClickOutside } from "../hooks";
 import { useToasts } from "../hooks";
 import { useUser } from "@clerk/clerk-react";
+import { animated, useSpring } from "@react-spring/web";
 
 const calc = (x: number, y: number) => [
 	-(y - window.innerHeight / 2) / 200,
@@ -22,7 +22,11 @@ const ProjectCard= ({ project }: { project: Project }) => {
 	const [confirmDeleteModal, setConfirmDeleteModal] = useState<boolean>(false);
 	const [props, set] = useSpring(() => ({
 		xys: [0, 0, 1],
-		config: { mass: 2, tension: 350, friction: 25 }
+		config: {
+			mass: 2,
+			tension: 350,
+			friction: 25
+		}
 	}));
 
 	const modalRef = useClickOutside(() => {
