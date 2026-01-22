@@ -4,7 +4,6 @@ import { LogIn, LogOut } from "lucide-react";
 
 const Footer = () => {
 	const { user } = useUser();
-	console.log(user);
 	return (
 		<footer
 			className="m-4 p-2 px-4 bg-neutral-800 flex md:grid md:grid-cols-3 md:flex-row flex-col gap-3 md:gap-0 md:justify-between justify-center items-center rounded-md drop-shadow">
