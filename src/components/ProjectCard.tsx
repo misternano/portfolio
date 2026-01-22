@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import type { Project } from "../types";
 import placeholder from "../assets/images/placeholder.png";
 import { Pencil, Trash, X } from "lucide-react";
 import { useSpring, animated } from "react-spring";
-import { useClickOutside, useAuth } from "../hooks";
+import { useClickOutside } from "../hooks";
 import { useToasts } from "../hooks";
+import { useUser } from "@clerk/clerk-react";
 
 const calc = (x: number, y: number) => [
 	-(y - window.innerHeight / 2) / 200,
@@ -16,7 +17,7 @@ const trans = (x: number, y: number, s: number): string => `perspective(200px) r
 
 // TODO: Add functionality to edit and delete buttons
 const ProjectCard= ({ project }: { project: Project }) => {
-	const { user } = useAuth();
+	const { user } = useUser();
 	const toast = useToasts();
 	const [confirmDeleteModal, setConfirmDeleteModal] = useState<boolean>(false);
 	const [props, set] = useSpring(() => ({
@@ -76,11 +77,22 @@ const ProjectCard= ({ project }: { project: Project }) => {
 							{project.url && project.source &&
 								<span className="text-neutral-700">&bull;</span>
 							}
-							{project.source &&
-								<a href={`https://${project.source}`} target="norel noopen" className="text-brand hover:underline-offset-4 transition-all external-link">
-									Source
-								</a>
-							}
+							{project.source && (
+								Array.isArray(project.source) ? (
+									project.source.map((src: string, i: number) => (
+										<Fragment key={src}>
+											{i > 0 && <span className="text-neutral-700">&bull;</span>}
+											<a href={`https://${src}`} rel="noreferrer noopener" className="text-brand hover:underline-offset-4 transition-all external-link">
+												Source {i+1}
+											</a>
+										</Fragment>
+									))
+								) : (
+									<a href={`https://${project.source}`} rel="noreferrer noopener" className="text-brand hover:underline-offset-4 transition-all external-link">
+										Source
+									</a>
+								)
+							)}
 						</div>
 						<div className="p-2 flex flex-row flex-wrap gap-2">
 							{project.stack?.map((stack, index) => (

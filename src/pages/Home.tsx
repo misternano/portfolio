@@ -1,55 +1,58 @@
 import { useMemo, useState, useRef, useEffect } from "react";
-import { useClickOutside, useAuth } from "../hooks";
+import { useClickOutside } from "../hooks";
 import { Project, Tech } from "../types";
 import { projects, tech } from "../data";
-import { Avatar, Button, ProjectCard, ContactCard, CreateProject, Layout, Social, TechCard, Spotify } from "../components";
-import { ChevronDown, GanttChart, Plus, Rocket, LineChart, X, ArrowLeft } from "lucide-react";
+import { Avatar, Button, ProjectCard, CreateProject, Layout, Social, TechCard, Spotify } from "../components";
+import { ChevronDown, Plus, Rocket, X } from "lucide-react";
 import { useInView } from "react-intersection-observer";
 import { AnimationProps, motion, useAnimation } from "framer-motion";
 import { Parallax } from "react-scroll-parallax";
+import { SignedIn, useUser } from "@clerk/clerk-react";
 import moment from "moment";
-const greetings = ["Hi", "Hey", "Hello"];
+import ManageTech from "../components/ManageTech.tsx";
+
+const greetings = ["Hi", "Hey", "Hello", "Hihi", "Howdy"];
 
 const Home = () => {
-	const { user } = useAuth();
+	const { user } = useUser();
 	const [opacity, setOpacity] = useState<number>(1);
-	const scrollRef = useRef<HTMLElement>(document.createElement("span"));
+	const scrollRef = useRef<HTMLElement | null>(null);
+
 	const controls = useAnimation();
 	const [motionRef, inView] = useInView({ triggerOnce: true, threshold: 0.2 });
+
 	const [createProjectModal, setCreateProjectModal] = useState<boolean>(false);
-	const [aboutModal, setAboutModal] = useState<boolean>(false);
-	const [investModal, setInvestModal] = useState<boolean>(false);
 	const [stackModal, setStackModal] = useState<boolean>(false);
 
 	const age: number = Math.floor((moment().valueOf() - moment("2002-02-11", "YYYY-MM-DD").valueOf()) / 31536000000);
 
 	const greeting = useMemo(() => {
 		return greetings[Math.floor(Math.random() * greetings.length)];
-	}, [greetings]);
+	}, []);
 
 	useEffect(() => {
-		window.onscroll = () => {
+		const onScroll = () => {
 			const current = window.scrollY;
 			const offset = window.innerHeight / 2.75;
-
-			if (current > offset)
-				setOpacity(0);
-			else if (current <= offset)
-				setOpacity(1);
+			setOpacity(current > offset ? 0 : 1);
 		};
+
+		window.addEventListener("scroll", onScroll, { passive: true });
+		onScroll();
+
+		return () => window.removeEventListener("scroll", onScroll);
 	}, []);
 
 	useEffect(() => {
 		(async () => {
 			const startAnimation = async (props: "x" | "y") => {
-				if (inView) {
-					await controls.start((animationValues: AnimationProps) => ({
-						opacity: 1,
-						[props]: 0,
-						transition: { delay: 0.1, duration: 0.5, ease: "easeInOut" },
-						...animationValues
-					}));
-				}
+				if (!inView) return;
+				await controls.start((animationValues: AnimationProps) => ({
+					opacity: 1,
+					[props]: 0,
+					transition: { delay: 0.1, duration: 0.5, ease: "easeInOut" },
+					...animationValues
+				}));
 			};
 			await Promise.all([startAnimation("x"), startAnimation("y")]);
 		})();
@@ -57,8 +60,6 @@ const Home = () => {
 
 	const modalRef = useClickOutside(() => {
 		setCreateProjectModal(false);
-		setAboutModal(false);
-		setInvestModal(false);
 		setStackModal(false);
 	});
 
@@ -66,10 +67,10 @@ const Home = () => {
 		<>
 			<Layout>
 				<Spotify />
-				<Parallax speed={-10}>
-					<header className="relative h-[90vh] flex justify-center items-center">
+				<Parallax speed={-20}>
+					<header className="relative h-[90vh] flex justify-center items-center overflow-hidden">
 						<Parallax speed={20}>
-							<div className="flex flex-col items-center gap-8">
+							<div className="flex flex-col items-center gap-8 px-4">
 								<Avatar />
 								<div className="flex flex-col items-center">
 									<h1 className="text-gradient text-center text-5xl font-bold leading-tight">
@@ -78,9 +79,14 @@ const Home = () => {
 									<p className="text-neutral-300 font-medium mb-2">
 										{age} &bull; Developer
 									</p>
+
 									<div className="flex flex-col items-center gap-4 z-20">
 										<div className="flex flex-row gap-5 w-full md:w-fit pt-4 px-4 justify-center border-t border-neutral-700">
-											<Social size="h-12 md:h-10" link="https://www.discord.com/users/272535850200596480/" platform="discord">
+											<Social
+												size="h-12 md:h-10"
+												link="https://www.discord.com/users/272535850200596480/"
+												platform="discord"
+											>
 												<path d="M433.4,93.2c-32.6-15-67.6-26-104.2-32.3c-0.7-0.1-1.3,0.2-1.7,0.8c-4.5,8-9.5,18.4-13,26.7c-39.4-5.9-78.5-5.9-117.1,0 c-3.5-8.4-8.7-18.7-13.2-26.7c-0.3-0.6-1-0.9-1.7-0.8c-36.6,6.3-71.6,17.3-104.2,32.3c-0.3,0.1-0.5,0.3-0.7,0.6 C11.4,193-6.8,289.7,2.1,385.2c0,0.5,0.3,0.9,0.7,1.2c43.8,32.2,86.2,51.7,127.8,64.6c0.7,0.2,1.4,0,1.8-0.6 c9.8-13.4,18.6-27.6,26.2-42.5c0.4-0.9,0-1.9-0.9-2.3c-13.9-5.3-27.2-11.7-39.9-19c-1-0.6-1.1-2-0.2-2.7c2.7-2,5.4-4.1,7.9-6.2 c0.5-0.4,1.1-0.5,1.7-0.2c83.8,38.3,174.5,38.3,257.3,0c0.5-0.3,1.2-0.2,1.7,0.2c2.6,2.1,5.2,4.2,8,6.2c0.9,0.7,0.9,2.1-0.1,2.7 c-12.8,7.5-26,13.8-40,19c-0.9,0.3-1.3,1.4-0.9,2.3c7.7,14.9,16.5,29.1,26.1,42.5c0.4,0.6,1.1,0.8,1.8,0.6 c41.8-12.9,84.3-32.5,128-64.6c0.4-0.3,0.6-0.7,0.7-1.2c10.7-110.4-17.9-206.4-75.7-291.4C434,93.5,433.7,93.3,433.4,93.2z M171.1,327.1c-25.2,0-46-23.2-46-51.6c0-28.4,20.4-51.6,46-51.6c25.8,0,46.4,23.4,46,51.6C217.1,303.9,196.7,327.1,171.1,327.1z M341.2,327.1c-25.2,0-46-23.2-46-51.6c0-28.4,20.4-51.6,46-51.6c25.8,0,46.4,23.4,46,51.6C387.2,303.9,367.1,327.1,341.2,327.1z" />
 											</Social>
 											<Social size="h-12 md:h-10" link="https://www.twitter.com/fruitynano/" platform="twitter">
@@ -99,76 +105,66 @@ const Home = () => {
 						</Parallax>
 					</header>
 				</Parallax>
-				<button onClick={() => scrollRef.current?.scrollIntoView()} className="group absolute left-1/2 bottom-5 animate-bounce transition-all duration-300 focus:outline-0" style={{ opacity: opacity }}>
+
+				<button onClick={() => scrollRef.current?.scrollIntoView({ behavior: "smooth" })} className="group absolute left-1/2 bottom-5 animate-bounce transition-all duration-300 focus:outline-0" style={{ opacity }}>
 					<div className="flex flex-col justify-center items-center -translate-x-1/2">
 						<span className="font-archia uppercase text-xs font-semibold text-neutral-300 group-hover:text-white group-focus:text-white transition-colors group-focus:underline underline-offset-4">
-							learn more
+							Learn More
 						</span>
 						<ChevronDown className="h-8 w-8 stroke-neutral-300 group-hover:stroke-white group-focus:stroke-white transition-colors" />
 					</div>
 				</button>
+
 				<main className="mt-[20vh] md:mt-[40vh] m-2" ref={scrollRef}>
-					<section id="about" ref={motionRef}>
-						{!user ?
-							<h2>
-								Stack
-							</h2>
-							:
-							<header className="grid grid-cols-2 md:grid-cols-3 items-center md:w-[75%] mx-auto">
-								<div className="hidden md:block" />
-								<h2 className="pl-0 md:pl-6">
-									Stack
+					<div ref={motionRef} className="md:w-[75%] mx-auto">
+						<section className="rounded-2xl backdrop-blur-sm p-4 md:p-6">
+							<header className="flex items-center justify-between gap-4">
+								<h2 className={`${user && "translate-x-1/2"} text-xl md:text-2xl font-semibold`}>
+									Workbench
 								</h2>
-								<Button name="Manage" onClick={() => setAboutModal(true)} icon={
-									<GanttChart size="16" className="stroke-neutral-300 group-hover:stroke-white transition-colors" />
-								} />
+								<SignedIn>
+									<Button name="New Project" onClick={() => setCreateProjectModal(true)} icon={<Plus size="16" className="stroke-neutral-300 group-hover:stroke-white transition-colors" />}/>
+								</SignedIn>
 							</header>
-						}
-						<div className="md:w-[75%] mx-auto flex flex-col gap-2 md:gap-4">
-							<motion.div initial={{ y: 15, opacity: 0 }} animate={controls} className="md:pb-0 py-2 flex flex-nowrap gap-2 border border-neutral-700 rounded-xl overflow-x-scroll">
-								{tech.map((data: Tech, index: number) => (
-									<TechCard
-										key={index}
-										tech={data}
-									/>
-								))}
-							</motion.div>
-						</div>
-					</section>
-					<section id="projects" ref={motionRef}>
-						{!user ?
-							<h2>
-								Projects
-							</h2>
-							:
-							<header className="grid grid-cols-2 md:grid-cols-3 items-center">
-								<div className="hidden md:block" />
-								<h2 className="pl-0 md:pl-6">
-									Projects
-								</h2>
-								<Button name="New" onClick={() => setCreateProjectModal(true)} icon={
-									<Plus size="16" className="stroke-neutral-300 group-hover:stroke-white transition-colors" />
-								} />
-							</header>
-						}
-						<motion.div initial={{ y: 50, opacity: 0 }} animate={controls} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4 isolate">
-							{projects.map((data: Project, index: number) => (
-								<ProjectCard
-									key={index}
-									project={data}
-								/>
-							))}
-							{/* this hasnt worked in years <div className="flex flex-col p-2 bg-card border border-neutral-700 rounded-xl">
-								<h2 className="p-1 m-auto">
-									Contact
-								</h2>
-								<ContactCard />
-							</div> */}
-						</motion.div>
-					</section>
+							<div className="mt-6 grid gap-6 lg:grid-cols-[25rem_1fr] lg:items-start">
+								<motion.aside initial={{ y: 15, opacity: 0 }} animate={controls} className="lg:sticky lg:top-6">
+									<div className="p-4 rounded-xl border border-neutral-800 bg-neutral-950/40">
+										<div className="flex items-center justify-between gap-3 mb-4">
+											<h3 className={`${user ? "" : "w-full separator-hr"} font-semibold`}>Tools</h3>
+											<SignedIn>
+												<Button name="Edit" onClick={() => setStackModal(true)} icon={<Rocket size="16" className="stroke-neutral-300 group-hover:stroke-white transition-colors" />}/>
+											</SignedIn>
+										</div>
+
+										<div className="lg:hidden">
+											<div className="py-2 flex flex-nowrap gap-2 border border-neutral-700 rounded-xl overflow-x-scroll">
+												{tech.map((data: Tech, index: number) => (
+													<TechCard key={index} tech={data} />
+												))}
+											</div>
+										</div>
+
+										<div className="hidden lg:grid gap-2 grid-cols-2">
+											{tech.map((data: Tech, index: number) => (
+												<TechCard key={index} tech={data} />
+											))}
+										</div>
+									</div>
+								</motion.aside>
+
+								<motion.div initial={{ y: 50, opacity: 0 }} animate={controls}>
+									<div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+										{projects.map((data: Project, index: number) => (
+											<ProjectCard key={index} project={data} />
+										))}
+									</div>
+								</motion.div>
+							</div>
+						</section>
+					</div>
 				</main>
 			</Layout>
-			{user && (
+			<SignedIn>
 				<>
 					{createProjectModal && (
 						<div className="fixed inset-0 z-10 flex items-center justify-center bg-neutral-800/50">
@@ -183,84 +179,29 @@ const Home = () => {
 							</div>
 						</div>
 					)}
-					{aboutModal && (
-						<div className="fixed inset-0 z-10 flex items-center justify-center bg-neutral-800/50">
-							<div ref={modalRef} className="min-w-[20rem] p-4 flex flex-col gap-4 bg-neutral-900 border border-neutral-700 rounded-xl">
-								<div className="flex flex-row justify-between items-center">
-									<p className="font-medium text-sm text-neutral-300">About Management</p>
-									<button onClick={() => setAboutModal(false)} className="group border border-transparent hover:border-red-500 rounded-md p-0.5">
-										<X size="16" className="group-hover:stroke-red-500" />
-									</button>
-								</div>
-								<div className="flex flex-row gap-4 justify-center">
-									<Button name="Stack" onClick={() => {
-										setStackModal(true);
-										setAboutModal(false);
-									}} icon={
-										<Rocket size="16" className="stroke-neutral-300 group-hover:stroke-white transition-colors" />
-									} />
-									<Button name="Investments" onClick={() => {
-										setInvestModal(true);
-										setAboutModal(false);
-									}} icon={
-										<LineChart size="16" className="stroke-neutral-300 group-hover:stroke-white transition-colors" />
-									} />
-								</div>
-							</div>
-						</div>
-					)}
-					{investModal && (
-						<div className="fixed inset-0 z-10 flex items-center justify-center bg-neutral-800/50">
-							<div ref={modalRef} className="min-w-[20rem] p-4 flex flex-col gap-4 bg-neutral-900 border border-neutral-700 rounded-xl">
-								<div className="flex flex-row justify-between items-center">
-									<button
-										onClick={() => {
-											setInvestModal(false);
-											setAboutModal(true);
-										}}
-										className="group border border-transparent hover:border-neutral-300 rounded-md p-0.5"
-									>
-										<ArrowLeft size="16" className="group-hover:stroke-neutral-300" />
-									</button>
-									<p className="font-medium text-sm text-neutral-300">Investments Management</p>
-									<button
-										onClick={() => setCreateProjectModal(false)}
-										className="group border border-transparent hover:border-red-500 rounded-md p-0.5"
-									>
-										<X size="16" className="group-hover:stroke-red-500" />
-									</button>
-								</div>
-								<p>(Some inputs to manage investments)</p>
-							</div>
-						</div>
-					)}
 					{stackModal && (
 						<div className="fixed inset-0 z-10 flex items-center justify-center bg-neutral-800/50">
-							<div ref={modalRef} className="min-w-[20rem] p-4 flex flex-col gap-4 bg-neutral-900 border border-neutral-700 rounded-xl">
+							<div
+								ref={modalRef}
+								className="min-w-[30vw] p-4 flex flex-col gap-4 bg-neutral-900 border border-neutral-700 rounded-xl"
+							>
 								<div className="flex flex-row justify-between items-center">
+									<p className="font-medium text-sm text-neutral-300">Tools Management</p>
 									<button
-										onClick={() => {
-											setStackModal(false);
-											setAboutModal(true);
-										}}
-										className="group border border-transparent hover:border-neutral-300 rounded-md p-0.5"
-									>
-										<ArrowLeft size="16" className="group-hover:stroke-neutral-300" />
-									</button>
-									<p className="font-medium text-sm text-neutral-300">Stack Management</p>
-									<button
-										onClick={() => setCreateProjectModal(false)}
+										onClick={() => setStackModal(false)}
 										className="group border border-transparent hover:border-red-500 rounded-md p-0.5"
 									>
-										<X size="16" className="group-hover:stroke-red-500" />
+										<X size={16} className="group-hover:stroke-red-500" />
 									</button>
 								</div>
-								<p>(Some inputs to manage the stack)</p>
+								<div className="grid grid-cols-2 gap-2">
+									<ManageTech />
+								</div>
 							</div>
 						</div>
 					)}
 				</>
-			)}
+			</SignedIn>
 		</>
 	);
 };

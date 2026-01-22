@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
 import { Circle } from "lucide-react";
 import { Progress } from "./index.ts";
+import { useSpotifyNowPlaying } from "../hooks";
 
 const formatTime = (ms: number) => {
 	const minutes = Math.floor(ms / 1000 / 60);
@@ -9,43 +9,8 @@ const formatTime = (ms: number) => {
 	return minutes + ":" + seconds.toString().padStart(2, "0");
 };
 
-interface SpotifyProps {
-	is_playing: boolean;
-	timestamp: Date;
-	progress_ms: number;
-	item: {
-		id: string;
-		name: string;
-		duration_ms: number;
-		album: {
-			name: string;
-			images: {
-				url: string;
-			}[]
-		}
-		artists: {
-			name: string;
-		}[]
-	}
-}
-
 const Spotify = () => {
-	const [data, setData] = useState<SpotifyProps | undefined>(undefined);
-
-	useEffect(() => {
-		const interval = setInterval((async () => {
-			try {
-				const response = await fetch("https://api.ncc.dev/spotify");
-				const json = await response.json();
-				setData(json);
-			} catch (err) {
-				console.error(err);
-			}
-		}), 2000);
-
-		return () => clearInterval(interval);
-	}, []);
-
+	const { data } = useSpotifyNowPlaying(2000);
 	if (!data || !data.is_playing) return null;
 
 	const song = data.item.name.replace(/ *\([^)]*\)/g, "").replace(/ *\[[^\]]*]/g, "").replace(/ - [Rr]ecorded [Aa]t.*/g, "");
@@ -53,11 +18,11 @@ const Spotify = () => {
 	const bar = Math.floor(data.progress_ms / data.item.duration_ms * 100);
 
 	return (
-		<div className="md:w-fit sticky right-2 left-2 top-1 z-10">
-			<div className="mb-1 px-2 flex flex-row items-center justify-center gap-1 backdrop-blur-sm rounded-full">
+		<div className="md:w-fit fixed right-2 left-2 top-1 z-10">
+			<div className="w-fit mx-auto mb-1 px-2 flex flex-row items-center justify-center gap-1 backdrop-blur-sm rounded-full">
 				<p className="text-xs font-[archia]">Listening to Spotify</p> <Circle size="8" className="stroke-[#1fdf64] fill-[#1fdf64] animate-pulse" />
 			</div>
-			<div className="group md:w-96 backdrop-blur-sm ring-1 ring-border bg-neutral-800/10 hover:ring-[#1fdf64]/75 bg-background rounded-lg transition-all">
+			<div className="group md:w-96 backdrop-blur-sm ring-1 ring-border ring-white/25 bg-neutral-800/10 hover:ring-[#1fdf64]/50 bg-background rounded-lg transition-all">
 				<a href={`https://open.spotify.com/track/${data.item.id}`} target="norel noopen">
 					<div className="relative p-1.5 flex flex-row gap-2">
 						<img className="h-20 w-20 rounded-[6px]" src={data.item.album.images[0].url} alt="Album Cover" title={data.item.album.name} />

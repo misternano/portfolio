@@ -2,6 +2,24 @@ import { Tech } from "../types";
 
 const tech: Tech[] = [
 	{
+		image: "typescript",
+		name: "TypeScript",
+		type: "Language",
+		url: "typescriptlang.org"
+	},
+	{
+		image: "go",
+		name: "Go",
+		type: "Language",
+		url: "go.dev"
+	},
+	{
+		image: "lua",
+		name: "Lua",
+		type: "Language",
+		url: "lua.org"
+	},
+	{
 		image: "react",
 		name: "React",
 		type: "UI Framework",
@@ -14,10 +32,10 @@ const tech: Tech[] = [
 		url: "nextjs.org"
 	},
 	{
-		image: "typescript",
-		name: "TypeScript",
-		type: "Language",
-		url: "typescriptlang.org"
+		image: "svelte",
+		name: "SvelteKit",
+		type: "Web Framework",
+		url: "kit.svelte.dev"
 	},
 	{
 		image: "tailwind",
@@ -28,7 +46,7 @@ const tech: Tech[] = [
 	{
 		image: "vite",
 		name: "Vite",
-		type: "Web Framework",
+		type: "Build Tool",
 		url: "vitejs.dev"
 	},
 	{
@@ -44,28 +62,22 @@ const tech: Tech[] = [
 		url: "postgresql.org"
 	},
 	{
-		image: "go",
-		name: "GoLang",
-		type: "Language",
-		url: "go.dev"
-	},
-	{
-		image: "fiber",
-		name: "GoFiber",
-		type: "Web Framework",
-		url: "gofiber.io"
-	},
-	{
 		image: "mongo",
 		name: "MongoDB",
 		type: "Database",
 		url: "mongodb.com"
 	},
 	{
-		image: "lua",
-		name: "LUA",
-		type: "Language",
-		url: "lua.org"
+		image: "wrangler",
+		name: "Wrangler",
+		type: "Deployment Tool",
+		url: "developers.cloudflare.com/workers/wrangler"
+	},
+	{
+		image: "railway",
+		name: "Railway",
+		type: "Bot Deployment",
+		url: "railway.app"
 	},
 	{
 		image: "git",
@@ -76,13 +88,13 @@ const tech: Tech[] = [
 	{
 		image: "vsc",
 		name: "VS Code",
-		type: "IDE",
+		type: "Editor",
 		url: "code.visualstudio.com"
 	},
 	{
 		image: "jetbrains",
 		name: "JetBrains",
-		type: "IDEs",
+		type: "IDE Suite",
 		url: "jetbrains.com"
 	}
 ];

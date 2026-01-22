@@ -3,16 +3,9 @@ export interface Project {
 	name: string;
 	desc: string;
 	url?: string;
-	source?: string;
+	source?: string | string[];
 	stack: string[];
 	immune?: boolean;
-}
-
-export interface Stock {
-	image: string;
-	name: string;
-	alt?: string;
-	ticker: string;
 }
 
 export interface Tech {
