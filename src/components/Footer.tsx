@@ -36,10 +36,13 @@ const Footer = () => {
 				</SignedOut>
 				<SignedIn>
 					<div className="flex flex-row gap-2 items-center h-full">
-						<p className="pr-2">Hello, <span className="text-[#ecba16] font-semibold">{user?.firstName}</span>.</p>
-						<div className="h-full w-1 rounded-full bg-neutral-700" />
+						<div className="flex flex-row gap-2 items-center">
+							<img src={user?.imageUrl} alt={`${user?.username}'s Avatar`} className="w-6 h-auto rounded-full ring-2 ring-neutral-700" />
+							<p className="pr-2">Hello, <span className="text-[#ecba16] font-semibold">{user?.firstName}</span>.</p>
+						</div>
+						<div className="h-full w-0.5 rounded-full bg-neutral-700" />
 						<SignOutButton>
-							<Button name="Sign In" icon={<LogOut size="16" className="stroke-neutral-300 group-hover:stroke-white transition-colors" />} />
+							<Button name="Sign Out" icon={<LogOut size="16" className="stroke-neutral-300 group-hover:stroke-white transition-colors" />} />
 						</SignOutButton>
 					</div>
 				</SignedIn>
