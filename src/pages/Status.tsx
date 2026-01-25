@@ -1,4 +1,3 @@
-// src/pages/Status.tsx
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Helmet } from "react-helmet";
 
