@@ -1,3 +1,4 @@
+// src/pages/Status.tsx
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Helmet } from "react-helmet";
 
@@ -21,6 +22,51 @@ type Incident = {
 	startedAt: string;
 	updatedAt: string;
 };
+
+type ServiceDef = {
+	id: Service["id"];
+	name: Service["name"];
+	healthUrl: string;
+	uptime7d?: number;
+};
+
+type HealthResponse = {
+	ok?: boolean;
+	status?: "ok" | "fail";
+	mode?: "shallow" | "deep";
+	tokenOk?: boolean;
+	spotifyOk?: boolean;
+	spotifyLatencyMs?: number | null;
+	totalMs?: number;
+	latencyMs?: number;
+};
+
+const SERVICE_DEFS: readonly ServiceDef[] = [
+	{
+		id: "spotify",
+		name: "Spotify API Wrapper",
+		healthUrl: "https://api.ncc.dev/spotify/health",
+		uptime7d: 99.99
+	},
+	{
+		id: "images",
+		name: "Image Host",
+		healthUrl: "https://images.nanos.club/health?deep=1",
+		uptime7d: 99.99
+	},
+	{
+		id: "fortnite",
+		name: "Fortnite Shop API Wrapper",
+		healthUrl: "https://api.ncc.dev/fn/health?deep=1",
+		uptime7d: 99.99
+	},
+	{
+		id: "ifn",
+		name: "IFN Auth Microservice",
+		healthUrl: "https://api.ncc.dev/ifn/authentication/health",
+		uptime7d: 100.0
+	}
+] as const;
 
 const rand = (min: number, max: number) => Math.random() * (max - min) + min;
 
@@ -89,32 +135,43 @@ const fmtLocal = (ts: string) => {
 	return d.toLocaleString([], { month: "short", day: "2-digit", hour: "2-digit", minute: "2-digit" });
 };
 
+const statusFromHealth = (body: HealthResponse, httpOk: boolean): Statuses => {
+	const ok = (httpOk && (body.ok ?? true)) || body.ok === true || body.status === "ok";
+	if (ok) return "operational";
+	if (body.mode === "deep" && body.tokenOk) return "degraded";
+	return "majorOutage";
+};
+
+const latencyFromHealth = (body: HealthResponse, measuredMs: number): number => {
+	const x = body.latencyMs ?? body.spotifyLatencyMs ?? body.totalMs;
+	if (typeof x === "number" && Number.isFinite(x)) return Math.max(0, Math.round(x));
+	return Math.max(0, Math.round(measuredMs));
+};
+
 const Status = () => {
 	const canvasRef = useRef<HTMLCanvasElement | null>(null);
 	const rafRef = useRef<number | null>(null);
+
 	const [lastUpdatedAt, setLastUpdatedAt] = useState<string | null>(null);
 
-	const [services, setServices] = useState<Service[]>([
-		{ id: "nanosclub", name: "nanos.club", status: "operational", latencyMs: 1, uptime7d: 99.99 },
-		{ id: "starfallex", name: "StarfallEx", status: "operational", latencyMs: 1, uptime7d: 99.99 },
-		{ id: "test", name: "testbox", status: "maintenance", latencyMs: 13, uptime7d: 39.28 }
-	]);
+	const [services, setServices] = useState<Service[]>(
+		SERVICE_DEFS.map((d) => ({
+			id: d.id,
+			name: d.name,
+			status: "maintenance",
+			latencyMs: 0,
+			uptime7d: d.uptime7d ?? 99.99
+		}))
+	);
 
 	const [incidents, setIncidents] = useState<Incident[]>([
-		{
-			id: "authlatency",
-			title: "Elevated auth latency",
-			status: "resolved",
-			startedAt: new Date(Date.now() - 1000 * 60 * 85).toISOString(),
-			updatedAt: new Date(Date.now() - 1000 * 60 * 12).toISOString()
-		},
-		{
-			id: "2",
-			title: "Authentication offline",
-			status: "resolved",
-			startedAt: "Jan 10, 9:43 AM",
-			updatedAt: "Jan 10, 9:58 AM"
-		}
+		// {
+		// 	id: "authlatency",
+		// 	title: "Elevated auth latency",
+		// 	status: "resolved",
+		// 	startedAt: new Date(Date.now() - 1000 * 60 * 85).toISOString(),
+		// 	updatedAt: new Date(Date.now() - 1000 * 60 * 12).toISOString()
+		// }
 	]);
 
 	const overall = useMemo(() => overallFrom(services), [services]);
@@ -139,6 +196,7 @@ const Status = () => {
 	useEffect(() => {
 		const canvas = canvasRef.current;
 		const ctx = canvas?.getContext("2d", { alpha: true });
+
 		if (!canvas || !ctx) return;
 
 		const stars: Star[] = [];
@@ -253,74 +311,61 @@ const Status = () => {
 		let mounted = true;
 		const ctrl = new AbortController();
 
-		type SpotifyHealth = {
-			ok: boolean;
-			mode: "shallow" | "deep";
-			tokenOk?: boolean;
-			spotifyOk?: boolean;
-			spotifyLatencyMs?: number | null;
-			totalMs?: number;
-			cached?: boolean;
-			ts?: string;
-			error?: string;
-		};
+		const fetchOne = async (def: ServiceDef): Promise<Service> => {
+			const t0 = performance.now();
 
-		const toStatus = (h: SpotifyHealth): Statuses => {
-			if (h.ok) return "operational";
-			if (h.mode === "deep" && h.tokenOk) return "degraded";
-			return "majorOutage";
-		};
-
-		const upsertSpotify = (prev: Service[], h: SpotifyHealth): Service[] => {
-			const latencyMs = Math.max(0, Math.round(h.spotifyLatencyMs ?? h.totalMs ?? 0));
-			const next: Service = {
-				id: "spotify",
-				name: "Spotify API",
-				status: toStatus(h),
-				latencyMs,
-				uptime7d: 99.99
-			};
-
-			const idx = prev.findIndex((s) => s.id === next.id);
-			if (idx === -1) return [next, ...prev];
-
-			const copy = prev.slice();
-			copy[idx] = { ...copy[idx], ...next };
-			return copy;
-		};
-
-		const fetchSpotifyHealth = async () => {
-			const res = await fetch("https://api.ncc.dev/api/spotify/health", {
+			const res = await fetch(def.healthUrl, {
 				headers: { accept: "application/json" },
 				signal: ctrl.signal
 			});
-			const data = (await res.json()) as SpotifyHealth;
-			return { resOk: res.ok, data };
+
+			const measuredMs = performance.now() - t0;
+
+			let body: HealthResponse;
+			try {
+				body = (await res.json()) as HealthResponse;
+			} catch {
+				body = {};
+			}
+
+			return {
+				id: def.id,
+				name: def.name,
+				status: statusFromHealth(body, res.ok),
+				latencyMs: latencyFromHealth(body, measuredMs),
+				uptime7d: def.uptime7d ?? 99.99
+			};
 		};
 
-		const run = () => {
-			fetchSpotifyHealth()
-				.then(({ resOk, data }) => {
-					if (!mounted) return;
+		const poll = async () => {
+			const results = await Promise.allSettled(SERVICE_DEFS.map((d) => fetchOne(d)));
+			if (!mounted) return;
 
-					// Even if HTTP is 503, the body still contains useful fields.
-					setServices((prev) => upsertSpotify(prev, resOk ? data : { ...data, ok: false, mode: data.mode ?? "deep" }));
-					setLastUpdatedAt(new Date().toISOString());
-				})
-				.catch((err: unknown) => {
-					if (!mounted) return;
-					console.error("Failed to fetch Spotify health", err);
+			const next = new Map<string, Service>();
+			for (const r of results) if (r.status === "fulfilled") next.set(r.value.id, r.value);
 
-					// mark as down without introducing empty functions / void
-					setServices((prev) =>
-						upsertSpotify(prev, { ok: false, mode: "deep", tokenOk: false, spotifyOk: false, spotifyLatencyMs: null, totalMs: 0 })
-					);
-					setLastUpdatedAt(new Date().toISOString());
-				});
+			setServices((prev) => {
+				const byId = new Map(prev.map((s) => [s.id, s]));
+				for (const def of SERVICE_DEFS) {
+					const existing = byId.get(def.id);
+					const incoming = next.get(def.id);
+
+					if (!existing && incoming) {
+						byId.set(def.id, incoming);
+						continue;
+					}
+					if (existing && incoming) byId.set(def.id, { ...existing, ...incoming });
+				}
+				return Array.from(byId.values()).filter((s) => SERVICE_DEFS.some((d) => d.id === s.id));
+			});
+
+			setLastUpdatedAt(new Date().toISOString());
 		};
 
-		run();
-		const id = window.setInterval(run, 15000);
+		poll().catch((err: unknown) => console.error("poll failed", err));
+		const id = window.setInterval(() => {
+			poll().catch((err: unknown) => console.error("poll failed", err));
+		}, 15000);
 
 		return () => {
 			mounted = false;
@@ -332,21 +377,23 @@ const Status = () => {
 	return (
 		<>
 			<Helmet>
-				<title>StarfallEX Status</title>
+				<title>StarfallEx Status</title>
 				<meta property="og:site_name" content="nanos.club" />
-				<meta property="og:title" content="StarfallEX Status" />
+				<meta property="og:title" content="StarfallEx Status" />
 				<meta property="og:description" content="Live health for services and incidents." />
 				<meta property="og:image" content="" />
 			</Helmet>
-			<div className="relative w-full min-h-[700px] overflow-hidden rounded-3xl border border-neutral-800/60 bg-neutral-950">
+
+			<div className="relative w-full min-h-screen overflow-hidden border border-neutral-800/60 bg-neutral-950">
 				<canvas ref={canvasRef} className="absolute inset-0 h-full w-full" />
 				<div className="absolute inset-0 bg-gradient-to-b from-neutral-950/25 via-neutral-950/70 to-neutral-950" />
+
 				<div className="relative z-10 mx-auto w-full max-w-6xl px-6 py-14">
 					<div className="flex flex-wrap items-center justify-between gap-4">
 						<div>
 							<div className="inline-flex items-center gap-2 rounded-full border border-neutral-800/70 bg-neutral-900/40 px-3 py-1 text-xs font-semibold tracking-wide text-neutral-200">
 								<span className="h-1.5 w-1.5 rounded-full bg-[#ecba16]" />
-								StarfallEX Status
+								StarfallEx Status
 								<span className="text-neutral-400">/</span>
 								<span className="text-neutral-400">ncc.dev</span>
 							</div>
@@ -354,14 +401,9 @@ const Status = () => {
 							<p className="mt-2 text-sm text-neutral-300">Live health for services and incidents.</p>
 						</div>
 
-						<div className="flex items-center gap-3">
-							<div className={`inline-flex items-center gap-2 rounded-xl border px-3 py-2 text-sm font-extrabold ${badgeClass(overall)}`}>
-								<span className="h-2 w-2 rounded-full bg-current" />
-								{statusLabel(overall)}
-							</div>
-							<button disabled className="rounded-xl border border-neutral-800/80 bg-neutral-900/40 px-4 py-2 text-sm font-bold text-neutral-100 transition hover:bg-neutral-900/60">
-								Subscribe
-							</button>
+						<div className={`inline-flex items-center gap-2 rounded-xl border px-3 py-2 text-sm font-extrabold ${badgeClass(overall)}`}>
+							<span className="h-2 w-2 rounded-full bg-current" />
+							{statusLabel(overall)}
 						</div>
 					</div>
 
@@ -400,7 +442,7 @@ const Status = () => {
 										<div>
 											<div className="text-sm font-extrabold text-neutral-100">{s.name}</div>
 											<div className="mt-1 text-xs text-neutral-400">
-												{s.latencyMs > 0 ? `${s.latencyMs}ms` : "—"} · {s.uptime7d.toFixed(2)}% (7d)
+												{s.latencyMs}ms · {s.uptime7d.toFixed(2)}% (7d)
 											</div>
 										</div>
 										<div className={`shrink-0 rounded-xl border px-2.5 py-1 text-xs font-extrabold ${badgeClass(s.status)}`}>
