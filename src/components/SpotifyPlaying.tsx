@@ -9,7 +9,7 @@ const formatTime = (ms: number) => {
 	return minutes + ":" + seconds.toString().padStart(2, "0");
 };
 
-const Spotify = () => {
+const SpotifyPlaying = () => {
 	const { data } = useSpotifyNowPlaying(2000);
 	if (!data || !data.is_playing) return null;
 
@@ -54,4 +54,4 @@ const Spotify = () => {
 	);
 };
 
-export default Spotify;
+export default SpotifyPlaying;

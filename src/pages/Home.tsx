@@ -2,7 +2,7 @@ import { useMemo, useState, useRef, useEffect } from "react";
 import { useClickOutside } from "@/hooks";
 import { Project, Tech } from "@/types";
 import { projects, tech } from "@/data";
-import { Avatar, Button, ProjectCard, CreateProject, Layout, Social, TechCard, Spotify, ManageTech } from "@/components";
+import { Avatar, Button, ProjectCard, CreateProject, Layout, Social, TechCard, SpotifyPlaying, ManageTech, SpotifyRecent } from "@/components";
 import { ChevronDown, Plus, Rocket, X } from "lucide-react";
 import { useInView } from "react-intersection-observer";
 import { AnimationProps, motion, useAnimation } from "framer-motion";
@@ -65,7 +65,7 @@ const Home = () => {
 	return (
 		<>
 			<Layout>
-				<Spotify />
+				<SpotifyPlaying />
 				<Parallax speed={-20}>
 					<header className="relative h-[90vh] flex justify-center items-center overflow-hidden">
 						<Parallax speed={20}>
@@ -162,6 +162,7 @@ const Home = () => {
 						</section>
 					</div>
 				</main>
+				<SpotifyRecent />
 			</Layout>
 			<SignedIn>
 				<>
