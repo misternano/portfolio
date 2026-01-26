@@ -1,7 +1,2 @@
-import projects from "./projects.ts";
-import tech from "./tech.ts";
-
-export {
-	projects,
-	tech
-};
+export { default as projects } from "./projects.ts";
+export { default as tech } from "./tech.ts";

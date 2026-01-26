@@ -1,9 +1,4 @@
-import useToasts from "./useToasts.tsx";
-import useClickOutside from "./useClickOutside.ts";
-import useSpotifyNowPlaying from "./useSpotifyNowPlaying.ts";
-
-export {
-	useToasts,
-	useClickOutside,
-	useSpotifyNowPlaying
-};
+export { default as useToasts } from "./useToasts.tsx";
+export { default as useClickOutside } from "./useClickOutside.ts";
+export { default as useSpotifyNowPlaying } from "./useSpotifyNowPlaying.ts";
+export { default as useServicePolling } from "./useServicePolling.ts";

@@ -1,18 +1,10 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Helmet } from "react-helmet";
+import { useServicePolling } from "@/hooks";
+import type { ServiceDef, Service, Statuses, HealthResponse } from "@/types.ts";
 
 type Star = { x: number; y: number; r: number; a: number };
 type Meteor = { x: number; y: number; vx: number; vy: number; life: number; max: number; w: number };
-
-type Statuses = "operational" | "degraded" | "partialOutage" | "majorOutage" | "maintenance";
-
-type Service = {
-	id: string;
-	name: string;
-	status: Statuses;
-	latencyMs: number;
-	uptime7d: number;
-};
 
 type Incident = {
 	id: string;
@@ -20,24 +12,6 @@ type Incident = {
 	status: "investigating" | "identified" | "monitoring" | "resolved";
 	startedAt: string;
 	updatedAt: string;
-};
-
-type ServiceDef = {
-	id: Service["id"];
-	name: Service["name"];
-	healthUrl: string;
-	uptime7d?: number;
-};
-
-type HealthResponse = {
-	ok?: boolean;
-	status?: "ok" | "fail";
-	mode?: "shallow" | "deep";
-	tokenOk?: boolean;
-	spotifyOk?: boolean;
-	spotifyLatencyMs?: number | null;
-	totalMs?: number;
-	latencyMs?: number;
 };
 
 const SERVICE_DEFS: readonly ServiceDef[] = [
@@ -82,6 +56,7 @@ const statusLabel = (s: Statuses) => {
 		case "majorOutage":
 			return "Major outage";
 		case "maintenance":
+			return "Maintenance";
 		default:
 			return "Maintenance";
 	}
@@ -151,19 +126,15 @@ const Status = () => {
 	const canvasRef = useRef<HTMLCanvasElement | null>(null);
 	const rafRef = useRef<number | null>(null);
 
-	const [lastUpdatedAt, setLastUpdatedAt] = useState<string | null>(null);
+	const { services, lastUpdatedAt, loading: _loading, error: _error, refresh: _refresh } = useServicePolling(SERVICE_DEFS, {
+		intervalMs: 15_000,
+		initialStatus: "maintenance",
+		defaultUptime7d: 99.99,
+		statusFromHealth,
+		latencyFromHealth
+	});
 
-	const [services, setServices] = useState<Service[]>(
-		SERVICE_DEFS.map((d) => ({
-			id: d.id,
-			name: d.name,
-			status: "maintenance",
-			latencyMs: 0,
-			uptime7d: d.uptime7d ?? 99.99
-		}))
-	);
-
-	const [incidents, setIncidents] = useState<Incident[]>([
+	const [incidents, _setIncidents] = useState<Incident[]>([
 		// {
 		// 	id: "authlatency",
 		// 	title: "Elevated auth latency",
@@ -303,73 +274,6 @@ const Status = () => {
 			window.removeEventListener("resize", resize);
 			if (rafRef.current) cancelAnimationFrame(rafRef.current);
 			rafRef.current = null;
-		};
-	}, []);
-
-	useEffect(() => {
-		let mounted = true;
-		const ctrl = new AbortController();
-
-		const fetchOne = async (def: ServiceDef): Promise<Service> => {
-			const t0 = performance.now();
-
-			const res = await fetch(def.healthUrl, {
-				headers: { accept: "application/json" },
-				signal: ctrl.signal
-			});
-
-			const measuredMs = performance.now() - t0;
-
-			let body: HealthResponse;
-			try {
-				body = (await res.json()) as HealthResponse;
-			} catch {
-				body = {};
-			}
-
-			return {
-				id: def.id,
-				name: def.name,
-				status: statusFromHealth(body, res.ok),
-				latencyMs: latencyFromHealth(body, measuredMs),
-				uptime7d: def.uptime7d ?? 99.99
-			};
-		};
-
-		const poll = async () => {
-			const results = await Promise.allSettled(SERVICE_DEFS.map((d) => fetchOne(d)));
-			if (!mounted) return;
-
-			const next = new Map<string, Service>();
-			for (const r of results) if (r.status === "fulfilled") next.set(r.value.id, r.value);
-
-			setServices((prev) => {
-				const byId = new Map(prev.map((s) => [s.id, s]));
-				for (const def of SERVICE_DEFS) {
-					const existing = byId.get(def.id);
-					const incoming = next.get(def.id);
-
-					if (!existing && incoming) {
-						byId.set(def.id, incoming);
-						continue;
-					}
-					if (existing && incoming) byId.set(def.id, { ...existing, ...incoming });
-				}
-				return Array.from(byId.values()).filter((s) => SERVICE_DEFS.some((d) => d.id === s.id));
-			});
-
-			setLastUpdatedAt(new Date().toISOString());
-		};
-
-		poll().catch((err: unknown) => console.error("poll failed", err));
-		const id = window.setInterval(() => {
-			poll().catch((err: unknown) => console.error("poll failed", err));
-		}, 15000);
-
-		return () => {
-			mounted = false;
-			ctrl.abort();
-			window.clearInterval(id);
 		};
 	}, []);
 

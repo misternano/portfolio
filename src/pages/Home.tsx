@@ -1,15 +1,14 @@
 import { useMemo, useState, useRef, useEffect } from "react";
-import { useClickOutside } from "../hooks";
-import { Project, Tech } from "../types";
-import { projects, tech } from "../data";
-import { Avatar, Button, ProjectCard, CreateProject, Layout, Social, TechCard, Spotify } from "../components";
+import { useClickOutside } from "@/hooks";
+import { Project, Tech } from "@/types";
+import { projects, tech } from "@/data";
+import { Avatar, Button, ProjectCard, CreateProject, Layout, Social, TechCard, Spotify, ManageTech } from "@/components";
 import { ChevronDown, Plus, Rocket, X } from "lucide-react";
 import { useInView } from "react-intersection-observer";
 import { AnimationProps, motion, useAnimation } from "framer-motion";
 import { Parallax } from "react-scroll-parallax";
 import { SignedIn, useUser } from "@clerk/clerk-react";
 import moment from "moment";
-import ManageTech from "../components/ManageTech.tsx";
 
 const greetings = ["Hi", "Hey", "Hello", "Hihi", "Howdy"];
 

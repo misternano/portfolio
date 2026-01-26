@@ -1,6 +1,6 @@
 import { Circle } from "lucide-react";
-import { Progress } from "./index.ts";
-import { useSpotifyNowPlaying } from "../hooks";
+import { Progress } from "@/components";
+import { useSpotifyNowPlaying } from "@/hooks";
 
 const formatTime = (ms: number) => {
 	const minutes = Math.floor(ms / 1000 / 60);

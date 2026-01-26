@@ -1,4 +1,4 @@
-import { Button, Social } from "./index";
+import { Button, Social } from "@/components";
 import { SignInButton, SignedOut, SignedIn, SignOutButton, useUser } from "@clerk/clerk-react";
 import { LogIn, LogOut } from "lucide-react";
 

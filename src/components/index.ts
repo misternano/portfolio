@@ -1,27 +1,13 @@
-import Avatar from "./Avatar";
-import Button from "./Button";
-import ContactCard from "./ContactCard";
-import CreateProject from "./CreateProject";
-import Footer from "./Footer";
-import Layout from "./Layout";
-import ProjectCard from "./ProjectCard";
-import Social from "./Social";
-import Spotify from "./Spotify.js";
-import TechCard from "./TechCard";
-import Toast from "./Toast";
-import Progress from "./Progress";
-
-export {
-	Avatar,
-	Button,
-	ContactCard,
-	CreateProject,
-	Footer,
-	Layout,
-	ProjectCard,
-	Social,
-	Spotify,
-	TechCard,
-	Toast,
-	Progress
-};
+export { default as Avatar } from "./Avatar.tsx";
+export { default as Button } from "./Button.tsx";
+export { default as ContactCard } from "./ContactCard.tsx";
+export { default as CreateProject } from "./CreateProject.tsx";
+export { default as Footer } from "./Footer.tsx";
+export { default as Layout } from "./Layout.tsx";
+export { default as ProjectCard } from "./ProjectCard.tsx";
+export { default as Social } from "./Social.tsx";
+export { default as Spotify } from "./Spotify.tsx";
+export { default as TechCard } from "./TechCard.tsx";
+export { default as Toast } from "./Toast.tsx";
+export { default as Progress } from "./Progress.tsx";
+export { default as ManageTech } from "./ManageTech.tsx";

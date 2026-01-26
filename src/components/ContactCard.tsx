@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { SubmitHandler, useForm } from "react-hook-form";
-import { useToasts } from "../hooks";
-import { CheckCircle2, ChevronsLeft, ServerCrash } from "lucide-react";
+import { useToasts } from "@/hooks";
 import { z } from "zod";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { CheckCircle2, ChevronsLeft, ServerCrash } from "lucide-react";
 
 interface InputProps {
 	email: string;
@@ -14,7 +14,7 @@ const InputSchema = z.object({
 	email: z.string().email(),
 	subject: z.string(),
 	message: z.string().min(3)
-})
+});
 
 const ContactCard = () => {
 	const toast = useToasts();
@@ -41,12 +41,12 @@ const ContactCard = () => {
 					setError((prevState) => ({
 						...prevState,
 						email: "Email must be valid"
-					}))
+					}));
 				} else if (issue.path[0] === "message") {
 					setError((prevState) => ({
 						...prevState,
 						message: "Message must be at least 3 characters long"
-					}))
+					}));
 				}
 			});
 			toast("Error", `${error.message}`, 2500, "bg-rose-500");
@@ -74,7 +74,7 @@ const ContactCard = () => {
 							Requires a valid email.
 						</p>
 					</div>
-					) : (
+				) : (
 					<input
 						id="subject"
 						{...register("subject")}

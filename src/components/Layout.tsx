@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
-import { Footer } from "./index";
-import { Dna } from "lucide-react";
+import { Footer } from "@/components";
 import { SignedIn } from "@clerk/clerk-react";
+import { Dna } from "lucide-react";
 
 interface LayoutProps {
 	children: ReactNode;

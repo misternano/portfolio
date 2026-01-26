@@ -1,6 +1,6 @@
 /* eslint-disable no-inline-comments */
-import { AlertCircle, CheckCircle2, Ghost, HelpCircle, Info, Zap } from "lucide-react";
 import { ReactElement } from "react";
+import { AlertCircle, CheckCircle2, Ghost, HelpCircle, Info, Zap } from "lucide-react";
 
 interface ToastProps {
 	theme: string,

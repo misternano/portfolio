@@ -1,11 +1,10 @@
 import { Fragment, useState } from "react";
-import type { Project } from "../types";
-import placeholder from "../assets/images/placeholder.png";
-import { Pencil, Trash, X } from "lucide-react";
-import { useClickOutside } from "../hooks";
-import { useToasts } from "../hooks";
+import type { Project } from "@/types";
+import { useClickOutside, useToasts } from "@/hooks";
 import { useUser } from "@clerk/clerk-react";
 import { animated, useSpring } from "@react-spring/web";
+import placeholder from "@/assets/images/placeholder.png";
+import { Pencil, Trash, X } from "lucide-react";
 
 const calc = (x: number, y: number) => [
 	-(y - window.innerHeight / 2) / 200,

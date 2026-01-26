@@ -1,8 +1,8 @@
-import { Project } from "../types.ts";
+import { Project } from "@/types";
 
 const projects: Project[] = [
 	{
-		image: "YFKgX",
+		image: "portfolio",
 		name: "Portfolio",
 		desc: "Open source React and TypeScript portfolio with a clean, fast design.",
 		url: "nanos.club",
@@ -11,7 +11,7 @@ const projects: Project[] = [
 		immune: true
 	},
 	{
-		image: "wZHUg",
+		image: "fnshop",
 		name: "Fortnite Item Shop",
 		desc: "Utilizes an API wrapper to instantly deliver the current Fortnite item shop.",
 		url: "fn.nanos.club",
@@ -19,7 +19,7 @@ const projects: Project[] = [
 		stack: ["Next.js", "TypeScript", "Tailwind", "Wrangler", "API Platform"]
 	},
 	{
-		image: "uYAyu",
+		image: "arcade",
 		name: "Arcade Games",
 		desc: "Lightweight web arcade of small, fast games focused on clean UI and zero distractions.",
 		url: "arcade.bkclb.dev",
@@ -27,7 +27,7 @@ const projects: Project[] = [
 		stack: ["SvelteKit", "TypeScript", "Tailwind", "Wrangler", "API Platform"]
 	},
 	{
-		image: "ZAZ7r",
+		image: "cookies",
 		name: "Cookie Calculator",
 		desc: "Making pay-to-win in Hypixel's Skyblock gamemode easier, one step at a time.",
 		url: "cookies.nanos.club",
@@ -35,7 +35,14 @@ const projects: Project[] = [
 		stack: ["React", "Tailwind", "TypeScript", "Vite"]
 	},
 	{
-		image: "UjHi0",
+		image: "starfallex",
+		name: "StarfallEx Status",
+		desc: "A central status page for monitoring the uptime, health, and performance of API services.",
+		url: "nanos.club/status",
+		stack: ["TypeScript", "React", "Tailwind", "Vite"]
+	},
+	{
+		image: "apis",
 		name: "API Platform",
 		desc: "Personal API platform hosting microservices used across multiple projects.",
 		url: "api.ncc.dev",

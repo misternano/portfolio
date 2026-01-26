@@ -1,4 +1,4 @@
-import { Tech } from "../types";
+import { Tech } from "@/types";
 
 const tech: Tech[] = [
 	{

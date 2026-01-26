@@ -1,7 +1,6 @@
-// CreateProject.tsx
 import { ChangeEvent, useState, Dispatch, SetStateAction, FormEvent } from "react";
+import { useToasts } from "@/hooks";
 import { Upload, Plus, X } from "lucide-react";
-import { useToasts } from "../hooks";
 
 type ArrayField = "sources" | "tech";
 

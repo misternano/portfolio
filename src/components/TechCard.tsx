@@ -1,4 +1,4 @@
-import type { Tech } from "../types";
+import type { Tech } from "@/types";
 
 const TechCard = ({ tech }: { tech: Tech }) => {
 	return (

@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { tech as initialTech } from "../data";
-import { Tech } from "../types.ts";
+import { tech as initialTech } from "@/data";
+import { Tech } from "@/types";
 import { Pencil, Trash, X, Check } from "lucide-react";
 
 const ManageTech = () => {

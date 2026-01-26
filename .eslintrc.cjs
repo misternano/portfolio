@@ -20,6 +20,12 @@ module.exports = {
 		"eslint-plugin-react"
 	],
 	rules: {
+		"no-unused-vars": [
+			"error", { argsIgnorePattern: "^_", varsIgnorePattern: "^_" }
+		],
+		"@typescript-eslint/no-unused-vars": [
+			"error", { argsIgnorePattern: "^_", varsIgnorePattern: "^_" }
+		],
 		"react/react-in-jsx-scope": "off",
 		"linebreak-style": [
 			"error",
@@ -224,8 +230,6 @@ module.exports = {
 		"no-undef-init": 2,
 		// disallow use of undefined when initializing variables
 		"no-undefined": 2,
-		// disallow use of undefined variable (off by default)
-		"no-unused-vars": 2,
 		// disallow declaration of variables that are not used in the code
 		"no-use-before-define": 2,
 		// disallow use of variables before they are defined
