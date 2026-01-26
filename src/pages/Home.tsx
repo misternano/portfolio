@@ -2,7 +2,7 @@ import { useMemo, useState, useRef, useEffect } from "react";
 import { useClickOutside } from "@/hooks";
 import { Project, Tech } from "@/types";
 import { projects, tech } from "@/data";
-import { Avatar, Button, ProjectCard, CreateProject, Layout, Social, TechCard, SpotifyPlaying, ManageTech, SpotifyRecent } from "@/components";
+import { Avatar, Button, ProjectCard, CreateProject, Layout, Social, TechCard, SpotifyPlaying, ManageTech, SpotifyTop } from "@/components";
 import { ChevronDown, Plus, Rocket, X } from "lucide-react";
 import { useInView } from "react-intersection-observer";
 import { AnimationProps, motion, useAnimation } from "framer-motion";
@@ -160,48 +160,51 @@ const Home = () => {
 								</motion.div>
 							</div>
 						</section>
+						<SpotifyTop />
 					</div>
 				</main>
-				<SpotifyRecent />
 			</Layout>
-			<SignedIn>
-				<>
-					{createProjectModal && (
-						<div className="fixed inset-0 z-10 flex items-center justify-center bg-neutral-800/50">
-							<div ref={modalRef} className="min-w-[20rem] p-4 flex flex-col gap-4 bg-neutral-900 border border-neutral-700 rounded-xl">
-								<div className="flex flex-row justify-between items-center">
-									<p className="font-medium text-sm text-neutral-300">New Project</p>
-									<button onClick={() => setCreateProjectModal(false)} className="group border border-transparent hover:border-red-500 rounded-md p-0.5">
-										<X size="16" className="group-hover:stroke-red-500" />
-									</button>
-								</div>
-								<CreateProject setCreateProjectModal={setCreateProjectModal} />
-							</div>
-						</div>
-					)}
-					{stackModal && (
-						<div className="fixed inset-0 z-10 flex items-center justify-center bg-neutral-800/50">
-							<div
-								ref={modalRef}
-								className="min-w-[30vw] p-4 flex flex-col gap-4 bg-neutral-900 border border-neutral-700 rounded-xl"
-							>
-								<div className="flex flex-row justify-between items-center">
-									<p className="font-medium text-sm text-neutral-300">Tools Management</p>
-									<button
-										onClick={() => setStackModal(false)}
-										className="group border border-transparent hover:border-red-500 rounded-md p-0.5"
-									>
-										<X size={16} className="group-hover:stroke-red-500" />
-									</button>
-								</div>
-								<div className="grid grid-cols-2 gap-2">
-									<ManageTech />
+			{createProjectModal || stackModal ? (
+				<SignedIn>
+					<>
+						{createProjectModal && (
+							<div className="fixed inset-0 z-10 flex items-center justify-center bg-neutral-800/50">
+								<div ref={modalRef} className="min-w-[20rem] p-4 flex flex-col gap-4 bg-neutral-900 border border-neutral-700 rounded-xl">
+									<div className="flex flex-row justify-between items-center">
+										<p className="font-medium text-sm text-neutral-300">New Project</p>
+										<button onClick={() => setCreateProjectModal(false)} className="group border border-transparent hover:border-red-500 rounded-md p-0.5">
+											<X size="16" className="group-hover:stroke-red-500" />
+										</button>
+									</div>
+									<CreateProject setCreateProjectModal={setCreateProjectModal} />
 								</div>
 							</div>
-						</div>
-					)}
-				</>
-			</SignedIn>
+						)}
+						{stackModal && (
+							<div className="fixed inset-0 z-10 flex items-center justify-center bg-neutral-800/50">
+								<div
+									ref={modalRef}
+									className="min-w-[30vw] p-4 flex flex-col gap-4 bg-neutral-900 border border-neutral-700 rounded-xl"
+								>
+									<div className="flex flex-row justify-between items-center">
+										<p className="font-medium text-sm text-neutral-300">Tools Management</p>
+										<button
+											onClick={() => setStackModal(false)}
+											className="group border border-transparent hover:border-red-500 rounded-md p-0.5"
+										>
+											<X size={16} className="group-hover:stroke-red-500" />
+										</button>
+									</div>
+									<div className="grid grid-cols-2 gap-2">
+										<ManageTech />
+									</div>
+								</div>
+							</div>
+						)}
+					</>
+				</SignedIn>
+			) : null
+			}
 		</>
 	);
 };

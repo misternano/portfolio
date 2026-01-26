@@ -1,6 +1,6 @@
 import { Circle } from "lucide-react";
 import { Progress } from "@/components";
-import { useSpotifyNowPlaying } from "@/hooks";
+import { useSpotify } from "@/hooks";
 
 const formatTime = (ms: number) => {
 	const minutes = Math.floor(ms / 1000 / 60);
@@ -10,7 +10,7 @@ const formatTime = (ms: number) => {
 };
 
 const SpotifyPlaying = () => {
-	const { data } = useSpotifyNowPlaying(2000);
+	const { data } = useSpotify(2000);
 	if (!data || !data.is_playing) return null;
 
 	const song = data.item.name.replace(/ *\([^)]*\)/g, "").replace(/ *\[[^\]]*]/g, "").replace(/ - [Rr]ecorded [Aa]t.*/g, "");

@@ -15,6 +15,41 @@ export interface Tech {
 	url: string;
 }
 
+// Spotify
+export interface SpotifyNowPlaying {
+	is_playing: boolean;
+	timestamp: Date;
+	progress_ms: number;
+	item: {
+		id: string;
+		name: string;
+		duration_ms: number;
+		album: {
+			name: string;
+			images: {
+				url: string;
+			}[]
+		}
+		artists: {
+			name: string;
+		}[]
+	}
+}
+
+export interface SpotifyRecentOrTop {
+	limit: number;
+	offset?: number;
+	time_range?: string;
+	items: {
+		playedAt: Date;
+		trackId: string;
+		name: string;
+		artists: string;
+		album: string;
+		albumArt: string;
+	}[];
+}
+
 // Service Polling
 export type Statuses = "operational" | "degraded" | "partialOutage" | "majorOutage" | "maintenance";
 

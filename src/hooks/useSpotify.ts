@@ -1,27 +1,13 @@
 import { useEffect, useState } from "react";
+import { SpotifyNowPlaying, SpotifyRecentOrTop } from "@/types";
 
-interface SpotifyProps {
-	is_playing: boolean;
-	timestamp: Date;
-	progress_ms: number;
-	item: {
-		id: string;
-		name: string;
-		duration_ms: number;
-		album: {
-			name: string;
-			images: {
-				url: string;
-			}[]
-		}
-		artists: {
-			name: string;
-		}[]
-	}
-}
+type SpotifyType = "recent" | "top" | undefined;
+type SpotifyData<T extends SpotifyType> = T extends "recent" | "top"
+	? SpotifyRecentOrTop
+	: SpotifyNowPlaying;
 
-const useSpotifyNowPlaying = (pollMs = 2000) => {
-	const [data, setData] = useState<SpotifyProps | null>(null);
+const useSpotify = <T extends SpotifyType = undefined>(pollMs = 2000, type?: T) => {
+	const [data, setData] = useState<SpotifyData<T> | null>(null);
 	const [error, setError] = useState<unknown>(null);
 
 	useEffect(() => {
@@ -29,8 +15,9 @@ const useSpotifyNowPlaying = (pollMs = 2000) => {
 
 		const tick = async () => {
 			try {
-				const res = await fetch("https://api.ncc.dev/spotify");
-				const json = (await res.json()) as SpotifyProps;
+				const suffix = type ? `/${type}` : "";
+				const res = await fetch(`https://api.ncc.dev/spotify${suffix}`);
+				const json = (await res.json()) as SpotifyData<T>;
 				if (!alive) return;
 				setData(json);
 				setError(null);
@@ -61,4 +48,4 @@ const useSpotifyNowPlaying = (pollMs = 2000) => {
 	return { data, error };
 };
 
-export default useSpotifyNowPlaying;
+export default useSpotify;

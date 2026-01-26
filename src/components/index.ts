@@ -11,4 +11,4 @@ export { default as TechCard } from "./TechCard.tsx";
 export { default as Toast } from "./Toast.tsx";
 export { default as Progress } from "./Progress.tsx";
 export { default as ManageTech } from "./ManageTech.tsx";
-export { default as SpotifyRecent } from "./SpotifyRecent.tsx";
+export { default as SpotifyTop } from "./SpotifyTop.tsx";
